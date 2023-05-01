@@ -1,2 +1,2 @@
 # Selling-Electronics-project
-This project include a selling website to sell electronic products and a Desktop application for management.
+This project include a website to sell electronic products and a Desktop application for management.
