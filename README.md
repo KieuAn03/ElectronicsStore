@@ -1,2 +1,26 @@
-# Selling-Electronics-project
-This project include a website to sell electronic products and a Desktop application for management.
+![image](https://user-images.githubusercontent.com/127779887/236205901-9bf53a9a-8452-4012-ba0a-9702c1088a88.png)
+# **WEBSITE BÁN HÀNG + DESKTOP APP QUẢN LÝ**
+    ĐÂY LÀ DỰ ÁN NHẰM TẠO MỘT WEBSITE BÁN HÀNG ONLINE, ĐỒNG THỜI CŨNG CUNG CẤP ỨNG DỤNG ĐỂ QUẢN LÝ WEBSITE, CÁC CỬA HÀNG BÊN NGOÀI.
+***
+
+
+## NỘI DUNG PROJECT
+_SẼ BAO GÔM 2 PHẦN: WEBSITE BÁN HÀNG VÀ DESKTOP APP DÀNH CHO VIỆC QUẢN LÝ_
+> WEBSITE BÁN HÀNG:
+> * TRANG ĐĂNG KÝ, ĐĂNG NHẬP TÀI KHOẢN
+> * TRANG CHỦ HIỂN THỊ CÁC MẶT HÀNG
+> * TRANG CHI TIẾT SẢN PHẨM
+> * TRANG GIỎ HÀNG
+> * TRANG TRỢ GIÚP, PHẢN HỒI KHÁCH HÀNG
+> * TRANG PROFILE, XEM THÔNG TIN CÁ NHÂN CỦA KHÁCH HÀNG
+
+***
+
+
+> DESKTOP APP CHO VIỆC QUẢN LÝ:
+> * HỆ THỐNG PHÂN QUYỀN TRUY CẬP (NHÂN VIÊN, KHÁCH HÀNG, QUẢN LÝ...)
+> * HỆ THỐNG QUẢN LÝ DỮ LIỆU CỦA KHÁCH HÀNG
+> * HỆ THỐNG QUẢN LÝ HÀNG HÓA NHẬP, XUẤT KHO
+> * HỆ THỐNG KẾ TOÁN THỐNG KÊ CHI TIÊU/ DOANH THU
+> * HỆ THỐNG KIỂM TRA TÌNH TRẠNG HÀNG CỦA CÁC KHÁCH HÀNG
+> * HỆ THỐNG QUẢN LÝ NHÂN VIÊN
