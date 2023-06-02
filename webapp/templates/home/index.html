@@ -1,30 +1,155 @@
 {% extends "base/base.html" %}
-
+{% load static %}
 {%  block start %}
+<!-- collection -->
+<section id = "collection" class = "py-5">
+            <div class = "collection-list mt-4 row gx-0 gy-3">
+                <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
+                    <div class = "collection-img position-relative">
+                        <img src = "{% static '/image/products/laptop.jfif'%}" class = "w-100">
+                        <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
+                    </div>
+                    <div class = "text-center">
+                        <div class = "rating mt-3">
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                        </div>
+                        <p class = "text-capitalize my-1">gray shirt</p>
+                        <span class = "fw-bold">$ 45.50</span>
+                    </div>
+                </div>
 
+                <div class = "col-md-6 col-lg-4 col-xl-3 p-2 feat">
+                    <div class = "collection-img position-relative">
+                        <img src = "{% static '/image/products/laptop.jfif'%}" class = "w-100">
+                        <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
+                    </div>
+                    <div class = "text-center">
+                        <div class = "rating mt-3">
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                        </div>
+                        <p class = "text-capitalize my-1">gray shirt</p>
+                        <span class = "fw-bold">$ 45.50</span>
+                    </div>
+                </div>
 
-<div class="container mt-5 pt-5">
-    <div class="row">
-        
-        {% for product in products %}
-        <div class="col-md-3">
-            <figure class="card card-product-grid">
-                <div class="img-wrap"> <img src="/media/{{product.product_images.first.image}}"> </div>
-                <figcaption class="info-wrap border-top">
-                    <a href="{% url 'get_product' product.slug %}" class="title">
-                        <b>{{product.product_name}}</b></a>
-                    <div class="price mt-2">{{product.price}}VNĐ</div> <!-- price-wrap.// -->
-                </figcaption>
-            </figure> <!-- card // -->
-        </div> <!-- col.// -->
+                <div class = "col-md-6 col-lg-4 col-xl-3 p-2 new">
+                    <div class = "collection-img position-relative">
+                        <img src = "{% static '/image/products/laptop.jfif'%}" class = "w-100">
+                        <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
+                    </div>
+                    <div class = "text-center">
+                        <div class = "rating mt-3">
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                        </div>
+                        <p class = "text-capitalize my-1">gray shirt</p>
+                        <span class = "fw-bold">$ 45.50</span>
+                    </div>
+                </div>
 
-        {% endfor %}
-      
-        
-       
-    </div>
+                <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
+                    <div class = "collection-img position-relative">
+                        <img src = "{% static '/image/products/laptop.jfif'%}" class = "w-100">
+                        <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
+                    </div>
+                    <div class = "text-center">
+                        <div class = "rating mt-3">
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                        </div>
+                        <p class = "text-capitalize my-1">gray shirt</p>
+                        <span class = "fw-bold">$ 45.50</span>
+                    </div>
+                </div>
 
-    </div>
+                <div class = "col-md-6 col-lg-4 col-xl-3 p-2 feat">
+                    <div class = "collection-img position-relative">
+                        <img src = "images/c_t-shirt_men.png" class = "w-100">
+                        <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
+                    </div>
+                    <div class = "text-center">
+                        <div class = "rating mt-3">
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                        </div>
+                        <p class = "text-capitalize my-1">gray shirt</p>
+                        <span class = "fw-bold">$ 45.50</span>
+                    </div>
+                </div>
 
+                <div class = "col-md-6 col-lg-4 col-xl-3 p-2 new">
+                    <div class = "collection-img position-relative">
+                        <img src = "images/c_tunic-shirt_girl.png" class = "w-100">
+                        <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
+                    </div>
+                    <div class = "text-center">
+                        <div class = "rating mt-3">
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                        </div>
+                        <p class = "text-capitalize my-1">gray shirt</p>
+                        <span class = "fw-bold">$ 45.50</span>
+                    </div>
+                </div>
 
+                <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
+                    <div class = "collection-img position-relative">
+                        <img src = "images/c_undershirt.png" class = "w-100">
+                        <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
+                    </div>
+                    <div class = "text-center">
+                        <div class = "rating mt-3">
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                        </div>
+                        <p class = "text-capitalize my-1">gray shirt</p>
+                        <span class = "fw-bold">$ 45.50</span>
+                    </div>
+                </div>
+
+                <div class = "col-md-6 col-lg-4 col-xl-3 p-2 feat">
+                    <div class = "collection-img position-relative">
+                        <img src = "images/c_western-shirt.png" class = "w-100">
+                        <span class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">sale</span>
+                    </div>
+                    <div class = "text-center">
+                        <div class = "rating mt-3">
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                            <span class = "text-primary"><i class = "fas fa-star"></i></span>
+                        </div>
+                        <p class = "text-capitalize my-1">gray shirt</p>
+                        <span class = "fw-bold">$ 45.50</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </>
+</section>
+<!-- end of collection -->
 {% endblock %}
