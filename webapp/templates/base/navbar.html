@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'index' %}">Electron</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- search -->
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>  <!-- end search -->
+
+        
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+          </li>
+
+        </ul>
+        <!-- icon -->
+        <div class = "navbar-nav ms-auto mb-2 mb-lg-0">
+            <button type = "button" class = "btn position-relative">
+                <i class = "fa fa-shopping-cart" style="color: white;"></i>
+                <span class = "position-absolute top-0 start-100 translate-middle badge bg-primary">5</span>
+            </button>
+            <button type = "button" class = "btn position-relative">
+                <i class = "fa fa-heart" style="color: white;"></i>
+                <span class = "position-absolute top-0 start-100 translate-middle badge bg-primary">2</span>
+            </button>
+        </div>
+        <!-- icon-end -->
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-but">
+                <a href="" class="btn btn-outline-light">Sign Up</a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="btn btn-outline-light">Login</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Account
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><a class="dropdown-item" href="#">Sign Out</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                </ul>
+              </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
