@@ -4,14 +4,18 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <!-- search -->
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>  <!-- end search -->
-
+   
         
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+            <!-- search -->
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>  <!-- end search -->
+        </ul>
+            
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
@@ -51,3 +55,16 @@
       </div>
     </div>
   </nav>
+  <section class="menu-bar">
+    <div class="container">
+        <div class="menu-bar-content">
+            <ul>
+                <li><a href=""><i class="fas fa-mobile-alt">Phone</i></a></li>
+                <li><a href=""><i class="fas fa-laptop">Laptop</i></a></li>
+                <li><a href=""><i class="fas fa-tablet">Tablet</i></a></li>
+                <li><a href=""><i class="fas fa-mobile-alt">Phone</i></a></li>
+                <li><a href=""><i class="fas fa-mobile-alt">Phone</i></a></li>
+            </ul>
+        </div>
+    </div>
+</section>
