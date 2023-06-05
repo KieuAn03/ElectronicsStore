@@ -9,7 +9,7 @@ class ProductType(models.Model):
     
 class PhoneOS(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100 )
     def __str__ (self):
         return self.name
 
@@ -94,5 +94,6 @@ class Phone (models.Model):
     chips = models.ForeignKey(PhoneChips, on_delete=models.CASCADE)
     Sim = models.ForeignKey(PhoneSim, on_delete=models.CASCADE)
     battery = models.ForeignKey(PhoneBattery, on_delete=models.CASCADE)
+    Info = models.TextField()
     def __str__ (self):
         return self.Name
