@@ -94,5 +94,29 @@
     left: 20px;
 }
 
+/* offCanvas */
+:root{
+    --offcanvas-width: 270px;
 
+}
 
+.sidebar-nav {
+    width: var(--offcanvas-width);
+}
+/* offCanvas */
+
+/*---------Menubar--------*/
+.menu-bar{
+    background-color: #433e57;
+
+}
+
+.menu-bar ul {
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+}
+
+.menu-bar ul li a {
+    color: #afadb7;
+}

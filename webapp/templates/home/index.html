@@ -2,6 +2,34 @@
 {% load static %}
 {%  block start %}
 
+<!--offcanvas-->
+<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+    Dashboard
+  </a>
+  
+  <div class="offcanvas offcanvas-start sidebar-nav" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+      </div>
+      <div class="dropdown mt-3">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+          Laptop
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Asus</a></li>
+          <li><a class="dropdown-item" href="#">Dell</a></li>
+          <li><a class="dropdown-item" href="#">HP</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<!--offcanvas --end -->
+
 <div class="product-container">
     <div class="header">
         <h1>Products</h1>
@@ -17,14 +45,14 @@
             </div>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio!</p>
             <div class="stars">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star" style="color: rgb(225, 195, 25);"></i>
+                <i class="fa-solid fa-star" style="color: rgb(225, 195, 25);"></i>
+                <i class="fa-solid fa-star" style="color: rgb(225, 195, 25);"></i>
+                <i class="fa-solid fa-star" style="color: rgb(225, 195, 25);"></i>
+                <i class="fa-solid fa-star" style="color: rgb(225, 195, 25);"></i>
             </div>
             <div class="heart">
-                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-heart" style="color: rgb(242, 30, 51);"></i>
             </div>
             <div class="buy">
                 <button>Buy Now</button>
