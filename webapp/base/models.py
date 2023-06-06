@@ -97,3 +97,89 @@ class Phone (models.Model):
     Info = models.TextField()
     def __str__ (self):
         return self.Name
+
+class LaptopBrand(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+        return self.name
+class LaptopScreen(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+        return self.name
+class LaptopRam(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class LaptopStorage(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class LaptopColor(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class LaptopBattery(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class LaptopOS(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class LaptopVGA(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class LaptopCPU(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class LaptopUSB(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class LaptopSpecial(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class LaptopDesign(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class LaptopSize(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+
+class Laptop (models.Model):   
+    id = models.AutoField(primary_key=True)
+    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    brand = models.ForeignKey(LaptopBrand, on_delete=models.CASCADE)
+    color = models.ForeignKey(LaptopColor, on_delete=models.CASCADE)
+    CPU = models.ForeignKey(LaptopCPU, on_delete=models.CASCADE)
+    ram = models.ForeignKey(LaptopRam, on_delete=models.CASCADE)
+    storage = models.ForeignKey(LaptopStorage, on_delete=models.CASCADE)
+    screen = models.ForeignKey(LaptopScreen, on_delete=models.CASCADE)
+    VGA = models.ForeignKey(LaptopVGA, on_delete=models.CASCADE)
+    USB = models.ForeignKey(LaptopUSB, on_delete=models.CASCADE)
+    Special = models.ForeignKey(LaptopSpecial, on_delete=models.CASCADE, null= True)
+    OS = models.ForeignKey(LaptopOS, on_delete=models.CASCADE)
+    design = models.ForeignKey(LaptopDesign, on_delete=models.CASCADE)
+    size = models.ForeignKey(LaptopSize, on_delete=models.CASCADE)
+    release_date = models.DateField()
+    Info = models.TextField()
+    def __str__ (self):
+        return self.Name
