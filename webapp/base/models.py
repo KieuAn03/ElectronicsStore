@@ -224,6 +224,7 @@ class watchBrand(models.Model):
         return self.name
 
 class watch (models.Model):
+    id = models.AutoField(primary_key=True)
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     DoiTuong = models.CharField(choices=['Nam', 'Nữ', 'UniSex'], max_length=10)
     DuongKinh= models.ForeignKey(watchDiameter, on_delete=models.CASCADE)
@@ -233,6 +234,82 @@ class watch (models.Model):
     ChongNuoc = models.ForeignKey(watchChongNuoc, on_delete=models.CASCADE)
     QuocGia = models.ForeignKey(watchQuocGia, on_delete=models.CASCADE)
     Brand = models.ForeignKey(watchBrand, on_delete=models.CASCADE)
+    Info = models.TextField()
+    def __str__ (self):
+        return self.Name
+
+
+class TabletBrand(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+        return self.name
+class TabletScreen(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+        return self.name
+class TabletRam(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class TabletStorage(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class TabletColor(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class TabletBattery(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class TabletOS(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class TabletChip(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class TabletConnect(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+         return self.name
+class TabletFrontCamera(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+        return self.name
+    
+class TabletBackCamera(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+        return self.name
+    
+class Tablet(models.Model):
+    id = models.AutoField(primary_key=True)
+    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    color = models.ForeignKey(TabletColor, on_delete=models.CASCADE)
+    screen = models.ForeignKey(TabletScreen, on_delete=models.CASCADE)
+    OS = models.ForeignKey(TabletOS, on_delete=models.CASCADE)
+    brand = models.ForeignKey(TabletBrand, on_delete=models.CASCADE)
+    chips = models.ForeignKey(TabletChip, on_delete=models.CASCADE)
+    ram = models.ForeignKey(TabletRam, on_delete=models.CASCADE)
+    storage = models.ForeignKey(TabletStorage, on_delete=models.CASCADE)
+    Connect = models.ForeignKey(TabletConnect, on_delete=models.CASCADE)
+    BackCamera = models.ForeignKey(TabletBackCamera, on_delete=models.CASCADE)
+    FrontCamera = models.ForeignKey( TabletFrontCamera, on_delete=models.CASCADE)
+    battery = models.ForeignKey(TabletBattery, on_delete=models.CASCADE)
     Info = models.TextField()
     def __str__ (self):
         return self.Name
