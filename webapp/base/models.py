@@ -183,3 +183,57 @@ class Laptop (models.Model):
     Info = models.TextField()
     def __str__ (self):
         return self.Name
+    
+    
+    
+
+class watchDiameter(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+        return self.name
+class watchChatLieu(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+        return self.name
+class watchDay(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+        return self.name
+class watchBoMay(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+        return self.name
+class watchChongNuoc(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+        return self.name
+class watchQuocGia(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+        return self.name
+class watchBrand(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    def __str__ (self):
+        return self.name
+
+class watch (models.Model):
+    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    DoiTuong = models.CharField(choices=['Nam', 'Nữ', 'UniSex'], max_length=10)
+    DuongKinh= models.ForeignKey(watchDiameter, on_delete=models.CASCADE)
+    ChatLieu = models.ForeignKey(watchChatLieu, on_delete=models.CASCADE)
+    Day = models.ForeignKey(watchDay, on_delete=models.CASCADE)
+    BoMay = models.ForeignKey(watchBoMay, on_delete=models.CASCADE)
+    ChongNuoc = models.ForeignKey(watchChongNuoc, on_delete=models.CASCADE)
+    QuocGia = models.ForeignKey(watchQuocGia, on_delete=models.CASCADE)
+    Brand = models.ForeignKey(watchBrand, on_delete=models.CASCADE)
+    Info = models.TextField()
+    def __str__ (self):
+        return self.Name
+    
