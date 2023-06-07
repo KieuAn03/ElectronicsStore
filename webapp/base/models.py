@@ -234,7 +234,7 @@ class watch (models.Model):
     image0 = models.ImageField()
     image1 = models.ImageField()
     image2 = models.ImageField()
-    DoiTuong = models.CharField(choices=['Nam', 'Nữ', 'UniSex'], max_length=10)
+    DoiTuong = models.CharField(choices=[('Nam',('Nam')), ('Nữ',('Nữ')), ('UniSex',('Unisex'))], max_length=10)
     DuongKinh= models.ForeignKey(watchDiameter, on_delete=models.CASCADE)
     ChatLieu = models.ForeignKey(watchChatLieu, on_delete=models.CASCADE)
     Day = models.ForeignKey(watchDay, on_delete=models.CASCADE)
