@@ -82,6 +82,9 @@ class Product (models.Model):
 class Phone (models.Model):
     id = models.AutoField(primary_key=True)
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    image0 = models.ImageField()
+    image1 = models.ImageField()
+    image2 = models.ImageField()
     color = models.ForeignKey(PhoneColor, on_delete=models.CASCADE)
     ram = models.ForeignKey(PhoneRam, on_delete=models.CASCADE)
     storage = models.ForeignKey(PhoneStorage, on_delete=models.CASCADE)
@@ -166,6 +169,9 @@ class LaptopSize(models.Model):
 class Laptop (models.Model):   
     id = models.AutoField(primary_key=True)
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    image0 = models.ImageField()
+    image1 = models.ImageField()
+    image2 = models.ImageField()
     brand = models.ForeignKey(LaptopBrand, on_delete=models.CASCADE)
     color = models.ForeignKey(LaptopColor, on_delete=models.CASCADE)
     CPU = models.ForeignKey(LaptopCPU, on_delete=models.CASCADE)
@@ -225,6 +231,9 @@ class watchBrand(models.Model):
 class watch (models.Model):
     id = models.AutoField(primary_key=True)
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    image0 = models.ImageField()
+    image1 = models.ImageField()
+    image2 = models.ImageField()
     DoiTuong = models.CharField(choices=['Nam', 'Nữ', 'UniSex'], max_length=10)
     DuongKinh= models.ForeignKey(watchDiameter, on_delete=models.CASCADE)
     ChatLieu = models.ForeignKey(watchChatLieu, on_delete=models.CASCADE)
@@ -298,6 +307,9 @@ class TabletBackCamera(models.Model):
 class Tablet(models.Model):
     id = models.AutoField(primary_key=True)
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    image0 = models.ImageField()
+    image1 = models.ImageField()
+    image2 = models.ImageField()
     color = models.ForeignKey(TabletColor, on_delete=models.CASCADE)
     screen = models.ForeignKey(TabletScreen, on_delete=models.CASCADE)
     OS = models.ForeignKey(TabletOS, on_delete=models.CASCADE)
