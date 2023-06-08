@@ -328,3 +328,15 @@ class Tablet(models.Model):
     def __str__ (self):
         return self.Name
     
+class discount (models.Model):
+    id = models.AutoField(primary_key=True)
+    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    discount = models.IntegerField()
+    def __str__ (self):
+        return self.Name
+class voucher(models.Model):
+    id = models.AutoField(primary_key=True)
+    code = models.CharField(max_length=100)
+    discount = models.IntegerField()
+    def __str__ (self):
+        return self.code
