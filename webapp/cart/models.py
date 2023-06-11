@@ -3,7 +3,7 @@ from base.models import *
 from django.contrib.auth.models import User
 
 class Checkout(models.Model):
-    user = models.OneToOneField('User', on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     Name = models.CharField(max_length=100)
     Phone = models.CharField(max_length=100)
     Email = models.CharField(max_length=100)
