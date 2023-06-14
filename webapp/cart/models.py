@@ -1,5 +1,6 @@
 from django.db import models
 from base.models import *
+from home.models import *
 from django.contrib.auth.models import User
 
 class Checkout(models.Model):
