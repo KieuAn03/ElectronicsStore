@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import *
-admin.stie.register(Product)
+admin.site.register(Product)
 admin.site.register(ProductType)
 admin.site.register(PhoneOS)
 admin.site.register(PhoneBrand)
