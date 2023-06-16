@@ -51,9 +51,3 @@ admin.site.register(TabletBattery)
 admin.site.register(TabletFrontCamera)
 admin.site.register(TabletBackCamera)
 admin.site.register(TabletChip)
-admin.site.register(Phone)
-admin.site.register(Laptop)
-admin.site.register(watch)
-admin.site.register(Tablet)
-
-
