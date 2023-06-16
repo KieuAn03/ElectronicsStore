@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electron</title> 
+    <title>Profile</title> 
 	<!-- bootstrap -->
 <script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
 	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
@@ -15,96 +15,94 @@
 <script src="https://kit.fontawesome.com/e6ef55250b.js" crossorigin="anonymous"></script>
 
 
-<div class = "container">
-    
-    <nav class = "navbar">
-        <div class = "logo">Electron © 2021</div>
-        <div class = "search">
-            <form>
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type = "text" placeholder="Search">
-                <button type = "submit">Search</button>
-            </form>
-        </div>
-        <div>
-            <a href="#">Home</a>
-            <a href="#">Cart</a>
-            <a href="#">Sign in</a>
-            <a href="#">Sign up</a>
-            <a href="#">Account</a>
-        </div>
-        
-        <li class = "item">
-            <a href="#">Phone</a>
-            <a href="#">Tablet</a>
-            <a href="#">Laptop</a>
-        </li>
-    </nav>
-    <div class = "personal">
-        
-    </div>
-</div>
-<style>
-    .navbar
-    {
-        width: 100%;
-        height: 150px;
-        background-color: rgb(13, 75, 32);
-        
-    }
-    .logo
-    {
-        font-size: 40px;
-        color: aliceblue;
-        padding-left: 20px ;
-    }
-    .search
-    {
-        margin: 0 135px;
-        align-items: center;
-        justify-content: center;
-        
-    }
-    .navbar div
-    {
-        display: inline-block;
-        
-    }
-    form
-    {
-        background: #fff;
-        width: 350px;
-        height: 40px;
-        display: flex;
-    }
-    form input
-    {
-        flex: 1;
-    }
-    form button
-    {
-        background-color: lightgoldenrodyellow;
-    }
-    form .fa-magnifying-glass
-    {
-        align-items: center;
-        padding: 10px 10px;
-    }
-    nav div a
-    {
-        padding-right: 20px;
-        color: aliceblue;
-    }
-    .item a
-    {
-        width: 100%;
-        height: 70px;
-        align-items: center;
-        margin: 0 70px;
-        font-size: 30px;
-        color:floralwhite;
-        padding-left: 150px;
-    }
-    
-    
-</style>
+
+
+
+
+
+
+
+<section style="background-color: #eee;">
+	<div class="container py-5">
+	  <div class="row">
+		<div class="col">
+		  <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+			<ol class="breadcrumb mb-0">
+			  <li class="breadcrumb-item"><a href="#">Home</a></li>
+			  <li class="breadcrumb-item"><a href="#">User</a></li>
+			  <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+			</ol>
+		  </nav>
+		</div>
+	  </div>
+  
+	  <div class="row">
+		<div class="col-lg-4">
+		  <div class="card mb-4">
+			<div class="card-body text-center">
+			  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+				class="rounded-circle img-fluid" style="width: 150px;">
+			  <h5 class="my-3">John Smith</h5>
+			  <p class="text-muted mb-1">Full Stack Developer</p>
+			  <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+			  
+			</div>
+		  </div>
+		  
+		</div>
+		<div class="col-lg-8">
+		  <div class="card mb-4">
+			<div class="card-body">
+			  <div class="row">
+				<div class="col-sm-3">
+				  <p class="mb-0">Họ và tên</p>
+				</div>
+				<div class="col-sm-9">
+					<input type="search" class="form-control rounded" placeholder="Johnatan Smith" aria-label="Johnatan Smith" aria-describedby="search-addon" />
+					
+				</div>
+			  </div>
+			  <hr>
+			  <div class="row">
+				<div class="col-sm-3">
+				  <p class="mb-0">Email</p>
+				</div>
+				<div class="col-sm-9">
+					<input type="search" class="form-control rounded" placeholder="example@example.com" aria-label="example@example.com" aria-describedby="search-addon" />
+					
+				</div>
+			  </div>
+			  <hr>
+			  <div class="row">
+				<div class="col-sm-3">
+				  <p class="mb-0">Số điện thoại</p>
+				</div>
+				<div class="col-sm-9">
+					<input type="search" class="form-control rounded" placeholder="(097) 234-5678" aria-label="(097) 234-5678" aria-describedby="search-addon" />
+					
+				</div>
+			  </div>
+			  <hr>
+			  
+			  <hr>
+			  <div class="row">
+				<div class="col-sm-3">
+				  <p class="mb-0">Địa chỉ</p>
+				</div>
+				<div class="col-sm-9">
+					<input type="search" class="form-control rounded" placeholder="Bay Area, San Francisco, CA" aria-label="Bay Area, San Francisco, CA" aria-describedby="search-addon" />
+					
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+	  </div>
+	  <button type="button" class="btn btn-outline-primary" style = "margin: auto;">Cập nhật</button>
+	</div>
+	  
+  </section>
+  {% include 'base/footer.html' %}
+
+
