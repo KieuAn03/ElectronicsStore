@@ -17,6 +17,7 @@ admin.site.register(PhoneSim)
 
 admin.site.register(LaptopBrand)
 admin.site.register(LaptopOS)
+admin.site.register(LaptopColor)
 admin.site.register(LaptopScreen)
 admin.site.register(LaptopRam)
 admin.site.register(LaptopStorage)
