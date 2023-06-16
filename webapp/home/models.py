@@ -30,7 +30,7 @@ class Phone (models.Model):
     battery = models.ForeignKey(PhoneBattery, on_delete=models.CASCADE)
     Info = models.TextField()
     def __str__ (self):
-        return self.Name
+        return self.product_id.Name + self.color.name
     
 class Laptop (models.Model):   
     id = models.AutoField(primary_key=True)
@@ -53,7 +53,7 @@ class Laptop (models.Model):
     release_date = models.DateField()
     Info = models.TextField()
     def __str__ (self):
-        return self.Name
+         return self.product_id.Name + self.color.name
 
 class watch (models.Model):
     id = models.AutoField(primary_key=True)
@@ -71,7 +71,7 @@ class watch (models.Model):
     Brand = models.ForeignKey(watchBrand, on_delete=models.CASCADE)
     Info = models.TextField()
     def __str__ (self):
-        return self.Name       
+         return self.product_id.Name 
 
 class Tablet(models.Model):
     id = models.AutoField(primary_key=True)
@@ -92,7 +92,7 @@ class Tablet(models.Model):
     battery = models.ForeignKey(TabletBattery, on_delete=models.CASCADE)
     Info = models.TextField()
     def __str__ (self):
-        return self.Name
+        return self.product_id.Name + self.color.name 
     
     
 
