@@ -3,9 +3,9 @@ from home.models import Product
 # Create your views here.
 def index(request):
     products = Product.objects.all()
-
     context = {'products' : products}
-    return render(request , 'home/index.html' , context)
+
+    return render(request , 'home/index.html',context)
 
 def details(request):
     return render(request , 'detail.html')
