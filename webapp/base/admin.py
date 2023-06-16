@@ -1,6 +1,5 @@
 from django.contrib import admin
 from .models import *
-admin.stie.register(Product)
 admin.site.register(ProductType)
 admin.site.register(PhoneOS)
 admin.site.register(PhoneBrand)
@@ -18,6 +17,7 @@ admin.site.register(PhoneSim)
 
 admin.site.register(LaptopBrand)
 admin.site.register(LaptopOS)
+admin.site.register(LaptopColor)
 admin.site.register(LaptopScreen)
 admin.site.register(LaptopRam)
 admin.site.register(LaptopStorage)
@@ -51,9 +51,3 @@ admin.site.register(TabletBattery)
 admin.site.register(TabletFrontCamera)
 admin.site.register(TabletBackCamera)
 admin.site.register(TabletChip)
-admin.site.register(Phone)
-admin.site.register(Laptop)
-admin.site.register(watch)
-admin.site.register(Tablet)
-
-
