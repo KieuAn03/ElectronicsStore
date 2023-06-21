@@ -36,9 +36,11 @@
   {% for product in products %}
     <div class="products">
         <div class="product">
-            <div class="image">
+          <a class ="listlink" href="{% url 'detail' %}?id={{truyen.id}}">
+            <div class="image" >
                 <img src="{{product.image.url}}" alt="">
             </div>
+          </a>
             <div class="namePrice">
                 <h3>{{product.Name}}</h3>
                 <span>{{product.price}}VNĐ</span>
