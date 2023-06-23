@@ -1,8 +1,110 @@
 {% load static %}
 {% include 'base/navbar.html' %}
-<div class = "container">
-	<div class = "item">
-		
-	</div>
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title> 
+	<!-- bootstrap -->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+	<!-- custom css-->
+	<link rel = "stylesheet" href = "{% static 'css/custom.css' %}">
+	<!-- font-awesome -->
+	<link href="{% static 'font/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+<script src="https://kit.fontawesome.com/e6ef55250b.js" crossorigin="anonymous"></script>
+
+
+<body>
+    
+<!--offcanvas-->
+<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+    Dashboard
+  </a>
+  
+  <div class="offcanvas offcanvas-start sidebar-nav" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+      </div>
+      <div class="dropdown mt-3">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+          Laptop
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Asus</a></li>
+          <li><a class="dropdown-item" href="#">Dell</a></li>
+          <li><a class="dropdown-item" href="#">HP</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<!--offcanvas --end -->
+
+<div class="product-container">
+    <div class="header">
+        <h1>Products</h1>
+    </div>
+    <div class="products">
+        <div class="product">
+            <div class="image">
+                <img src="/image/products/2.png" alt="">
+            </div>
+            <div class="namePrice">
+                <h3>laptop123</h3>
+                <span>1111112VNĐ</span>
+            </div>
+            <div class="stars">
+                <i class="fa-solid fa-star" style="color: rgb(225, 195, 25);"></i>
+                <i class="fa-solid fa-star" style="color: rgb(225, 195, 25);"></i>
+                <i class="fa-solid fa-star" style="color: rgb(225, 195, 25);"></i>
+                <i class="fa-solid fa-star" style="color: rgb(225, 195, 25);"></i>
+                <i class="fa-solid fa-star" style="color: rgb(225, 195, 25);"></i>
+            </div>
+            <div class="heart">
+                <i class="fa-solid fa-heart" style="color: rgb(242, 30, 51);"></i>
+            </div>
+            <div class="buy">
+                <button>Buy Now</button>
+                <button>Add To Cart</button>
+            </div>
+        </div>
+    </div>
 </div>
+
+<div class="product-container">
+    <div class="header">
+        <h1>Products</h1>
+    </div>
+    <div class="products">
+        <div class="product">
+            <div class="image">
+                <img src="/image/products/2.png" alt="">
+            </div>
+            <div class="namePrice">
+                <h3>laptop123</h3>
+                <span>1111112VNĐ</span>
+            </div>
+            <div class="stars">
+                <i class="fa-solid fa-star" style="color: rgb(225, 195, 25);"></i>
+                <i class="fa-solid fa-star" style="color: rgb(225, 195, 25);"></i>
+                <i class="fa-solid fa-star" style="color: rgb(225, 195, 25);"></i>
+                <i class="fa-solid fa-star" style="color: rgb(225, 195, 25);"></i>
+                <i class="fa-solid fa-star" style="color: rgb(225, 195, 25);"></i>
+            </div>
+            <div class="heart">
+                <i class="fa-solid fa-heart" style="color: rgb(242, 30, 51);"></i>
+            </div>
+            <div class="buy">
+                <button>Buy Now</button>
+                <button>Add To Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% include 'base/footer.html' %}
