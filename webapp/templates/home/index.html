@@ -36,7 +36,7 @@
   {% for product in products %}
     <div class="products">
         <div class="product">
-          <a class ="listlink" href="{% url 'details' %}?id={{truyen.id}}">
+          <a class ="listlink" href="{% url 'details'%}?id={{product.id}}">
             <div class="image">
                 <img src="{{product.image.url}}" alt="">
             </div>

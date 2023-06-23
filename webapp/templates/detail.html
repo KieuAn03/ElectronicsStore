@@ -42,6 +42,8 @@
             </div>
         </div>
     </header>
+    {%for product in products%}
+
     <div class="single_product">
         <div class="container-fluid" style=" background-color: #fff; padding: 11px;">
             <div class="row">
@@ -64,7 +66,7 @@
                                 <li class="breadcrumb-item active">Laptop</li>
                             </ol>
                         </nav>
-                        <div class="product_name">Acer Aspire 3 Celeron Dual Core - (2 GB/500 GB HDD/Windows 10 Home) A315-33 Laptop (15.6 inch, Black, 2.1 kg)</div>
+                        <div class="product_name">{{product.Name}}</div>
                         <div class="product-rating"><span class="badge badge-success"><i class="fa fa-star"></i> 4.5 sao</span> <span class="rating-review">35 đánh giá & 45 phản hồi</span></div>
                         <div> <span class="product_price">7.900.000đ</span> <strike class="product_discount"> <span style='color:black'>8.900.000đ<span> </strike> </div>
                         <div> <span class="product_saved">Tiết kiệm:</span> <span style='color:black'>1.000.000đ<span> </div>
@@ -153,7 +155,7 @@
                                 <td class="col-md-4"><span class="p_specification">Thông số 5 :</span> </td>
                                 <td class="col-md-8">
                                     <ul>
-                                        <li>Thông số</li>
+                                        <li>{{laptop.ram}}</li>
                                     </ul>
                                 </td>
                             </tr>
@@ -172,7 +174,7 @@
         </div>
     </div>
 </div>
-
+{%endfor%}
 <div class="container">
     {% include 'base/footer.html' %}
 </div>
