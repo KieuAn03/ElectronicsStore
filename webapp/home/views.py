@@ -21,7 +21,7 @@ def details(request):
     if(type == 'Laptop'):
         laptop = Laptop.objects.filter(product_id = id)
         context = {
-            'products' : products,
+            'product' : products[0],
             'laptop' : laptop[0],
         }
     if(type == 'phone'):

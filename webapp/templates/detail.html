@@ -42,20 +42,18 @@
             </div>
         </div>
     </header>
-    {%for product in products%}
-
     <div class="single_product">
         <div class="container-fluid" style=" background-color: #fff; padding: 11px;">
             <div class="row">
                 <div class="col-lg-2 order-lg-1 order-2">
                     <ul class="image_list">
-                        <li data-image="https://i.imgur.com/21EYMGD.jpg"><img src="https://i.imgur.com/21EYMGD.jpg" alt=""></li>
-                        <li data-image="https://i.imgur.com/DPWSNWd.jpg"><img src="https://i.imgur.com/DPWSNWd.jpg" alt=""></li>
-                        <li data-image="https://i.imgur.com/HkEiXfn.jpg"><img src="https://i.imgur.com/HkEiXfn.jpg" alt=""></li>
+                        <li data-image={{laptop.image0.url}}><img src={{laptop.image0.url}} alt=""></li>
+                        <li data-image={{laptop.image1.url}}><img src={{laptop.image1.url}} alt=""></li>
+                        <li data-image={{laptop.image2.url}}><img src={{laptop.image2.url}} alt=""></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 order-lg-2 order-1">
-                    <div class="image_selected"><img src="https://i.imgur.com/qEwct2O.jpg" alt=""></div>
+                    <div class="image_selected"><img src={{laptop.image0.url}} alt=""></div>
                 </div>
                 <div class="col-lg-6 order-3">
                     <div class="product_description">
@@ -63,12 +61,12 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">Sản phẩm</a></li>
-                                <li class="breadcrumb-item active">Laptop</li>
+                                <li class="breadcrumb-item active">{{product.product_type}}</li>
                             </ol>
                         </nav>
                         <div class="product_name">{{product.Name}}</div>
                         <div class="product-rating"><span class="badge badge-success"><i class="fa fa-star"></i> 4.5 sao</span> <span class="rating-review">35 đánh giá & 45 phản hồi</span></div>
-                        <div> <span class="product_price">7.900.000đ</span> <strike class="product_discount"> <span style='color:black'>8.900.000đ<span> </strike> </div>
+                        <div> <span class="product_price">{{product.price}}đ</span> <strike class="product_discount"> <span style='color:black'>8.900.000đ<span> </strike> </div>
                         <div> <span class="product_saved">Tiết kiệm:</span> <span style='color:black'>1.000.000đ<span> </div>
                         <hr class="singleline">
                         <div>
@@ -86,8 +84,8 @@
                                 <div class="col-md-7"> </div>
                             </div>
                             <div class="row" style="margin-top: 15px;">
-                                <div class="col-xs-6" style="margin-left: 15px;"> <span class="product_options">RAM </span><br> <button class="btn btn-primary btn-sm">4 GB</button> <button class="btn btn-primary btn-sm">8 GB</button> <button class="btn btn-primary btn-sm">16 GB</button> </div>
-                                <div class="col-xs-6" style="margin-left: 15px;"> <span class="product_options">Dung lượng </span><br> <button class="btn btn-primary btn-sm">500 GB</button> <button class="btn btn-primary btn-sm">1 TB</button> </div>
+                                <div class="col-xs-6" style="margin-left: 15px;"> <span class="product_options">RAM </span><br> <button class="btn btn-primary btn-sm">{{laptop.ram}}</button> </div>
+                                <div class="col-xs-6" style="margin-left: 15px;"> <span class="product_options">Dung lượng </span><br> <button class="btn btn-primary btn-sm">{{laptop.storage}}</button></div>
                             </div>
                         </div>
                         <hr class="singleline">
@@ -120,50 +118,82 @@
                     <table class="col-md-12">
                         <tbody>
                             <tr class="row mt-10">
-                                <td class="col-md-4"><span class="p_specification">Thông số 1:</span> </td>
+                                <td class="col-md-4"><span class="p_specification">CPU:</span> </td>
                                 <td class="col-md-8">
                                     <ul>
-                                        <li>Thông số</li>
+                                        <li>{{laptop.CPU}}</li>
                                     </ul>
                                 </td>
                             </tr>
                             <tr class="row mt-10">
-                                <td class="col-md-4"><span class="p_specification">Thông số 2:</span> </td>
+                                <td class="col-md-4"><span class="p_specification">RAM:</span> </td>
                                 <td class="col-md-8">
                                     <ul>
-                                        <li> Thông số </li>
+                                        <li> {{laptop.ram}} </li>
                                     </ul>
                                 </td>
                             </tr>
                             <tr class="row mt-10">
-                                <td class="col-md-4"><span class="p_specification">Thông số 3 :</span> </td>
+                                <td class="col-md-4"><span class="p_specification">Ổ cứng:</span> </td>
                                 <td class="col-md-8">
                                     <ul>
-                                        <li>Thông số</li>
+                                        <li>{{laptop.storage}}</li>
                                     </ul>
                                 </td>
                             </tr>
                             <tr class="row mt-10">
-                                <td class="col-md-4"><span class="p_specification">Thông số 4 :</span> </td>
+                                <td class="col-md-4"><span class="p_specification">Màn hình:</span> </td>
                                 <td class="col-md-8">
                                     <ul>
-                                        <li>Thông số</li>
+                                        <li>{{laptop.screen}}</li>
                                     </ul>
                                 </td>
                             </tr>
                             <tr class="row mt-10">
-                                <td class="col-md-4"><span class="p_specification">Thông số 5 :</span> </td>
+                                <td class="col-md-4"><span class="p_specification">Card màn hình:</span> </td>
                                 <td class="col-md-8">
                                     <ul>
-                                        <li>{{laptop.ram}}</li>
+                                        <li>{{laptop.VGA}}</li>
                                     </ul>
                                 </td>
                             </tr>
                             <tr class="row mt-10">
-                                <td class="col-md-4"><span class="p_specification">Thông số 6 :</span> </td>
+                                <td class="col-md-4"><span class="p_specification">Cổng kết nối:</span> </td>
                                 <td class="col-md-8">
                                     <ul>
-                                        <li>Thông số</li>
+                                        <li>{{laptop.USB}}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="row mt-10">
+                                <td class="col-md-4"><span class="p_specification">Hệ điều hành:</span> </td>
+                                <td class="col-md-8">
+                                    <ul>
+                                        <li>{{laptop.OS}}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="row mt-10">
+                                <td class="col-md-4"><span class="p_specification">Thiết kế:</span> </td>
+                                <td class="col-md-8">
+                                    <ul>
+                                        <li>{{laptop.design}}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="row mt-10">
+                                <td class="col-md-4"><span class="p_specification">Kích thước, khối lượng:</span> </td>
+                                <td class="col-md-8">
+                                    <ul>
+                                        <li>{{laptop.size}}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="row mt-10">
+                                <td class="col-md-4"><span class="p_specification">Thời điểm ra mắt:</span> </td>
+                                <td class="col-md-8">
+                                    <ul>
+                                        <li>{{laptop.release_date}}</li>
                                     </ul>
                                 </td>
                             </tr>
@@ -174,7 +204,6 @@
         </div>
     </div>
 </div>
-{%endfor%}
 <div class="container">
     {% include 'base/footer.html' %}
 </div>
