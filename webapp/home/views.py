@@ -23,23 +23,28 @@ def details(request):
         context = {
             'product' : products[0],
             'laptop' : laptop[0],
+            'type': type,
         }
-    if(type == 'phone'):
+    if(type == 'Phone'):
         phone = Phone.objects.filter(product_id = id)
+      
         context = {
-            'products' : products,
-            'laptop': laptop,
+            'product' : products[0],
+            'phone': phone[0],
+            'type': type,
         }
     if(type == 'watch'):
         watch = watch.objects.filter(product_id = id)
         context = {
             'products' : products,
             'watch' : watch,
+            'type': type,
         }
     if(type == 'tablet'):
         tb = Tablet.objects.filter(product_id = id)
         context = {
             'products' : products,
             'tablet' : tb,
+            'type': type,
         }
     return render(request, 'detail.html',context)

@@ -15,7 +15,7 @@
 	<!-- font-awesome -->
 	<link href="{% static 'font/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
-
+{% if type == 'Laptop' %}
 <div class="container">
     <header class="header" style="display: none;">
         <div class="header_main">
@@ -204,6 +204,189 @@
         </div>
     </div>
 </div>
+{% endif %}
+{% if type == 'Phone' %}
+<div class="container">
+    <header class="header" style="display: none;">
+        <div class="header_main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
+                        <div class="header_search">
+                            <div class="header_search_content">
+                                <div class="header_search_form_container">
+                                    <form action="#" class="header_search_form clearfix">
+                                        <div class="custom_dropdown">
+                                            <div class="custom_dropdown_list"> <span class="custom_dropdown_placeholder clc">All Categories</span> <i class="fas fa-chevron-down"></i>
+                                                <ul class="custom_list clc">
+                                                    <li><a class="clc" href="#">All Categories</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="single_product">
+        <div class="container-fluid" style=" background-color: #fff; padding: 11px;">
+            <div class="row">
+                <div class="col-lg-2 order-lg-1 order-2">
+                    <ul class="image_list">
+                        <li data-image={{phone.image0.url}}><img src={{phone.image0.url}} alt=""></li>
+                        <li data-image={{laptop.image1.url}}><img src={{phone.image1.url}} alt=""></li>
+                        <li data-image={{laptop.image2.url}}><img src={{phone.image2.url}} alt=""></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 order-lg-2 order-1">
+                    <div class="image_selected"><img src={{phone.image0.url}} alt=""></div>
+                </div>
+                <div class="col-lg-6 order-3">
+                    <div class="product_description">
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Sản phẩm</a></li>
+                                <li class="breadcrumb-item active">{{product.product_type}}</li>
+                            </ol>
+                        </nav>
+                        <div class="product_name">{{product.Name}}</div>
+                        <div class="product-rating"><span class="badge badge-success"><i class="fa fa-star"></i> 4.5 sao</span> <span class="rating-review">35 đánh giá & 45 phản hồi</span></div>
+                        <div> <span class="product_price">{{product.price}}đ</span> <strike class="product_discount"> <span style='color:black'>8.900.000đ<span> </strike> </div>
+                        <div> <span class="product_saved">Tiết kiệm:</span> <span style='color:black'>1.000.000đ<span> </div>
+                        <hr class="singleline">
+                        <div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="br-dashed">
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-3"> <img src="https://img.icons8.com/color/48/000000/price-tag.png"> </div>
+                                            <div class="col-md-9 col-xs-9">
+                                                <div class="pr-info"> <span class="break-all">Giảm thêm 100.000đ khi nhập XEUZZZ</span> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7"> </div>
+                            </div>
+                            <div class="row" style="margin-top: 15px;">
+                                <div class="col-xs-6" style="margin-left: 15px;"> <span class="product_options">RAM </span><br> <button class="btn btn-primary btn-sm">{{laptop.ram}}</button> </div>
+                                <div class="col-xs-6" style="margin-left: 15px;"> <span class="product_options">Dung lượng </span><br> <button class="btn btn-primary btn-sm">{{laptop.storage}}</button></div>
+                            </div>
+                        </div>
+                        <hr class="singleline">
+                        <div class="order_info d-flex flex-row">
+                            <form action="#">
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6" style="margin-left: 13px;">
+                                <div class="product_quantity"> <span>Số lượng: </span> <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+                                    <div class="quantity_buttons">
+                                        <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas chevron-up"></i></div>
+                                        <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas chevron-down"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6"> <button type="button" class="btn btn-primary shop-button">Cho vào giỏ hàng</button> <button type="button" class="btn btn-success shop-button">Đặt hàng ngay</button>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="row row-underline">
+                <div class="col-md-6"> <span class=" deal-text">Thông số kỹ thuật</span> </div>
+                <div class="col-md-6"> <a href="#" data-abc="true"> <span class="ml-auto view-all"></span> </a> </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="col-md-12">
+                        <tbody>
+                            <tr class="row mt-10">
+                                <td class="col-md-4"><span class="p_specification">Màn hình:</span> </td>
+                                <td class="col-md-8">
+                                    <ul>
+                                        <li>{{phone.screen}}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="row mt-10">
+                                <td class="col-md-4"><span class="p_specification">Hệ điều hành:</span> </td>
+                                <td class="col-md-8">
+                                    <ul>
+                                        <li> {{phone.OS}} </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="row mt-10">
+                                <td class="col-md-4"><span class="p_specification">Camera sau:</span> </td>
+                                <td class="col-md-8">
+                                    <ul>
+                                        <li>{{phone.BackCamera}}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="row mt-10">
+                                <td class="col-md-4"><span class="p_specification">Camera trước:</span> </td>
+                                <td class="col-md-8">
+                                    <ul>
+                                        <li>{{phone.FrontCamera}}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="row mt-10">
+                                <td class="col-md-4"><span class="p_specification">Chip:</span> </td>
+                                <td class="col-md-8">
+                                    <ul>
+                                        <li>{{phone.chips}}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="row mt-10">
+                                <td class="col-md-4"><span class="p_specification">RAM:</span> </td>
+                                <td class="col-md-8">
+                                    <ul>
+                                        <li>{{phone.ram}}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="row mt-10">
+                                <td class="col-md-4"><span class="p_specification">Dung lượng lưu trữ:</span> </td>
+                                <td class="col-md-8">
+                                    <ul>
+                                        <li>{{phone.storage}}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="row mt-10">
+                                <td class="col-md-4"><span class="p_specification">SIM:</span> </td>
+                                <td class="col-md-8">
+                                    <ul>
+                                        <li>{{phone.Sim}}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="row mt-10">
+                                <td class="col-md-4"><span class="p_specification">Pin, Sạc:</span> </td>
+                                <td class="col-md-8">
+                                    <ul>
+                                        <li>{{phone.battery}}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
 <div class="container">
     {% include 'base/footer.html' %}
 </div>
