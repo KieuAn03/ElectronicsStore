@@ -94,20 +94,35 @@ class Tablet(models.Model):
     def __str__ (self):
         return self.product_id.Name
 
-class PhoneOption(models.Model):
+class PhoneOptionRam(models.Model):
     Phone_id = models.ForeignKey(Phone,on_delete=models.CASCADE)
     ram = models.ForeignKey(PhoneRam, on_delete=models.CASCADE, null= True, blank=True)
+    price_add = models.IntegerField(blank=True, null= True)
+    
+class PhoneOptionStorage(models.Model):
+    Phone_id = models.ForeignKey(Phone,on_delete=models.CASCADE)
     storage = models.ForeignKey(PhoneStorage, on_delete=models.CASCADE, null= True, blank=True)
-    color = models.ForeignKey(PhoneColor, on_delete=models.CASCADE, null= True,blank=True)
-    price = models.IntegerField(blank=True, null= True)
+    price_add = models.IntegerField(blank=True, null= True)
 
-class TabletOption(models.Model):
+class PhoneOptionColor(models.Model):
+    Phone_id = models.ForeignKey(Phone,on_delete=models.CASCADE)
+    color = models.CharField(max_length=50, blank=True)
+   
+   
+class TabletOptionRam(models.Model):
     Tablet_id = models.ForeignKey(Tablet,on_delete=models.CASCADE)
     ram = models.ForeignKey(TabletRam, on_delete=models.CASCADE, null= True, blank=True)
-    storage = models.ForeignKey(TabletStorage, on_delete=models.CASCADE, null= True, blank=True)
-    color = models.ForeignKey(TabletColor, on_delete=models.CASCADE, null= True,blank=True)
-    price = models.IntegerField(blank=True, null= True)
+    price_add = models.IntegerField(blank=True, null= True)
     
+class TabletOptionStorage(models.Model):
+    Tablet_id = models.ForeignKey(Tablet,on_delete=models.CASCADE)
+    storage = models.ForeignKey(TabletStorage, on_delete=models.CASCADE, null= True, blank=True)
+    price_add = models.IntegerField(blank=True, null= True)
+
+class TabletOptionColor(models.Model):
+    Tablet_id = models.ForeignKey(Tablet,on_delete=models.CASCADE)
+    color = models.CharField(max_length=50, blank=True) 
+
 
 class discount (models.Model):
     id = models.AutoField(primary_key=True)
