@@ -274,8 +274,21 @@
                                 <div class="col-md-7"> </div>
                             </div>
                             <div class="row" style="margin-top: 15px;">
-                                <div class="col-xs-6" style="margin-left: 15px;"> <span class="product_options">RAM </span><br> <button class="btn btn-primary btn-sm">{{laptop.ram}}</button> </div>
-                                <div class="col-xs-6" style="margin-left: 15px;"> <span class="product_options">Dung lượng </span><br> <button class="btn btn-primary btn-sm">{{laptop.storage}}</button></div>
+                                <div class="col-xs-6" style="margin-left: 15px;"> <span class="product_options">RAM </span><br>
+                                    {%for ram in Rams%}
+                                     <button class="btn btn-primary btn-sm">{{ram.ram}}</button> 
+                                    {%endfor%}
+                                    </div>
+                                <div class="col-xs-6" style="margin-left: 15px;"> <span class="product_options">Dung lượng </span><br> 
+                                    {%for storage in Stores%}
+                                     <button class="btn btn-primary btn-sm">{{storage.storage}}</button> 
+                                    {%endfor%}
+                                    </div>
+                                <div class="col-xs-6" style="margin-left: 15px;"> <span class="product_options">Màu sắc </span><br> 
+                                    {%for color in Colors%}
+                                     <button class="btn btn-primary btn-sm">{{color.color}}</button> 
+                                    {%endfor%}
+                                    </div>
                             </div>
                         </div>
                         <hr class="singleline">

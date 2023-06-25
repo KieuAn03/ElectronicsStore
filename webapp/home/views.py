@@ -27,11 +27,17 @@ def details(request):
         }
     if(type == 'Phone'):
         phone = Phone.objects.filter(product_id = id)
-      
+        phone_id = phone[0].id
+        Ramoptions = PhoneOptionRam.objects.filter(Phone_id = phone_id)
+        Storages = PhoneOptionStorage.objects.filter(Phone_id = phone_id)
+        Colors = PhoneOptionColor.objects.filter(Phone_id = phone_id)
         context = {
             'product' : products[0],
             'phone': phone[0],
             'type': type,
+            'Rams': Ramoptions,
+            'Stores':Storages,
+            'Colors':Colors,
         }
     if(type == 'watch'):
         watch = watch.objects.filter(product_id = id)
