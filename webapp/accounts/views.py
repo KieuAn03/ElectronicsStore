@@ -48,3 +48,6 @@ def register_page(request):
             user.save()
             return redirect('index')
     return render(request ,'accounts/register.html')
+
+def profile_page(request):
+    return render(request, 'accounts/profile.html')
