@@ -243,3 +243,7 @@ ModelManifest.xml
 .fake/
 *.pyc
 *.sqlite3
+*.pyc
+*.pyc
+*.pyc
+*.pyc
