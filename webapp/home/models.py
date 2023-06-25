@@ -30,7 +30,7 @@ class Phone (models.Model):
     battery = models.ForeignKey(PhoneBattery, on_delete=models.CASCADE)
     Info = models.TextField()
     def __str__ (self):
-        return self.product_id.Name + self.color.name
+        return self.product_id.Name
     
 class Laptop (models.Model):   
     id = models.AutoField(primary_key=True)
@@ -53,7 +53,7 @@ class Laptop (models.Model):
     release_date = models.DateField()
     Info = models.TextField()
     def __str__ (self):
-         return self.product_id.Name + self.color.name
+         return self.product_id.Name
 
 class watch (models.Model):
     id = models.AutoField(primary_key=True)
@@ -92,9 +92,37 @@ class Tablet(models.Model):
     battery = models.ForeignKey(TabletBattery, on_delete=models.CASCADE)
     Info = models.TextField()
     def __str__ (self):
-        return self.product_id.Name + self.color.name 
+        return self.product_id.Name
+
+class PhoneOptionRam(models.Model):
+    Phone_id = models.ForeignKey(Phone,on_delete=models.CASCADE)
+    ram = models.ForeignKey(PhoneRam, on_delete=models.CASCADE, null= True, blank=True)
+    price_add = models.IntegerField(blank=True, null= True)
     
+class PhoneOptionStorage(models.Model):
+    Phone_id = models.ForeignKey(Phone,on_delete=models.CASCADE)
+    storage = models.ForeignKey(PhoneStorage, on_delete=models.CASCADE, null= True, blank=True)
+    price_add = models.IntegerField(blank=True, null= True)
+
+class PhoneOptionColor(models.Model):
+    Phone_id = models.ForeignKey(Phone,on_delete=models.CASCADE)
+    color = models.CharField(max_length=50, blank=True)
+   
+   
+class TabletOptionRam(models.Model):
+    Tablet_id = models.ForeignKey(Tablet,on_delete=models.CASCADE)
+    ram = models.ForeignKey(TabletRam, on_delete=models.CASCADE, null= True, blank=True)
+    price_add = models.IntegerField(blank=True, null= True)
     
+class TabletOptionStorage(models.Model):
+    Tablet_id = models.ForeignKey(Tablet,on_delete=models.CASCADE)
+    storage = models.ForeignKey(TabletStorage, on_delete=models.CASCADE, null= True, blank=True)
+    price_add = models.IntegerField(blank=True, null= True)
+
+class TabletOptionColor(models.Model):
+    Tablet_id = models.ForeignKey(Tablet,on_delete=models.CASCADE)
+    color = models.CharField(max_length=50, blank=True) 
+
 
 class discount (models.Model):
     id = models.AutoField(primary_key=True)
@@ -102,6 +130,7 @@ class discount (models.Model):
     discount = models.IntegerField()
     def __str__ (self):
         return self.Name
+    
 class voucher(models.Model):
     id = models.AutoField(primary_key=True)
     code = models.CharField(max_length=100)
