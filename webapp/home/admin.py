@@ -9,5 +9,7 @@ admin.site.register(watch)
 admin.site.register(Tablet)
 admin.site.register(voucher)
 admin.site.register(discount)
+admin.site.register(PhoneOption)
+admin.site.register(TabletOption)
 
 # Register your models here.
