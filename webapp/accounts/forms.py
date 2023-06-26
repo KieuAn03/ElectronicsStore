@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import Profile
+from django.forms.widgets import FileInput
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
@@ -12,4 +13,8 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['profile_image','phone','address']
+        fields = ['name','phone','address','profile_image']
+        exclude = ['user']
+        widgets = {
+            'profile_image': FileInput(),
+        }
