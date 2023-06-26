@@ -41,58 +41,59 @@
 			  
 			</div>
 		  </div>
-		  
 		</div>
+
 		<div class="col-lg-8">
-		  <div class="card mb-4">
+			<div class="card mb-4">
 			<div class="card-body">
-			  <div class="row">
+				<div class="row">
 				<div class="col-sm-3">
-				  <p class="mb-0">Họ và tên</p>
+					<p class="mb-0">Họ và tên</p>
 				</div>
 				<div class="col-sm-9">
-					<input type="search" class="form-control rounded" placeholder="Johnatan Smith" aria-label="Johnatan Smith" aria-describedby="search-addon" />
+					<input type="search" class="form-control rounded" placeholder="Johnatan Smith" name="name" aria-label="Johnatan Smith" aria-describedby="search-addon" />
 					
 				</div>
-			  </div>
-			  <hr>
-			  <div class="row">
+				</div>
+				<hr>
+				<div class="row">
 				<div class="col-sm-3">
-				  <p class="mb-0">Email</p>
+					<p class="mb-0">Email</p>
 				</div>
 				<div class="col-sm-9">
-					<input type="search" class="form-control rounded" placeholder="example@example.com" aria-label="example@example.com" aria-describedby="search-addon" />
+					<input type="search" class="form-control rounded" placeholder="example@example.com" name="email" aria-label="example@example.com" aria-describedby="search-addon" />
 					
 				</div>
-			  </div>
-			  <hr>
-			  <div class="row">
+				</div>
+				<hr>
+				<div class="row">
 				<div class="col-sm-3">
-				  <p class="mb-0">Số điện thoại</p>
+					<p class="mb-0">Số điện thoại</p>
 				</div>
 				<div class="col-sm-9">
-					<input type="search" class="form-control rounded" placeholder="(097) 234-5678" aria-label="(097) 234-5678" aria-describedby="search-addon" />
+					<input type="search" class="form-control rounded" placeholder="(097) 234-5678" name="phone" aria-label="(097) 234-5678" aria-describedby="search-addon" />
 					
 				</div>
-			  </div>
-			  <hr>
-			  
-			  <hr>
-			  <div class="row">
+				</div>
+				<hr>
+				
+				<hr>
+				<div class="row">
 				<div class="col-sm-3">
-				  <p class="mb-0">Địa chỉ</p>
+					<p class="mb-0">Địa chỉ</p>
 				</div>
 				<div class="col-sm-9">
-					<input type="search" class="form-control rounded" placeholder="Bay Area, San Francisco, CA" aria-label="Bay Area, San Francisco, CA" aria-describedby="search-addon" />
+					<input type="search" class="form-control rounded" placeholder="Bay Area, San Francisco, CA" name="address" aria-label="Bay Area, San Francisco, CA" aria-describedby="search-addon" />
 					
 				</div>
-			  </div>
+				</div>
 			</div>
-		  </div>
+			</div>
+
 		</div>
 
 	  </div>
-	  <button type="button" class="btn btn-outline-primary" style = "margin: auto;">Cập nhật</button>
+	  <a href="{% url 'update_profile' %}"><button type="button" class="btn btn-outline-primary" style = "margin: auto;">Cập nhật</button></a>
 	</div>
 	  
   </section>

@@ -2,7 +2,8 @@ from django.shortcuts import redirect, render
 from django.contrib import messages      
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login , logout
-from django.http import HttpResponseRedirect,HttpResponse
+from django.http import HttpResponseRedirect
+from .forms import UserUpdateForm, ProfileUpdateForm
 
 # Create your views here.
 def login_page(request):
@@ -50,4 +51,20 @@ def register_page(request):
     return render(request ,'accounts/register.html')
 
 def profile_page(request):
+    if request.method=='POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+
     return render(request, 'accounts/profile.html')
+
+def update_profile_page(request):
+    u_form = UserUpdateForm()
+    p_form = ProfileUpdateForm()
+
+    context = {
+        'u_form': u_form,
+        'p_form': p_form
+    }
+    return render(request, 'accounts/update_profile.html', context)
