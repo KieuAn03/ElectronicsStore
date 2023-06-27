@@ -94,14 +94,10 @@ class Tablet(models.Model):
     def __str__ (self):
         return self.product_id.Name
 
-class PhoneOptionRam(models.Model):
+class PhoneOptionHard(models.Model):
     Phone_id = models.ForeignKey(Phone,on_delete=models.CASCADE)
-    ram = models.ForeignKey(PhoneRam, on_delete=models.CASCADE, null= True, blank=True)
-    price_add = models.IntegerField(blank=True, null= True)
-    
-class PhoneOptionStorage(models.Model):
-    Phone_id = models.ForeignKey(Phone,on_delete=models.CASCADE)
-    storage = models.ForeignKey(PhoneStorage, on_delete=models.CASCADE, null= True, blank=True)
+    ram= models.ForeignKey(PhoneRam, on_delete=models.CASCADE, null= True)
+    Storage = models.ForeignKey(PhoneStorage, on_delete=models.CASCADE, null= True)
     price_add = models.IntegerField(blank=True, null= True)
 
 class PhoneOptionColor(models.Model):

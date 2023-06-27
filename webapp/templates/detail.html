@@ -256,8 +256,12 @@
                         </nav>
                         <div class="product_name">{{product.Name}}</div>
                         <div class="product-rating"><span class="badge badge-success"><i class="fa fa-star"></i> 4.5 sao</span> <span class="rating-review">35 đánh giá & 45 phản hồi</span></div>
+                        {%if ssl%}
+                        <div> <span class="product_price">{{product.price|add option.price_add}}đ</span> <strike class="product_discount"> <span style='color:black'>8.900.000đ<span> </strike> </div>
+                        {%else%}
                         <div> <span class="product_price">{{product.price}}đ</span> <strike class="product_discount"> <span style='color:black'>8.900.000đ<span> </strike> </div>
-                        <div> <span class="product_saved">Tiết kiệm:</span> <span style='color:black'>1.000.000đ<span> </div>
+                        {%endif%}
+                            <div> <span class="product_saved">Tiết kiệm:</span> <span style='color:black'>1.000.000đ<span> </div>
                         <hr class="singleline">
                         <div>
                             <div class="row">
@@ -274,19 +278,29 @@
                                 <div class="col-md-7"> </div>
                             </div>
                             <div class="row" style="margin-top: 15px;">
-                                <div class="col-xs-6" style="margin-left: 15px;"> <span class="product_options">RAM </span><br>
-                                    {%for ram in Rams%}
-                                     <button class="btn btn-primary btn-sm">{{ram.ram}}</button> 
-                                    {%endfor%}
-                                    </div>
-                                <div class="col-xs-6" style="margin-left: 15px;"> <span class="product_options">Dung lượng </span><br> 
-                                    {%for storage in Stores%}
-                                     <button class="btn btn-primary btn-sm">{{storage.storage}}</button> 
+                                <div class="col-xs-6" style="margin-left: 15px;"> <span class="product_options">Dung lượng: </span><br>
+                                    {%for rd in hards%}
+                                    {% if ssl == rd.Storage %}
+                                        <a href="#" class="btn btn-sm btn-primary btn-lg disabled" role="button" aria-disabled="true">{{rd.ram}} - {{rd.Storage}}</a>
+                                    {%else%}
+                                        <a class ="listlink" href={% url 'details' id=product.id ram=rd.id storage=rd.Storage %}>
+                                            <button class="btn btn-primary btn-sm"> {{rd.ram}} - {{rd.Storage}}</button> 
+                                        </a>
+                                    {%endif%}
                                     {%endfor%}
                                     </div>
                                 <div class="col-xs-6" style="margin-left: 15px;"> <span class="product_options">Màu sắc </span><br> 
                                     {%for color in Colors%}
+                                    {%if ssl and rsl %}
+                                    <a class ="listlink" href={% url 'details' id=product.id ram=rsl storage=ssl color=color.color %}>
                                      <button class="btn btn-primary btn-sm">{{color.color}}</button> 
+                                    </a>
+                                    {%else%}
+
+                                    <a class ="listlink" href={% url 'detail_color' id=product.id color=color.color %}>
+                                        <button class="btn btn-primary btn-sm">{{color.color}}</button> 
+                                       </a>
+                                    {%endif%}
                                     {%endfor%}
                                     </div>
                             </div>

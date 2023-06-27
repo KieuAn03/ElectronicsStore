@@ -13,32 +13,47 @@ def index(request):
 
 def checkouts(request):
     return render(request, 'checkout.html')
-def details(request):
-    id = request.GET.get('id') 
-    products = Product.objects.filter(id=id) 
-    type = products[0].product_type.name
-    print("this is the type: " +type)
+def details(request, id, **kwargs):
+    products = Product.objects.get(id=id) 
+    type = products.product_type.name
+    print("HAHAHAAHA")
+    
+       
     if(type == 'Laptop'):
-        laptop = Laptop.objects.filter(product_id = id)
+        laptop = Laptop.objects.get(product_id = id)
         context = {
-            'product' : products[0],
-            'laptop' : laptop[0],
+            'product' : products,
+            'laptop' : laptop,
             'type': type,
         }
     if(type == 'Phone'):
-        phone = Phone.objects.filter(product_id = id)
-        phone_id = phone[0].id
-        Ramoptions = PhoneOptionRam.objects.filter(Phone_id = phone_id)
-        Storages = PhoneOptionStorage.objects.filter(Phone_id = phone_id)
+        phone = Phone.objects.get(product_id = id)
+        phone_id = phone.id
+        Hardoptions = PhoneOptionHard.objects.filter(Phone_id = phone_id)
         Colors = PhoneOptionColor.objects.filter(Phone_id = phone_id)
         context = {
-            'product' : products[0],
-            'phone': phone[0],
+            'product' : products,
+            'phone': phone,
             'type': type,
-            'Rams': Ramoptions,
-            'Stores':Storages,
+            'hards': Hardoptions,
             'Colors':Colors,
         }
+        if kwargs.get('ram'):
+            select_ram = kwargs['ram']
+            select_storage = kwargs['storage']
+            option = PhoneOptionHard.objects.filter(Phone_id = phone_id, ram = select_ram, Storage = select_storage)
+            context = {
+                'product' : products,
+                'phone': phone,
+                'type': type,
+                'hards': Hardoptions,
+                'Colors':Colors,
+                'rsl': select_ram,
+                'ssl': select_storage,
+                'option': option[0],
+            }  
+            
+               
     if(type == 'watch'):
         watch = watch.objects.filter(product_id = id)
         context = {
