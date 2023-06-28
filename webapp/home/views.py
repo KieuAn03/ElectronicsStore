@@ -39,20 +39,51 @@ def details(request, id, **kwargs):
             'Colors':Colors,
         }
         if kwargs.get('ram'):
-            select_ram = kwargs['ram']
-            select_storage = kwargs['storage']
-            option = PhoneOptionHard.objects.filter(Phone_id = phone_id, ram = select_ram, Storage = select_storage)
-            context = {
-                'product' : products,
-                'phone': phone,
-                'type': type,
-                'hards': Hardoptions,
-                'Colors':Colors,
-                'rsl': select_ram,
-                'ssl': select_storage,
-                'option': option[0],
-            }  
+            select_ram = str(kwargs.get('ram'))
+            select_storage = str(kwargs.get('storage') )
             
+            choose = Hardoptions[0]
+            for option in Hardoptions:
+                #print(option.ram , ' ' , option.Storage)
+                #print(select_ram , ' ' , select_storage)
+
+                if str(option.ram) == str(select_ram) and str(option.Storage) == str(select_storage):
+                    choose = option
+                    break
+            if kwargs.get('color'):
+                colorselect = str(kwargs.get('color'))
+                context = {
+                        'product' : products,
+                        'phone': phone,
+                        'type': type,
+                        'hards': Hardoptions,
+                        'Colors':Colors,
+                        'rsl': select_ram,
+                        'ssl': select_storage,
+                        'option': choose,
+                        'colorr':colorselect,
+                    }
+            else:
+                context = {
+                    'product' : products,
+                    'phone': phone,
+                    'type': type,
+                    'hards': Hardoptions,
+                    'Colors':Colors,
+                    'rsl': select_ram,
+                    'ssl': select_storage,
+                    'option': choose,
+                }  
+        elif kwargs.get('color'):
+            colorselect = str(kwargs.get('color'))
+            context = {
+                        'product' : products,
+                        'phone': phone,
+                        'type': type,
+                        'hards': Hardoptions,
+                        'Colors':Colors,
+                        'colorr':colorselect,
+                    }
                
     if(type == 'watch'):
         watch = watch.objects.filter(product_id = id)
