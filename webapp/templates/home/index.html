@@ -82,8 +82,10 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
+                            <a class ="listlink" href="{% url 'details' id=product.id%}  ">
                             <img class="card-img-top" src="{{product.image.url}}" alt="..." />
                             <!-- Product details-->
+                            </a>
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
