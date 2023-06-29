@@ -85,18 +85,69 @@ def details(request, id, **kwargs):
                         'colorr':colorselect,
                     }
                
-    if(type == 'watch'):
-        watch = watch.objects.filter(product_id = id)
+    if(type == 'Watch'):
+        laptop = watch.objects.get(product_id = id)
         context = {
-            'products' : products,
-            'watch' : watch,
+            'product' : products,
+            'laptop' : laptop,
             'type': type,
         }
-    if(type == 'tablet'):
-        tb = Tablet.objects.filter(product_id = id)
+    if(type == 'Tablet'):
+        phone = Tablet.objects.get(product_id = id)
+        phone_id = phone.id
+        Hardoptions = TabletOptionHard.objects.filter(Tablet_id = phone_id)
+        Colors = TabletOptionColor.objects.filter(Tablet_id = phone_id)
         context = {
-            'products' : products,
-            'tablet' : tb,
+            'product' : products,
+            'phone': phone,
             'type': type,
+            'hards': Hardoptions,
+            'Colors':Colors,
         }
+        if kwargs.get('ram'):
+            select_ram = str(kwargs.get('ram'))
+            select_storage = str(kwargs.get('storage') )
+            
+            choose = Hardoptions[0]
+            for option in Hardoptions:
+                #print(option.ram , ' ' , option.Storage)
+                #print(select_ram , ' ' , select_storage)
+
+                if str(option.ram) == str(select_ram) and str(option.Storage) == str(select_storage):
+                    choose = option
+                    break
+            if kwargs.get('color'):
+                colorselect = str(kwargs.get('color'))
+                context = {
+                        'product' : products,
+                        'phone': phone,
+                        'type': type,
+                        'hards': Hardoptions,
+                        'Colors':Colors,
+                        'rsl': select_ram,
+                        'ssl': select_storage,
+                        'option': choose,
+                        'colorr':colorselect,
+                    }
+            else:
+                context = {
+                    'product' : products,
+                    'phone': phone,
+                    'type': type,
+                    'hards': Hardoptions,
+                    'Colors':Colors,
+                    'rsl': select_ram,
+                    'ssl': select_storage,
+                    'option': choose,
+                }  
+        elif kwargs.get('color'):
+            colorselect = str(kwargs.get('color'))
+            context = {
+                        'product' : products,
+                        'phone': phone,
+                        'type': type,
+                        'hards': Hardoptions,
+                        'Colors':Colors,
+                        'colorr':colorselect,
+                    }
     return render(request, 'detail.html',context)

@@ -105,16 +105,12 @@ class PhoneOptionColor(models.Model):
     color = models.CharField(max_length=50, blank=True)
    
    
-class TabletOptionRam(models.Model):
+class TabletOptionHard(models.Model):
     Tablet_id = models.ForeignKey(Tablet,on_delete=models.CASCADE)
     ram = models.ForeignKey(TabletRam, on_delete=models.CASCADE, null= True, blank=True)
+    Storage = models.ForeignKey(TabletStorage, on_delete=models.CASCADE)
     price_add = models.IntegerField(blank=True, null= True)
     
-class TabletOptionStorage(models.Model):
-    Tablet_id = models.ForeignKey(Tablet,on_delete=models.CASCADE)
-    storage = models.ForeignKey(TabletStorage, on_delete=models.CASCADE, null= True, blank=True)
-    price_add = models.IntegerField(blank=True, null= True)
-
 class TabletOptionColor(models.Model):
     Tablet_id = models.ForeignKey(Tablet,on_delete=models.CASCADE)
     color = models.CharField(max_length=50, blank=True) 

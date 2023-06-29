@@ -11,8 +11,7 @@ admin.site.register(voucher)
 admin.site.register(discount)
 admin.site.register(PhoneOptionHard)
 admin.site.register(PhoneOptionColor)
-admin.site.register(TabletOptionRam)
-admin.site.register(TabletOptionStorage)
+admin.site.register(TabletOptionHard)
 admin.site.register(TabletOptionColor)
 
 # Register your models here.
