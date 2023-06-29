@@ -242,8 +242,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 *.pyc
-*.sqlite3
-*.pyc
-*.pyc
-*.pyc
-*.pyc
+
