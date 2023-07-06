@@ -11,15 +11,24 @@ class Checkout(models.Model):
     time_created = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.user.username + ':' + str(self.time_created)
-
+class Cart(models.Model):
+    user = models.ForeignKey(User, blank=True, on_delete=models.CASCADE)
+    date_order =models.DateTimeField(auto_now_add=True)
+    complete = models.BooleanField(default=False)
+    transaction = models.CharField(max_length=100, null=True)
+    
+    def __str__(self) :
+        return str(self.id)
+    
 class Cart_Item(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
     cart = models.ForeignKey(Checkout, on_delete=models.CASCADE, null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
+    quantity = models.IntegerField(default=0)
     time_created = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return User.username + ':' + Product.name + '-sl:' + str(self.quantity)
+        return Product.name + '-sl:' + str(self.id)
+
 
 
 
