@@ -20,11 +20,12 @@ class Cart(models.Model):
     def __str__(self) :
         return str(self.id)
     
-class Cart_Item(models.Model):
-    
-    cart = models.ForeignKey(Checkout, on_delete=models.CASCADE, null=True)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+class cart_item_phone(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Phone, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
+    color = models.ForeignKey(PhoneOptionColor, on_delete=models.CASCADE, null=True)
+    hard = models.ForeignKey(PhoneOptionHard, on_delete=models.CASCADE, null=True)
     time_created = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return Product.name + '-sl:' + str(self.id)
