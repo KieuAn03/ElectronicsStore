@@ -94,3 +94,10 @@ def update_profile_page(request):
 
 def logout_page(request):
     return render(request, 'accounts/logout.html')
+
+def remove_coupon(request, cart_id):
+    cart = Cart.objects.get(uid = cart_id)
+    cart.coupon = None
+    cart.save()
+    messages.warning(request, 'Coupon removed.')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
