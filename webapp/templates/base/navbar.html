@@ -46,7 +46,7 @@
             </li>
             <!--End Account-->
             {% if user.is_authenticated %}
-            <a href="">Xin Chào, Username</a>
+            <a href="">Xin Chào, {{user.username}}</a>
             {% else %}
             <a href="{% url 'login' %}">Đăng nhập</a>
             {% endif %}
