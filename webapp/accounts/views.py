@@ -1,10 +1,10 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib import messages      
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login , logout
 from django.contrib.auth.decorators import login_required
 from .forms import UserUpdateForm, ProfileUpdateForm, UserRegisterForm, ProfileForm
-from .decorators import unauthenticated_user
 
 # Create your views here.
 @login_required(login_url='login')
@@ -21,24 +21,21 @@ def profile(request):
     context = {'form':form}
     return render(request, 'profileapp/profile.html', context)
 
-@unauthenticated_user
+
 def login_page(request):
 
     if request.method == 'POST':
-        username = request.POST.get('username')
+        username = request.POST.get('userName')
         password = request.POST.get('password')
 
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            messages.info(request, f'{username}, You are logged in.')
-            return redirect("/")
-        else:
-            messages.info(request, 'Wrong passwrod or username')
-            return redirect('login')
+        user_obj = authenticate(username = username , password= password)
+
+        if user_obj is not None:
+            login(request , user_obj)
+            return redirect('/')
+        
     return render(request, 'accounts/login.html')
 
-@unauthenticated_user
 def register_page(request):
     form = UserRegisterForm()
 
