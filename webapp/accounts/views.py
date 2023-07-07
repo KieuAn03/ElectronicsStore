@@ -93,8 +93,8 @@ def update_profile_page(request):
     return render(request, 'accounts/update_profile.html', context)
 
 def logout_page(request):
+    logout(request)
     return render(request, 'accounts/logout.html')
-
 def remove_coupon(request, cart_id):
     cart = Cart.objects.get(uid = cart_id)
     cart.coupon = None
