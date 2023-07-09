@@ -25,10 +25,16 @@ class cart_item_phone(models.Model):
     product = models.ForeignKey(Phone, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
     color = models.ForeignKey(PhoneOptionColor, on_delete=models.CASCADE, null=True)
-    hard = models.ForeignKey(PhoneOptionHard, on_delete=models.CASCADE, null=True)
+    price_add = models.ForeignKey(PhoneOptionHard, on_delete=models.CASCADE, null=True)
     time_created = models.DateTimeField(auto_now_add=True)
-    def __str__(self):
-        return Product.name + '-sl:' + str(self.id)
+    def get_product_price(self):
+        price = [self.product.product_id.price]
+        if self.price_add:
+            price.append(self.price_add.price_add)
+        sumprice = sum(price)
+        huh = str(int(sumprice) * int(self.quantity))
+        return huh
+
 
 
 

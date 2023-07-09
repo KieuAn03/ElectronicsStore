@@ -149,5 +149,6 @@ def details(request, id, **kwargs):
                         'hards': Hardoptions,
                         'Colors':Colors,
                         'colorr':colorselect,
+                        
                     }
     return render(request, 'detail.html',context)

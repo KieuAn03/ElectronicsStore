@@ -329,8 +329,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-6"> <button type="button" class="btn btn-primary shop-button">Cho vào giỏ hàng</button> <button type="button" class="btn btn-success shop-button">Đặt hàng ngay</button>
-                            
+                            {%if rsl %}
+                            <div class="col-xs-6"> <button type="button" href="{% url 'add_to_cart' product.id rsl ssl%}" class="btn btn-primary shop-button">Cho vào giỏ hàng</button> <button type="button" class="btn btn-success shop-button">Đặt hàng ngay</button>
+                            {%endif%}
                             </div>
                         </div>
                     </div>

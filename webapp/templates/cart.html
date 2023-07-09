@@ -45,10 +45,14 @@
                           <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-finish-select-202207-6-1inch-pink?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1657641867367" class="img-fluid rounded-3"
                             style="width: 120px;" alt="Book">
                           <div class="flex-column ms-4">
-                            <p class="mb-2">{{item.product.product_id.Name}}</p>
-                            <p class="mb-0">{{item.color}}</p>
-                            <p class="mb-0">{{item.hard.ram}}</p>
-                            <p class="mb-0">{{item.hard.Storage}}</p>
+                            <p class="mb-2"> {{item.product.product_id.Name}}</p>
+                            <p class="mb-0">{{item.color.color}}</p>
+                            <p class="mb-0">
+                              {{item.price_add.ram }}-{{item.price_add.Storage}}
+                          </p>
+
+
+                         
                           </div>
                         </div>
                       </th>
@@ -62,7 +66,7 @@
                             <i class="fas fa-minus"></i>
                           </button>
       
-                          <input id="form1" min="0" name="quantity" value="2" type="number"
+                          <input id="form1" min="0" name="quantity" value="{{item.quantity}}" type="number"
                             class="form-control form-control-sm" style="width: 50px;" />
       
                           <button class="btn btn-link px-2"
@@ -72,7 +76,11 @@
                         </div>
                       </td>
                       <td class="align-middle">
-                        <p class="mb-0" style="font-weight: 500;">{{item.product.product_id.price  |add:item.hard.price_add }}</p>
+                        <p class="mb-0" style="font-weight: 500;">{{item.get_product_price}}</p>
+                      </td>
+                      <td class="mb-0" style="font-weight: 500;">
+                        <a href="{% url 'remove_cart' item.id %} " class="btn btn-light btn-round"> Xóa</a>
+
                       </td>
                     </tr>
 
@@ -145,4 +153,19 @@
         }
    
 </style>
+<script>
+  
+  const hardinfo = [];
+  const priceinfo = [];
+
+
+
+
+
+  function updateprice(index , option){
+    const hardall = {{cart_items_phone.index.product.phoneoptionhard_set.all}};
+    const price = hardall[option.selectedIndex-1].price_add;
+    
+  }
+</script>
 
