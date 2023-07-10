@@ -321,21 +321,22 @@
                             <form action="#">
                         </div>
                         <div class="row">
-                            <div class="col-xs-6" style="margin-left: 13px;">
-                                <div class="product_quantity"> <span>Số lượng: </span> <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-                                    <div class="quantity_buttons">
-                                        <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas chevron-up"></i></div>
-                                        <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas chevron-down"></i></div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             {%if rsl %}
-                            <div class="col-xs-6"> <button type="button" href="{% url 'add_to_cart' product.id rsl ssl%}" class="btn btn-primary shop-button">Cho vào giỏ hàng</button> <button type="button" class="btn btn-success shop-button">Đặt hàng ngay</button>
+                            {%if colorr%}
+                            <a class="col-xs-6" href="{% url 'add_to_cart' product.id rsl ssl colorr%}"> <button type="button"  class="btn btn-primary shop-button">Cho vào giỏ hàng</button> <button type="button" class="btn btn-success shop-button">Đặt hàng ngay</button>
+                            {%else%}
+                            <a class="col-xs-6" href="{% url 'add_to_cart' product.id rsl ssl%}" > <button type="button" class="btn btn-primary shop-button">Cho vào giỏ hàng</button> <button type="button" class="btn btn-success shop-button">Đặt hàng ngay</button>
                             {%endif%}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            {%elif colorr%}
+                            <a class="col-xs-6" href="{% url 'add_to_cart' product.id color%}"> <button type="button" class="btn btn-primary shop-button">Cho vào giỏ hàng</button> <button type="button" class="btn btn-success shop-button">Đặt hàng ngay</button>
+                            {%else%}
+                            <a class="col-xs-6" href="{% url 'add_to_cart' product.id%}"> <button type="button" class="btn btn-primary shop-button">Cho vào giỏ hàng</button> <button type="button" class="btn btn-success shop-button">Đặt hàng ngay</button>
+                            {%endif%}
+                            </a>
+                        </a>
+                    </a>
+                </a>
             </div>
            
             <div class="row row-underline">
