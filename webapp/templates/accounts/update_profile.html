@@ -1,0 +1,58 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% include 'base/navbar.html' %}
+{% block content %}
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title> 
+	<!-- bootstrap -->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+	<!-- custom css-->
+	<link rel = "stylesheet" href = "{% static 'css/custom.css' %}">
+	<!-- font-awesome -->
+	<link href="{% static 'font/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+<script src="https://kit.fontawesome.com/e6ef55250b.js" crossorigin="anonymous"></script>
+
+
+<section style="background-color: #eee;">
+	<div class="container py-5">
+	  <div class="row">
+		<div class="col">
+		  <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+			<ol class="breadcrumb mb-0">
+			  <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+			  <li class="breadcrumb-item"><a href="{% url 'profile' %}">User</a></li>
+			  <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+			</ol>
+		  </nav>
+		</div>
+	  </div>
+	  
+      <!--Form-->
+      <div class="container " style="width: 500px;">
+        <div class="card mb-4" style="padding: 10px;">
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Thông tin cá nhân</legend>
+                    {{ u_form|crispy }}
+                    {{ p_form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-primary" style = "margin: auto;">Cập nhật</button>
+                </div>
+            </form>
+            </div>
+        </div>
+        <!--End Form-->
+	</div>
+	  
+  </section>
+  {% endblock content %}
+  {% include 'base/footer.html' %}
+
+
