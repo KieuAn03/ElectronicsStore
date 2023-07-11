@@ -1,57 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'index' %}">Electron</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-   
-        
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+{% load static %}
+{% include 'base/navbar2.html' %}
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrderManagement</title> 
+	<!-- bootstrap -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+	<!-- custom css-->
+	<link rel = "stylesheet" href = "{% static 'css/custom.css' %}">
+	<!-- font-awesome -->
+	<link href="{% static 'font/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
-            <!-- search -->
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>  <!-- end search -->
-        </ul>
-            
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
-          </li>
+<script src="https://kit.fontawesome.com/e6ef55250b.js" crossorigin="anonymous"></script>
 
-        </ul>
-        <!-- icon -->
-        <div class = "navbar-nav ms-auto mb-2 mb-lg-0">
-            <button type = "button" class = "btn position-relative">
-                <i class = "fa fa-shopping-cart" style="color: white;"></i>
-                <span class = "position-absolute top-0 start-100 translate-middle badge bg-primary">5</span>
-            </button>
-            <button type = "button" class = "btn position-relative">
-                <i class = "fa fa-heart" style="color: white;"></i>
-                <span class = "position-absolute top-0 start-100 translate-middle badge bg-primary">2</span>
-            </button>
-        </div>
-        <!-- icon-end -->
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-but">
-                <a href="{% url 'register' %}" class="btn btn-outline-light">Sign Up</a>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'login' %}" class="btn btn-outline-light">Login</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Account
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
-                  <li><a class="dropdown-item" href="#">Sign Out</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                </ul>
-              </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
