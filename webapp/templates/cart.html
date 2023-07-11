@@ -25,7 +25,7 @@
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col">
       
-              <div class="table-responsive">
+              <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
                 <table class="table">
                   <thead>
                     <tr>
@@ -33,17 +33,26 @@
                       <th scope="col">Loại</th>
                       <th scope="col">Số lượng</th>
                       <th scope="col">Giá</th>
+                      <th scope="col"></th>
                     </tr>
                   </thead>
                   <tbody>
+                    <section >
+                      {%for item in cart_items_phone%}
                     <tr>
                       <th scope="row">
                         <div class="d-flex align-items-center">
-                          <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-13-finish-select-202207-6-1inch-pink?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1657641867367" class="img-fluid rounded-3"
+                          <img src="{{item.product.image0.url}}" class="img-fluid rounded-3"
                             style="width: 120px;" alt="Book">
                           <div class="flex-column ms-4">
-                            <p class="mb-2">Iphone 13</p>
-                            <p class="mb-0">Apple</p>
+                            <p class="mb-2"> {{item.product.product_id.Name}}</p>
+                            <p class="mb-0">{{item.color.color}}</p>
+                            <p class="mb-0">
+                              {{item.price_add.ram }}-{{item.price_add.Storage}}
+                          </p>
+
+
+                         
                           </div>
                         </div>
                       </th>
@@ -57,7 +66,7 @@
                             <i class="fas fa-minus"></i>
                           </button>
       
-                          <input id="form1" min="0" name="quantity" value="2" type="number"
+                          <input id="form1" min="0" name="quantity" value="{{item.quantity}}" type="number"
                             class="form-control form-control-sm" style="width: 50px;" />
       
                           <button class="btn btn-link px-2"
@@ -67,31 +76,41 @@
                         </div>
                       </td>
                       <td class="align-middle">
-                        <p class="mb-0" style="font-weight: 500;">16.000.000đ</p>
+                        <p class="mb-0" style="font-weight: 500;">{{item.get_product_price}}</p>
+                      </td>
+                      <td class="mb-0" style="font-weight: 500;">
+                        <a href="{% url 'remove_cart' item.id %} " class="btn btn-light btn-round"> Xóa</a>
+
                       </td>
                     </tr>
+
+                    {%endfor%}
+                    {%for item in cart_items_tablet%}
                     <tr>
-                      <th scope="row" class="border-bottom-0">
+                      <th scope="row">
                         <div class="d-flex align-items-center">
-                          <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn//News/1499078//laptop-15-800x450-1.jpg" class="img-fluid rounded-3"
+                          <img src="{{item.product.image0.url}}" class="img-fluid rounded-3"
                             style="width: 120px;" alt="Book">
                           <div class="flex-column ms-4">
-                            <p class="mb-2">Lenovo 15</p>
-                            <p class="mb-0">Lenovo</p>
+                            <p class="mb-2"> {{item.product.product_id.Name}}</p>
+                            <p class="mb-0">{{item.color.color}}</p>
+                            <p class="mb-0">
+                              {{item.price_add.ram }}-{{item.price_add.Storage}}
+                          </p>
                           </div>
                         </div>
                       </th>
-                      <td class="align-middle border-bottom-0">
-                        <p class="mb-0" style="font-weight: 500;">Laptop</p>
+                      <td class="align-middle">
+                        <p class="mb-0" style="font-weight: 500;">Tablet</p>
                       </td>
-                      <td class="align-middle border-bottom-0">
+                      <td class="align-middle">
                         <div class="d-flex flex-row">
                           <button class="btn btn-link px-2"
                             onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                             <i class="fas fa-minus"></i>
                           </button>
       
-                          <input id="form1" min="0" name="quantity" value="1" type="number"
+                          <input id="form1" min="0" name="quantity" value="{{item.quantity}}" type="number"
                             class="form-control form-control-sm" style="width: 50px;" />
       
                           <button class="btn btn-link px-2"
@@ -100,14 +119,103 @@
                           </button>
                         </div>
                       </td>
-                      <td class="align-middle border-bottom-0">
-                        <p class="mb-0" style="font-weight: 500;">22.000.000đ</p>
+                      <td class="align-middle">
+                        <p class="mb-0" style="font-weight: 500;">{{item.get_product_price}}</p>
+                      </td>
+                      <td class="mb-0" style="font-weight: 500;">
+                        <a href="{% url 'remove_cart' item.id %} " class="btn btn-light btn-round"> Xóa</a>
+
                       </td>
                     </tr>
+
+                    {%endfor%}
+                    {%for item in cart_items_laptop%}
+                    <tr>
+                      <th scope="row">
+                        <div class="d-flex align-items-center">
+                          <img src="{{item.product.image0.url}}" class="img-fluid rounded-3"
+                            style="width: 120px;" alt="Book">
+                          <div class="flex-column ms-4">
+                            <p class="mb-2"> {{item.product.product_id.Name}}</p>
+                            
+                          </div>
+                        </div>
+                      </th>
+                      <td class="align-middle">
+                        <p class="mb-0" style="font-weight: 500;">Laptop</p>
+                      </td>
+                      <td class="align-middle">
+                        <div class="d-flex flex-row">
+                          <button class="btn btn-link px-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                            <i class="fas fa-minus"></i>
+                          </button>
+      
+                          <input id="form1" min="0" name="quantity" value="{{item.quantity}}" type="number"
+                            class="form-control form-control-sm" style="width: 50px;" />
+      
+                          <button class="btn btn-link px-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                            <i class="fas fa-plus"></i>
+                          </button>
+                        </div>
+                      </td>
+                      <td class="align-middle">
+                        <p class="mb-0" style="font-weight: 500;">{{item.get_product_price}}</p>
+                      </td>
+                      <td class="mb-0" style="font-weight: 500;">
+                        <a href="{% url 'remove_cart' item.id %} " class="btn btn-light btn-round"> Xóa</a>
+
+                      </td>
+                    </tr>
+
+                    {%endfor%}
+                    {%for item in cart_items_watch%}
+                    <tr>
+                      <th scope="row">
+                        <div class="d-flex align-items-center">
+                          <img src="{{item.product.image0.url}}" class="img-fluid rounded-3"
+                            style="width: 120px;" alt="Book">
+                          <div class="flex-column ms-4">
+                            <p class="mb-2"> {{item.product.product_id.Name}}</p>
+                            
+                          </div>
+                        </div>
+                      </th>
+                      <td class="align-middle">
+                        <p class="mb-0" style="font-weight: 500;">Đồng hồ</p>
+                      </td>
+                      <td class="align-middle">
+                        <div class="d-flex flex-row">
+                          <button class="btn btn-link px-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                            <i class="fas fa-minus"></i>
+                          </button>
+      
+                          <input id="form1" min="0" name="quantity" value="{{item.quantity}}" type="number"
+                            class="form-control form-control-sm" style="width: 50px;" />
+      
+                          <button class="btn btn-link px-2"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                            <i class="fas fa-plus"></i>
+                          </button>
+                        </div>
+                      </td>
+                      <td class="align-middle">
+                        <p class="mb-0" style="font-weight: 500;">{{item.get_product_price}}</p>
+                      </td>
+                      <td class="mb-0" style="font-weight: 500;">
+                        <a href="{% url 'remove_cart' item.id %} " class="btn btn-light btn-round"> Xóa</a>
+
+                      </td>
+                    </tr>
+
+                    {%endfor%}
                   </tbody>
                 </table>
               </div>
-      
+            </section>
+
               <div class="card shadow-2-strong mb-5 mb-lg-0" style="border-radius: 16px;">
                 <div class="card-body p-4">
       
@@ -153,11 +261,36 @@
 
 
 <style>
+  .my-custom-scrollbar {
+    position: relative;
+    height: 400px;
+    overflow: auto;
+    }
+  .table-wrapper-scroll-y {
+    display: block;
+    }
+ 
 
     @media (min-width: 1025px) {
         .h-custom {
         height: 60vh !important;
         }
         }
+   
 </style>
+<script>
+  
+  const hardinfo = [];
+  const priceinfo = [];
+
+
+
+
+
+  function updateprice(index , option){
+    const hardall = {{cart_items_phone.index.product.phoneoptionhard_set.all}};
+    const price = hardall[option.selectedIndex-1].price_add;
+    
+  }
+</script>
 
