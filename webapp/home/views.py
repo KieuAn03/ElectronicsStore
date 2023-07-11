@@ -16,7 +16,6 @@ def checkouts(request):
 def details(request, id, **kwargs):
     products = Product.objects.get(id=id) 
     type = products.product_type.name
-    print("HAHAHAAHA")
     
        
     if(type == 'Laptop'):

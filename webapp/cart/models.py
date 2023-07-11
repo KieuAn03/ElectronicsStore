@@ -34,8 +34,45 @@ class cart_item_phone(models.Model):
         sumprice = sum(price)
         huh = str(int(sumprice) * int(self.quantity))
         return huh
+    
+class cart_item_tablet(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Tablet, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    color = models.ForeignKey(TabletOptionColor, on_delete=models.CASCADE, null=True)
+    price_add = models.ForeignKey(TabletOptionHard, on_delete=models.CASCADE, null=True)
+    time_created = models.DateTimeField(auto_now_add=True)
+    def get_product_price(self):
+        price = [self.product.product_id.price]
+        if self.price_add:
+            price.append(self.price_add.price_add)
+        sumprice = sum(price)
+        huh = str(int(sumprice) * int(self.quantity))
+        return huh
+
+class cart_item_laptop(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Laptop, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    time_created = models.DateTimeField(auto_now_add=True)
+    def get_product_price(self):
+        price = [self.product.product_id.price]
+        sumprice = sum(price)
+        huh = str(int(sumprice) * int(self.quantity))
+        return huh
 
 
+
+class cart_item_watch(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(watch, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    time_created = models.DateTimeField(auto_now_add=True)
+    def get_product_price(self):
+        price = [self.product.product_id.price]
+        sumprice = sum(price)
+        huh = str(int(sumprice) * int(self.quantity))
+        return huh
 
 
 
