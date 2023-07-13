@@ -20,7 +20,7 @@
       <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
         <li class="breadcrumb-item"><a href="#">User</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Order Management</li>
+        <li class="breadcrumb-item active" aria-current="page">Leftovers Storage</li>
       </ol>
       </nav>
     </div>
@@ -64,105 +64,103 @@
               <thead>
                   <tr>
                       <th>STT</th>
-                      <th>Tên người mua</th>
-                      <th>Mã đơn</th>
+                      <th>Ảnh</th>
                       <th>Tên sản phẩm</th>
-                      <th>Số tiền</th>
-                      <th>Ngày đặt</th>
-                      <th>Trạng thái</th>
+                      <th>Loại sản phẩm</th>
+                      <th>Số lượng tồn kho</th>
+                      <th>Sửa</th>
+                      <th>Xóa</th>
                   </tr>
               </thead>
               <tbody>
                   <tr>
                       <td>1</td>
-                      <td>Tô Duy Nguyên Hoàng</td>
-                      <td>MD001</td>
+                      <td><img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSI19etvTekVGt8TXzqW-SbZ_Agrlw6e4j0eNHt3aGjVS4y6CbUZMSP6-XJjqa4dn5STKJkf1UoC_jNcnTIkmiVl3-1ZAiBnzqU2uRzPAAlJVpl0FNIN0Jseg&usqp=CAc" style="width: 100px; height: 50px;"></td>
                       <td>Laptop Lenovo ThinkPad X1</td>
-                      <td>6500000 VND</td>
-                      <td>17/06/2023</td>
+                      <td>Laptop</td>
+                      <td>1500</td>
                       <td>
-                          <button style="background-color: aquamarine;">Xác nhận đã mua</button>
-                          <hr>
-                          <button style="background-color: red; color: aliceblue;">Xóa đơn</button>
+                          <button style="background-color: aquamarine;">Sửa</button>
+                      </td>
+                      <td>
+                        <button style="background-color: red; color: aliceblue;">Xóa</button>
                       </td>
                   </tr>
                   <tr>
                       <td>2</td>
-                      <td>Mạc An Kiều</td>
-                      <td>MD002</td>
+                      <td><img src="data:image/jpeg;base64,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" style="width: 100px; height: 50px;"></td>
                       <td>Apple Watch SE 2022 40mm</td>
-                      <td>6090000 VND</td>
-                      <td>30/06/2023</td>
+                      <td>Đồng hồ</td>
+                      <td>3500</td>
                       <td>
-                          <button style="background-color: aquamarine;">Xác nhận đã mua</button>
-                          <hr>
-                          <button style="background-color: red; color: aliceblue;">Xóa đơn</button>
-                      </td>
+                        <button style="background-color: aquamarine;">Sửa</button>
+                    </td>
+                    <td>
+                      <button style="background-color: red; color: aliceblue;">Xóa</button>
+                    </td>
                   </tr>
                   <tr>
                       <td>3</td>
-                      <td>Phạm Nhật Quang</td>
-                      <td>MD003</td>
+                      <td><img src="https://cdn.tgdd.vn/Products/Images/42/245545/iPhone-14-plus-thumb-den-600x600.jpg" style="width: 100px; height: 50px;"></td>
                       <td>Apple Iphone 14 128GB</td>
-                      <td>17250000 VND</td>
-                      <td>07/07/2023</td>
+                      <td>Điện thoại</td>
+                      <td>5000</td>
                       <td>
-                          <button style="background-color: aquamarine;">Xác nhận đã mua</button>
-                          <hr>
-                          <button style="background-color: red; color: aliceblue;">Xóa đơn</button>
-                      </td>
+                        <button style="background-color: aquamarine;">Sửa</button>
+                    </td>
+                    <td>
+                      <button style="background-color: red; color: aliceblue;">Xóa</button>
+                    </td>
                   </tr>
                   <tr>
                       <td>4</td>
-                      <td>Trần Duy Hưng</td>
-                      <td>MD004</td>
+                      <td><img src="https://cdn.tgdd.vn/Products/Images/522/294103/iPad-Gen-10-sliver-thumb-600x600.jpg" style="width: 100px; height: 50px;"></td>
                       <td>Ipad Pro M1 11 inch WiFi 2TB</td>
-                      <td>45000000 VND</td>
-                      <td>04/12/2022</td>
+                      <td>Tablet</td>
+                      <td>777</td>
                       <td>
-                          <button style="background-color: aquamarine;">Xác nhận đã mua</button>
-                          <hr>
-                          <button style="background-color: red; color: aliceblue;">Xóa đơn</button>
-                      </td>
+                        <button style="background-color: aquamarine;">Sửa</button>
+                    </td>
+                    <td>
+                      <button style="background-color: red; color: aliceblue;">Xóa</button>
+                    </td>
                   </tr>
                   <tr>
                       <td>5</td>
-                      <td>QLee Review</td>
-                      <td>MD005</td>
+                      <td><img src="https://cdn.tgdd.vn/Products/Images/42/235838/Galaxy-S22-Ultra-Burgundy-600x600.jpg" style="width: 100px; height: 50px;"></td>
                       <td>Samsung Galaxy S22</td>
-                      <td>18000000 VND</td>
-                      <td>30/12/2022</td>
+                      <td>Điện thoại</td>
+                      <td>2798</td>
                       <td>
-                          <button style="background-color: aquamarine;">Xác nhận đã mua</button>
-                          <hr>
-                          <button style="background-color: red; color: aliceblue;">Xóa đơn</button>
-                      </td>
+                        <button style="background-color: aquamarine;">Sửa</button>
+                    </td>
+                    <td>
+                      <button style="background-color: red; color: aliceblue;">Xóa</button>
+                    </td>
                   </tr>
                   <tr>
                       <td>6</td>
-                      <td>Triệu Quân Sự</td>
-                      <td>MD006</td>
+                      <td><img src="https://cdn.tgdd.vn/Products/Images/44/250547/msi-gamin-gf65-thin-10ue-i5-10500h-16gb-512gb-6gb-600x600.jpg" style="width: 100px; height: 50px;"></td>
                       <td>MSI Gaming</td>
-                      <td>21500000 VND</td>
-                      <td>08/07/2023</td>
+                      <td>Máy tính</td>
+                      <td>11988</td>
                       <td>
-                          <button style="background-color: aquamarine;">Xác nhận đã mua</button>
-                          <hr>
-                          <button style="background-color: red; color: aliceblue;">Xóa đơn</button>
-                      </td>
+                        <button style="background-color: aquamarine;">Sửa</button>
+                    </td>
+                    <td>
+                      <button style="background-color: red; color: aliceblue;">Xóa</button>
                   </tr>
                   <tr>
                       <td>7</td>
-                      <td>Kim SeokJin</td>
-                      <td>MD007</td>
+                      <td><img src="https://cdn.tgdd.vn/Products/Images/522/269328/ipad-pro-m1-11-inch-wifi-2tb-2021-xam-thumb-600x600.jpeg" style="width: 100px; height: 50px;"></td>
                       <td>Ipad Pro M1 11 inch WiFi 2TB</td>
-                      <td>45000000 VND</td>
-                      <td>04/12/2022</td>
+                      <td>Tablet</td>
+                      <td>7777</td>
                       <td>
-                          <button style="background-color: aquamarine;">Xác nhận đã mua</button>
-                          <hr>
-                          <button style="background-color: red; color: aliceblue;">Xóa đơn</button>
-                      </td>
+                        <button style="background-color: aquamarine;">Sửa</button>
+                    </td>
+                    <td>
+                      <button style="background-color: red; color: aliceblue;">Xóa</button>
                   </tr>
               </tbody>
               
