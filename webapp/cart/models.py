@@ -11,15 +11,68 @@ class Checkout(models.Model):
     time_created = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.user.username + ':' + str(self.time_created)
-
-class Cart_Item(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    cart = models.ForeignKey(Checkout, on_delete=models.CASCADE, null=True)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
+class Cart(models.Model):
+    user = models.ForeignKey(User, blank=True, on_delete=models.CASCADE)
+    date_order =models.DateTimeField(auto_now_add=True)
+    complete = models.BooleanField(default=False)
+    transaction = models.CharField(max_length=100, null=True)
+    
+    def __str__(self) :
+        return str(self.id)
+    
+class cart_item_phone(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Phone, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    color = models.ForeignKey(PhoneOptionColor, on_delete=models.CASCADE, null=True)
+    price_add = models.ForeignKey(PhoneOptionHard, on_delete=models.CASCADE, null=True)
     time_created = models.DateTimeField(auto_now_add=True)
-    def __str__(self):
-        return User.username + ':' + Product.name + '-sl:' + str(self.quantity)
+    def get_product_price(self):
+        price = [self.product.product_id.price]
+        if self.price_add:
+            price.append(self.price_add.price_add)
+        sumprice = sum(price)
+        huh = str(int(sumprice) * int(self.quantity))
+        return huh
+    
+class cart_item_tablet(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Tablet, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    color = models.ForeignKey(TabletOptionColor, on_delete=models.CASCADE, null=True)
+    price_add = models.ForeignKey(TabletOptionHard, on_delete=models.CASCADE, null=True)
+    time_created = models.DateTimeField(auto_now_add=True)
+    def get_product_price(self):
+        price = [self.product.product_id.price]
+        if self.price_add:
+            price.append(self.price_add.price_add)
+        sumprice = sum(price)
+        huh = str(int(sumprice) * int(self.quantity))
+        return huh
+
+class cart_item_laptop(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Laptop, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    time_created = models.DateTimeField(auto_now_add=True)
+    def get_product_price(self):
+        price = [self.product.product_id.price]
+        sumprice = sum(price)
+        huh = str(int(sumprice) * int(self.quantity))
+        return huh
+
+
+
+class cart_item_watch(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(watch, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    time_created = models.DateTimeField(auto_now_add=True)
+    def get_product_price(self):
+        price = [self.product.product_id.price]
+        sumprice = sum(price)
+        huh = str(int(sumprice) * int(self.quantity))
+        return huh
 
 
 

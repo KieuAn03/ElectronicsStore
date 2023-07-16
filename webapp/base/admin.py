@@ -51,3 +51,5 @@ admin.site.register(TabletBattery)
 admin.site.register(TabletFrontCamera)
 admin.site.register(TabletBackCamera)
 admin.site.register(TabletChip)
+
+admin.site.register(Coupon)

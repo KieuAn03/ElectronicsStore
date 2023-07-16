@@ -9,5 +9,9 @@ admin.site.register(watch)
 admin.site.register(Tablet)
 admin.site.register(voucher)
 admin.site.register(discount)
+admin.site.register(PhoneOptionHard)
+admin.site.register(PhoneOptionColor)
+admin.site.register(TabletOptionHard)
+admin.site.register(TabletOptionColor)
 
 # Register your models here.
