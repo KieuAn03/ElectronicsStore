@@ -31,5 +31,6 @@ urlpatterns = [
     path('AddDeleteProduct2/', include('AddDeleteProduct2.urls')),
     path('AddDeleteProduct3/', include('AddDeleteProduct3.urls')),
     path('ProductRemnant/', include('ProductRemnant.urls')),
+    path('Login/', include('login.urls'))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
