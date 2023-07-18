@@ -16,6 +16,22 @@ class Cart(models.Model):
     date_order =models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
     transaction = models.CharField(max_length=100, null=True)
+    def total(self):
+        total = 0
+        cart_items_phone = self.cart_item_phone_set.all()
+        cart_items_tablet = self.cart_item_tablet_set.all()
+        cart_items_laptop = self.cart_item_laptop_set.all()
+        cart_items_watch = self.cart_item_watch_set.all()
+        for item in cart_items_phone:
+            total += int(item.get_product_price())
+        for item in cart_items_tablet:
+            total += int(item.get_product_price())
+        for item in cart_items_laptop:
+            total += int(item.get_product_price())
+        for item in cart_items_watch:
+            total += int(item.get_product_price())
+        return total
+    
     
     def __str__(self) :
         return str(self.id)
