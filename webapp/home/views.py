@@ -40,6 +40,8 @@ def checkouts(request, **kwargs):
         cart.complete= True
         cart.transaction= unique_id
         cart.save()
+        history_item = historycart.objects.create(cart = cart ,user = user, cart_info = cart_i)
+        history_item.save()
         phone = cart.cart_item_phone_set.all()
         for item in phone :
             product = item.product.product_id

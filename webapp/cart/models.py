@@ -101,6 +101,7 @@ class cart_info(models.Model):
 class historycart(models.Model):
     user = models.ForeignKey(User, on_delete= models.CASCADE, null=True)
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
+    cart_info = models.ForeignKey(cart_info, on_delete=models.CASCADE, null=True)
     date = models.DateTimeField(auto_now_add=True)
     paid = models.BooleanField(default=False)
 
