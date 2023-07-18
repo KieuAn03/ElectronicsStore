@@ -128,10 +128,9 @@
             <label class="custom-control-label" for="save-info">Lưu lại thông tin vào lần tới</label>
           </div>
           <hr class="mb-4">
-
-
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Đặt hàng</button>
         </form>
+          <a href="{% url 'checkout' cart.getid %}"><button class="btn btn-primary btn-lg btn-block">Đặt hàng</button></a>
+        
       </div>
     </div>
   </div>

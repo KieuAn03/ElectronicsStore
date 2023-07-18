@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from home.models import *
-from .models import *
 from cart.models import *
 # Create your views here.
 def index(request):
@@ -13,23 +12,25 @@ def index(request):
 
     return render(request , 'home/index.html',context)
 
-def checkouts(request):
-    checkout = Cart.objects.get(complete = False, user = request.user)
-    cart_item_phone = checkout.cart_item_phone_set.all()
-    cart_item_tablet = checkout.cart_item_tablet_set.all()
-    cart_item_laptop = checkout.cart_item_laptop_set.all()
-    cart_item_watch = checkout.cart_item_watch_set.all()
+def checkouts(request, **kwargs):
+
+    user = request.user
+    cart= Cart.objects.get(user = user , complete = False)
+
+    print(kwargs)
+    if(kwargs.get('id')):
+        print("DDOWN HANG DA THANH TOAN00")
+        print("DDOWN HANG DA THANH TOAN00")
+        print("DDOWN HANG DA THANH TOAN00")
+        print(cart.id)
+        cart.complete= True
+        cart.save()
+        
     context = {
-        'cart_items_phone': cart_item_phone,
-        'cart_items_tablet': cart_item_tablet,
-        'cart_items_laptop': cart_item_laptop,
-        'cart_items_watch': cart_item_watch,
-    }
-    return render(request, 'checkout.html',context)
-
-
-
-
+                'cart':cart,
+            }
+   
+    return render(request,'checkout.html', context)
 def details(request, id, **kwargs):
     products = Product.objects.get(id=id) 
     type = products.product_type.name

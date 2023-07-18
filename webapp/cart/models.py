@@ -19,6 +19,8 @@ class Cart(models.Model):
     
     def __str__(self) :
         return str(self.id)
+    def getid(self):
+        return str(self.id)
     
 class cart_item_phone(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)

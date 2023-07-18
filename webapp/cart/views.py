@@ -12,6 +12,7 @@ def index(request):
     cart_item_laptop = cart.cart_item_laptop_set.all()
     cart_item_watch = cart.cart_item_watch_set.all()
     context = {
+        'cart':cart,
         'cart_items_phone': cart_item_phone,
         'cart_items_tablet': cart_item_tablet,
         'cart_items_laptop': cart_item_laptop,
@@ -111,3 +112,4 @@ def remove_cart(request , cart_item_uid):
         print(e)
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
