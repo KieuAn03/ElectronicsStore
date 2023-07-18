@@ -37,21 +37,21 @@ def login_page(request):
     return render(request, 'accounts/login.html')
 
 def register_page(request):
-    form = UserRegisterForm()
-
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.info(request, 'Account is created.')
-            return redirect('login')
-        else:
-            context = {'form': form}
-            messages.info(request, 'Invalid credentials')
-            return render(request, 'accounts/register.html', context)
+        user_name = request.POST.get('userName')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        re_pass = request.POST.get('rePassword')
 
-    context = {'form': form}
-    return render(request, 'accounts/register.html', context)
+        if password != re_pass:
+            messages.warning(request, 'Sai xác nhận mật khẩu.')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        else:
+            user = User.objects.create_user(email = email , username = user_name)
+            user.set_password(password)
+            user.save()
+            return redirect('index')
+    return render(request, 'accounts/register.html')
 
 @login_required(login_url='login')
 def logout_user(request):
