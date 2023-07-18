@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from home.models import *
+from cart.models import *
 # Create your views here.
 def index(request):
     if 'que' in request.GET:
@@ -11,8 +12,25 @@ def index(request):
 
     return render(request , 'home/index.html',context)
 
-def checkouts(request):
-    return render(request, 'checkout.html')
+def checkouts(request, **kwargs):
+
+    user = request.user
+    cart= Cart.objects.get(user = user , complete = False)
+
+    print(kwargs)
+    if(kwargs.get('id')):
+        print("DDOWN HANG DA THANH TOAN00")
+        print("DDOWN HANG DA THANH TOAN00")
+        print("DDOWN HANG DA THANH TOAN00")
+        print(cart.id)
+        cart.complete= True
+        cart.save()
+        
+    context = {
+                'cart':cart,
+            }
+   
+    return render(request,'checkout.html', context)
 def details(request, id, **kwargs):
     products = Product.objects.get(id=id) 
     type = products.product_type.name
