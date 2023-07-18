@@ -97,7 +97,12 @@ class cart_info(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
     Name = models.CharField(max_length=100, null=True)
     Phone_num = models.CharField(max_length=100, null = True )
-    
+
+class historycart(models.Model):
+    user = models.ForeignKey(User, on_delete= models.CASCADE, null=True)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+    paid = models.BooleanField(default=False)
 
 
 

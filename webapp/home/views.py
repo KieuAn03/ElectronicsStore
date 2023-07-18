@@ -26,7 +26,6 @@ def checkouts(request, **kwargs):
     cart_i ,  _= cart_info.objects.get_or_create(cart  = cart)
     cart_i.Name = userinfo.name
     cart_i.Phone_num= userinfo.phone
-   
 
     print(request.method)
     if request.method=='POST':
@@ -66,7 +65,6 @@ def checkouts(request, **kwargs):
                 'cart':cart,
                 'info':cart_i,
             }
-   
     return render(request,'checkout.html', context)
 def details(request, id, **kwargs):
     products = Product.objects.get(id=id) 
