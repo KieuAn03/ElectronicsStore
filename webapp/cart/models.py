@@ -93,6 +93,11 @@ class cart_item_watch(models.Model):
         return huh
 
 
+class cart_info(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
+    Name = models.CharField(max_length=100, null=True)
+    Phone_num = models.CharField(max_length=100, null = True )
+    
 
 
 
