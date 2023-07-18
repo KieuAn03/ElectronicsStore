@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from home.models import *
 from cart.models import *
+from manager.models import *
 # Create your views here.
 def index(request):
     if 'que' in request.GET:
@@ -19,13 +20,28 @@ def checkouts(request, **kwargs):
 
     print(kwargs)
     if(kwargs.get('id')):
-        print("DDOWN HANG DA THANH TOAN00")
-        print("DDOWN HANG DA THANH TOAN00")
-        print("DDOWN HANG DA THANH TOAN00")
-        print(cart.id)
         cart.complete= True
         cart.save()
-        
+
+        phone = cart.cart_item_phone_set.all()
+        for item in phone:
+            CountItems.phone += item.quantity
+
+        laptop = cart.cart_item_laptop_set.all()
+        for item in laptop:
+            CountItems.laptop += item.quantity
+
+        tablet = cart.cart_item_tablet_set.all()
+        for item in tablet:
+            CountItems.tablet = item.quantity
+
+        watch = cart.cart_item_watch_set.all()
+        for item in watch:
+            CountItems.watch = item.quantity
+
+        TotalRevenue.total += cart.total
+        TotalRevenue.order_number += 1
+         
     context = {
                 'cart':cart,
             }
