@@ -236,3 +236,9 @@ class TabletBackCamera(models.Model):
     name = models.CharField(max_length=100)
     def __str__ (self):
         return self.name
+
+class Coupon(models.Model):
+    coupon_code = models.CharField(max_length=10)
+    is_expired = models.BooleanField(default=False)
+    discount_price = models.IntegerField(default=100)
+    minimum_amount = models.IntegerField(default=500)

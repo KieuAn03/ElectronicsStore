@@ -20,17 +20,12 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('' , include('home.urls')),
+    path('' , include('home.urls'), name='index'),
     path('cart/', include('cart.urls')),
     path('accounts/' , include('accounts.urls')),
-    path('Profile/', include('Profile.urls')),
     path('search/' , include('search.urls')),
     path('historycart/', include('historycart.urls')),
     path('ordermanagement/', include('ordermanagement.urls')),
-    path('AddDeleteProduct/', include('AddDeleteProduct.urls')),
-    path('AddDeleteProduct2/', include('AddDeleteProduct2.urls')),
-    path('AddDeleteProduct3/', include('AddDeleteProduct3.urls')),
-    path('ProductRemnant/', include('ProductRemnant.urls')),
-    path('Login/', include('login.urls'))
+    path('manager/', include('manager.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
