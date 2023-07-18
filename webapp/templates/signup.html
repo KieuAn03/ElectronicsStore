@@ -5,34 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Login</title>
+    <title>Sign up</title>
 </head>
 <body>
-    <div class="login-box">
-        <div class="login-header">
-            <header>Login</header>
+    <div class="signup-box">
+        <div class="signup-header">
+            <header>Sign up</header>
         </div>
+        <div class="input-box">
+            <input type="text" class="input-field" placeholder="Username" autocomplete="off" required>
+        </div>
+        
         <div class="input-box">
             <input type="text" class="input-field" placeholder="Email" autocomplete="off" required>
         </div>
         <div class="input-box">
             <input type="password" class="input-field" placeholder="Password" autocomplete="off" required>
         </div>
-        <div class="forgot">
-            <section>
-                <input type="checkbox" id="check">
-                <label for="check">Remember me</label>
-            </section>
-            <section>
-                <a href="#">Forgot password</a>
-            </section>
+        
+        <div class="input-box">
+            <input type="password" class="input-field" placeholder="Password confirmation" autocomplete="off" required>
         </div>
+        
         <div class="input-submit">
             <button class="submit-btn" id="submit"></button>
-            <label for="submit">Sign In</label>
+            <label for="submit">Sign Up</label>
         </div>
         <div class="sign-up-link">
-            <p>Don't have account? <a href="#">Sign Up</a></p>
+            <p>Already have an account? <a href="#">Sign In</a></p>
         </div>
     </div>
 </body>
@@ -53,7 +53,7 @@ body{
     min-height: 100vh;
     background: #dfdfdf;
 }
-.login-box{
+.signup-box{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -61,11 +61,11 @@ body{
     height: 480px;
     padding: 30px;
 }
-.login-header{
+.signup-header{
     text-align: center;
     margin: 20px 0 40px 0;
 }
-.login-header header{
+.signup-header header{
     color: #333;
     font-size: 30px;
     font-weight: 600;
@@ -146,5 +146,11 @@ section a{
 .sign-up-link a{
     color: #000;
     font-weight: 600;
+}
+.mark3
+{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
 }
 </style>

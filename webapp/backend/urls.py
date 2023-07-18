@@ -27,5 +27,6 @@ urlpatterns = [
     path('historycart/', include('historycart.urls')),
     path('ordermanagement/', include('ordermanagement.urls')),
     path('manager/', include('manager.urls')),
+    
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
