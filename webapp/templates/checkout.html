@@ -25,13 +25,49 @@
           <span class="badge badge-secondary badge-pill">1</span>
         </h4>
         <ul class="list-group mb-3">
+          {%for item in cart_items_phone%}
           <li class="list-group-item d-flex justify-content-between lh-condensed">
             <div>
-              <h6 class="my-0">Iphone</h6>
-              <small class="text-muted">x1</small>
+              <h6 class="my-0">{{item.product.product_id.Name}}</h6>
+              <small class="text-muted">{{item.quantity}}</small>
             </div>
-            <span class="text-muted">12.000.000đ</span>
+
+            <span class="text-muted">{{item.get_product_price}}</span>
           </li>
+            {%endfor%}
+          {%for item in cart_items_laptop%}
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+
+            <div>
+              <h6 class="my-0">{{item.product.product_id.Name}}</h6>
+              <small class="text-muted">{{item.quantity}}</small>
+            </div>
+            <span class="text-muted">{{item.get_product_price}}</span>
+          </li>
+            {%endfor%}
+          {%for item in cart_items_watch%}
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+ 
+          <div>
+              <h6 class="my-0">{{item.product.product_id.Name}}</h6>
+              <small class="text-muted">{{item.quantity}}</small>
+            </div>
+
+            <span class="text-muted">{{item.get_product_price}}</span>
+          </li>
+            {%endfor%}
+          {%for item in cart_items_tablet%}
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+  
+          <div>
+              <h6 class="my-0">{{item.product.product_id.Name}}</h6>
+              <small class="text-muted">{{item.quantity}}</small>
+            </div>
+
+            <span class="text-muted">{{item.get_product_price}}</span>
+          </li>
+            {%endfor%}
+          
           <li class="list-group-item d-flex justify-content-between bg-light">
             <div class="text-success">
               <h6 class="my-0">Giảm giá</h6>
@@ -45,7 +81,8 @@
           </li>
         </ul>
   
-        <form class="card p-2">
+        <form class="card p-2" method ='post'>
+          
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Mã giảm giá">
             <div class="input-group-append">
@@ -56,44 +93,31 @@
       </div>
       <div class="col-md-8 order-md-1">
         <h4 class="mb-3">Thông tin khách hàng</h4>
-        <form class="needs-validation" novalidate>
+        <form class="needs-validation" novalidate method ='post'> 
+          {% csrf_token %}  
           <div class="row">
             <div class="col">
               <label for="firstName">Họ và tên</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+              <input type="text" class="form-control" id="customername" name ="customername"  placeholder="" value="{{info.Name}}" required>
               <div class="invalid-feedback">
                 Valid first name is required.
               </div>
             </div>
           </div>
-          <div class="mb-3">
-            <label for="email">Email <span class="text-muted">(Tùy chọn)</span></label>
-            <input type="email" class="form-control" id="email" placeholder="you@example.com">
-            <div class="invalid-feedback">
-              Vui lòng nhập địa chỉ email hợp lệ để cập nhật thông tin đơn hàng.
-            </div>
-          </div>
-  
+            
           <div class="mb-3">
             <label for="address">số điện thoại</label>
-            <input type="text" class="form-control" id="address" placeholder="+8412345678" required>
+            <input type="text" class="form-control" id="customerphone" name = "customerphone" placeholder="" value = "{{info.Phone_num}}"required>
             <div class="invalid-feedback">
               vui lòng nhập số điện thoại.
             </div>
           </div>
   
           <hr class="mb-4">
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="same-address">
-            <label class="custom-control-label" for="same-address">Những thông tin bên trên đều chính xác</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="save-info">
-            <label class="custom-control-label" for="save-info">Lưu lại thông tin vào lần tới</label>
-          </div>
-          <hr class="mb-4">
+          
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Đặt hàng</button>
+
         </form>
-          <a href="{% url 'checkout' cart.getid %}"><button class="btn btn-primary btn-lg btn-block">Đặt hàng</button></a>
         
       </div>
     </div>

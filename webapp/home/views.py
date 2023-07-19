@@ -1,7 +1,12 @@
 from django.shortcuts import render
 from home.models import *
 from cart.models import *
-from manager.models import *
+from django.utils.crypto import get_random_string
+from django.http import HttpResponse
+from django.template import loader
+from .models import *
+from django.http import HttpResponseRedirect,HttpResponse
+from accounts.models import *
 # Create your views here.
 def index(request):
     if 'que' in request.GET:
@@ -16,11 +21,24 @@ def index(request):
 def checkouts(request, **kwargs):
 
     user = request.user
+    userinfo = Profile.objects.get(user = user)
     cart= Cart.objects.get(user = user , complete = False)
+    cart_i ,  _= cart_info.objects.get_or_create(cart  = cart)
+    cart_i.Name = userinfo.name
+    cart_i.Phone_num= userinfo.phone
 
-    print(kwargs)
-    if(kwargs.get('id')):
+    print(request.method)
+    if request.method=='POST':
+        if(request.POST.get('customername')):
+            cart_i.Name = request.POST.get('customername')
+            cart_i.Phone_num= request.POST.get('customerphone')
+            cart_i.save()
+        unique_id = get_random_string(length=8)
+        user = request.user
+        unique_id = str(user)+ unique_id
+        print(cart.id) 
         cart.complete= True
+        cart.transaction= unique_id
         cart.save()
 
         phone = cart.cart_item_phone_set.all()
@@ -42,10 +60,33 @@ def checkouts(request, **kwargs):
         TotalRevenue.total += cart.total
         TotalRevenue.order_number += 1
          
+        history_item = historycart.objects.create(cart = cart ,user = user, cart_info = cart_i)
+        history_item.save()
+        phone = cart.cart_item_phone_set.all()
+        for item in phone :
+            product = item.product.product_id
+            product.stock = product.stock - item.quantity
+            product.save()
+        tablet = cart.cart_item_tablet_set.all()
+        for item in tablet :
+            product = item.product.product_id
+            product.stock = product.stock - item.quantity
+            product.save()
+        laptop = cart.cart_item_laptop_set.all()
+        for item in laptop :
+            product = item.product.product_id
+            product.stock = product.stock - item.quantity
+            product.save()
+        watch = cart.cart_item_watch_set.all()
+        for item in watch :
+            product = item.product.product_id
+            product.stock = product.stock - item.quantity
+            product.save()
+    cart_i.save()
     context = {
                 'cart':cart,
+                'info':cart_i,
             }
-   
     return render(request,'checkout.html', context)
 def details(request, id, **kwargs):
     products = Product.objects.get(id=id) 
