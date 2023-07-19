@@ -16,6 +16,7 @@ class Cart(models.Model):
     date_order =models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
     transaction = models.CharField(max_length=100, null=True)
+    paid = models.BooleanField(default=False)
     def total(self):
         total = 0
         cart_items_phone = self.cart_item_phone_set.all()
