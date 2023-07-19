@@ -56,101 +56,47 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane  fade  active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                         <h4 class="font-weight-bold mt-0 mb-4">Lịch sử mua hàng</h4>
+                       {%for cart in history%}
                         <div class="bg-white card mb-4 order-list shadow-sm">
                             <div class="gold-members p-4">
                                 <a href="#">
                                 </a>
                                 <div class="media">
-                                    <a href="#">
-                                        <img class="mr-4" src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT6ePJ7DQVBNJvKCJWBLYIcpiGIh9H9fkKPsbvJ_OW7asN-ZIbaE8OS0EHG0kLqv4gvMNfRzMMFv50QYuPPVZ7WaelmCETIEwvDs1jQfMS1yO73054SDd3kTQ&usqp=CAc" alt="Generic placeholder image">
-                                    </a>
+                                    
                                     <div class="media-body">
-                                        <a href="#">
-                                            <span class="float-right text-info">Đã hủy <i class="icofont-check-circled text-success"></i></span>
-                                        </a>
-                                        <h6 class="mb-2">
+                                            {%if cart.paid == True %}
+                                            <span class="float-right text-info">Đã Thanh toán<i class="icofont-check-circled text-success"></i></span><br>
+                                            {%else%}
+                                            <span class="float-right text-info">Đã Đặt <i class="icofont-check-circled text-success"></i></span><br>
+
+                                            {%endif%}
+                                            <span class="float-right text">Mã đơn hàng: <i class="icofont-check-circled text-success"></i></span>
+                                            <div class="float-right">
+                                                <div class="btn btn-sm btn-primary btn-disabled" ><i class="icofont-refresh"></i> {{cart.transaction}}</div>
+                                            </div>
+                                            <h6 class="mb-2">
                                             <a href="#"></a>
-                                            <a href="#" class="text-black">Laptop Lenovo ThinkPad X1 Carbon</a>
+                                            <span class="float-right text">Danh sách mặt hàng: <i class="icofont-check-circled text-success"></i></span><br>
+                                            {%for item in cart.cart_item_laptop_set.all%}
+                                            <a href="#" class="text-black">{{item.product.product_id.Name}}</a><br>
+
+                                            {%endfor%}
                                         </h6>
-                                        <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> 1015/62/5 Huỳnh Tấn Phát, khu phố 3, phường Phú Thuận, quận 7, TP.HCM
-                                        </p>
-                                        <p class="text-gray mb-3"><i class="icofont-list"></i> Đã đặt vào lúc : <i class="icofont-clock-time ml-2"></i> 7:00 AM, 17/06/2023</p>
-                                        
+                                        <p class="text-gray mb-3"><i class="icofont-list"></i> Đã đặt vào lúc : <i class="icofont-clock-time ml-2"></i> {{cart.date_order}}</p>
+                                        <p class="text-gray mb-3"><i class="icofont-list"></i> Được đặt bởi : <i class="icofont-clock-time ml-2"></i> {{cart.date_order}}</p>
+
                                         <hr>
-                                        <div class="float-right">
-                                            <a class="btn btn-sm btn-outline-primary" href="#"><i class="icofont-headphone-alt"></i> HELP</a>
-                                            <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> REORDER</a>
-                                        </div>
-                                        <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Giá tiền :</span> 6500000 VND
+                                        
+                                        <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Giá tiền:</span> {{cart.total}} VND
                                         </p>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-                        <div class="bg-white card mb-4 order-list shadow-sm">
-                            <div class="gold-members p-4">
-                                <a href="#">
-                                </a>
-                                <div class="media">
-                                    <a href="#">
-                                        <img class="mr-4" src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRJjI6h-YVN-1Ab4IvrsRoDZ1TPWJx8jCE0au4bJhmMto0KKZnldiXPU_TQs63Xeh5tUXLKkOuVwduGJu3XQAJP5cz2yETWy5LWR1LNAep0tbPz9nu97lkE&usqp=CAc" alt="Generic placeholder image">
-                                    </a>
-                                    <div class="media-body">
-                                        <a href="#">
-                                            <span class="float-right text-info">Đã giao <i class="icofont-check-circled text-success"></i></span>
-                                        </a>
-                                        <h6 class="mb-2">
-                                            <a href="#"></a>
-                                            <a href="#" class="text-black">Laptop Lenovo IdeaPad 5 Pro</a>
-                                        </h6>
-                                        <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> Số 20, Trần Duy Hưng, Phường Trung Hòa, Quận Cầu Giấy, Hà Nội
-                                        </p>
-                                        <p class="text-gray mb-3"><i class="icofont-list"></i> Đã đặt vào lúc : <i class="icofont-clock-time ml-2"></i> 6:26 PM, 16/01/2023</p>
-                                        
-                                        <hr>
-                                        <div class="float-right">
-                                            <a class="btn btn-sm btn-outline-primary" href="#"><i class="icofont-headphone-alt"></i> HELP</a>
-                                            <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> REORDER</a>
-                                        </div>
-                                        <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Paid:</span> 15000000 VND
-                                        </p>
-                                    </div>
-                                </div>
 
-                            </div>
-                        </div>
-                        <div class="bg-white card  order-list shadow-sm">
-                            <div class="gold-members p-4">
-                                <a href="#">
-                                </a>
-                                <div class="media">
-                                    <a href="#">
-                                        <img class="mr-4" src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcS4C06ddbqW-1npP4fE_RWTOhXNRASuLYvdLN6K6P4OUZoKweYzWXTNCUUzYkmoi6Ij0QR3wVFmOjHzO0LHZklTxBHVItpvIJBDm0J9Rv8&usqp=CAc" alt="Generic placeholder image">
-                                    </a>
-                                    <div class="media-body">
-                                        <a href="#">
-                                            <span class="float-right text-info">Đang giao <i class="icofont-check-circled text-success"></i></span>
-                                        </a>
-                                        <h6 class="mb-2">
-                                            <a href="#"></a>
-                                            <a href="#" class="text-black">Apple Iphone 14 128GB</a>   
-                                        </h6>
-                                        <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> 777 Đường 3 Tháng 2, Phường 7, Quận 10, TP.HCM                                         
-                                        </p>
-                                        <p class="text-gray mb-3"><i class="icofont-list"></i> Đã đặt vào lúc : <i class="icofont-clock-time ml-2"></i> 8:00 AM, 07/07/2023</p>
-                                        
-                                        <hr>
-                                        <div class="float-right">
-                                            <a class="btn btn-sm btn-outline-primary" href="#"><i class="icofont-headphone-alt"></i> HELP</a>
-                                            <a class="btn btn-sm btn-primary" href="#"><i class="icofont-refresh"></i> REORDER</a>
-                                        </div>
-                                        <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> Total Paid:</span> 17250000VND
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {%endfor%}
+                       
                         
                     </div>
                 </div>

@@ -27,7 +27,10 @@ def checkouts(request, **kwargs):
     cart_i ,  _= cart_info.objects.get_or_create(cart  = cart)
     cart_i.Name = userinfo.name
     cart_i.Phone_num= userinfo.phone
-
+    cart_item_phone = cart.cart_item_phone_set.all()
+    cart_item_tablet = cart.cart_item_tablet_set.all()
+    cart_item_laptop = cart.cart_item_laptop_set.all()
+    cart_item_watch = cart.cart_item_watch_set.all()
     print(request.method)
     if request.method=='POST':
         if(request.POST.get('customername')):
@@ -98,8 +101,17 @@ def checkouts(request, **kwargs):
     context = {
                 'cart':cart,
                 'info':cart_i,
+                'cart_items_phone': cart_item_phone,
+                'cart_items_tablet': cart_item_tablet,
+                'cart_items_laptop': cart_item_laptop,
+                'cart_items_watch': cart_item_watch,
             }
     return render(request,'checkout.html', context)
+
+
+
+
+
 def details(request, id, **kwargs):
     products = Product.objects.get(id=id) 
     type = products.product_type.name
