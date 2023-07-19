@@ -18,7 +18,7 @@ class Cart(models.Model):
     transaction = models.CharField(max_length=100, null=True)
     paid = models.BooleanField(default=False)
     def total(self):
-        total = 0
+        total    = 0
         cart_items_phone = self.cart_item_phone_set.all()
         cart_items_tablet = self.cart_item_tablet_set.all()
         cart_items_laptop = self.cart_item_laptop_set.all()
@@ -38,6 +38,9 @@ class Cart(models.Model):
         return str(self.id)
     def getid(self):
         return str(self.id)
+    def getinfo(self):
+        return self.cart_info_set.first()
+    
     
 class cart_item_phone(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
@@ -98,6 +101,8 @@ class cart_info(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
     Name = models.CharField(max_length=100, null=True)
     Phone_num = models.CharField(max_length=100, null = True )
+    def __str__(self) -> str:
+        return str(self.Name)
 
 class historycart(models.Model):
     user = models.ForeignKey(User, on_delete= models.CASCADE, null=True)
