@@ -127,5 +127,6 @@ class voucher(models.Model):
     id = models.AutoField(primary_key=True)
     code = models.CharField(max_length=100)
     discount = models.IntegerField()
+    amount = models.IntegerField(default=1)
     def __str__ (self):
         return self.code

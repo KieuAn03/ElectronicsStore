@@ -10,6 +10,7 @@ urlpatterns = [
     path('checkout/<id>/', checkouts , name='checkout'),
 
     path('checkout/', checkouts , name='checkout'),
+    path('checkout/<code>', checkouts , name='checkout'),
 
 
 ]

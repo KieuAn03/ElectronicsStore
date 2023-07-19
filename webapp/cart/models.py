@@ -17,6 +17,8 @@ class Cart(models.Model):
     complete = models.BooleanField(default=False)
     transaction = models.CharField(max_length=100, null=True)
     paid = models.BooleanField(default=False)
+    voucher = models.ForeignKey(voucher , on_delete=models.SET_NULL , null=True, blank=True)
+    is_discounted = models.BooleanField(default=False)
     def total(self):
         total = 0.0
         cart_items_phone = self.cart_item_phone_set.all()
@@ -31,6 +33,8 @@ class Cart(models.Model):
             total += int(item.get_product_price())
         for item in cart_items_watch:
             total += int(item.get_product_price())
+        if self.is_discounted == True:
+            return total - self.voucher.discount
         return total
     
     

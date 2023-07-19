@@ -32,71 +32,82 @@ def checkouts(request, **kwargs):
     cart_item_laptop = cart.cart_item_laptop_set.all()
     cart_item_watch = cart.cart_item_watch_set.all()
     print(request.method)
+    print("KWARG VALUE")
+    print(kwargs)
     if request.method=='POST':
-        if(request.POST.get('customername')):
-            cart_i.Name = request.POST.get('customername')
-            cart_i.Phone_num= request.POST.get('customerphone')
-            cart_i.save()
-        unique_id = get_random_string(length=8)
-        user = request.user
-        unique_id = str(user)+ unique_id
-        print(cart.id) 
-        cart.complete= True
-        cart.transaction= unique_id
-        cart.save()
+        if 'voucher' in request.POST:
+            if(cart.is_discounted!= True):
+                
+                if(request.POST.get('voucher') == str(cart.voucher.code)):
+                    cart.is_discounted= True
+                    cart.save()
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    if request.method=='POST':
+        if 'voucher' not in request.POST:
+            if(request.POST.get('customername')):
+                cart_i.Name = request.POST.get('customername')
+                cart_i.Phone_num= request.POST.get('customerphone')
+                cart_i.save()
+            unique_id = get_random_string(length=8)
+            user = request.user
+            unique_id = str(user)+ unique_id
+            print(cart.id) 
+            cart.complete= True
+            cart.transaction= unique_id
+            cart.save()
 
-        phone = cart.cart_item_phone_set.all()
-        category = CountItems.objects.first()
-        total = TotalRevenue.objects.first()
-        for item in phone:
-            category.phone += item.quantity
-            category.save()
+            phone = cart.cart_item_phone_set.all()
+            category = CountItems.objects.first()
+            total = TotalRevenue.objects.first()
+            for item in phone:
+                category.phone += item.quantity
+                category.save()
 
-        laptop = cart.cart_item_laptop_set.all()
-        for item in laptop:
-            category.laptop += item.quantity
-            category.save()
+            laptop = cart.cart_item_laptop_set.all()
+            for item in laptop:
+                category.laptop += item.quantity
+                category.save()
 
-        tablet = cart.cart_item_tablet_set.all()
-        for item in tablet:
-            category.tablet += item.quantity
-            category.save()
+            tablet = cart.cart_item_tablet_set.all()
+            for item in tablet:
+                category.tablet += item.quantity
+                category.save()
 
-        watch = cart.cart_item_watch_set.all()
-        for item in watch:
-            category.watch += item.quantity
-            category.save()
+            watch = cart.cart_item_watch_set.all()
+            for item in watch:
+                category.watch += item.quantity
+                category.save()
 
-        total.total += cart.total()
-        
-        print(total.order_number)
-        total.add()
-        total.save()
-        print("TONG DON HANGGGGGGGGGGGGG")
-        print(total.order_number)
-        
-        history_item = historycart.objects.create(cart = cart ,user = user, cart_info = cart_i)
-        history_item.save()
-        phone = cart.cart_item_phone_set.all()
-        for item in phone :
-            product = item.product.product_id
-            product.stock = product.stock - item.quantity
-            product.save()
-        tablet = cart.cart_item_tablet_set.all()
-        for item in tablet :
-            product = item.product.product_id
-            product.stock = product.stock - item.quantity
-            product.save()
-        laptop = cart.cart_item_laptop_set.all()
-        for item in laptop :
-            product = item.product.product_id
-            product.stock = product.stock - item.quantity
-            product.save()
-        watch = cart.cart_item_watch_set.all()
-        for item in watch :
-            product = item.product.product_id
-            product.stock = product.stock - item.quantity
-            product.save()
+            total.total += cart.total()
+            
+            print(total.order_number)
+            total.add()
+            total.save()
+            print("TONG DON HANGGGGGGGGGGGGG")
+            print(total.order_number)
+            
+            history_item = historycart.objects.create(cart = cart ,user = user, cart_info = cart_i)
+            history_item.save()
+            phone = cart.cart_item_phone_set.all()
+            for item in phone :
+                product = item.product.product_id
+                product.stock = product.stock - item.quantity
+                product.save()
+            tablet = cart.cart_item_tablet_set.all()
+            for item in tablet :
+                product = item.product.product_id
+                product.stock = product.stock - item.quantity
+                product.save()
+            laptop = cart.cart_item_laptop_set.all()
+            for item in laptop :
+                product = item.product.product_id
+                product.stock = product.stock - item.quantity
+                product.save()
+            watch = cart.cart_item_watch_set.all()
+            for item in watch :
+                product = item.product.product_id
+                product.stock = product.stock - item.quantity
+                product.save()
     cart_i.save()
     context = {
                 'cart':cart,

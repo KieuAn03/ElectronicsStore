@@ -71,9 +71,9 @@
           <li class="list-group-item d-flex justify-content-between bg-light">
             <div class="text-success">
               <h6 class="my-0">Giảm giá</h6>
-              <small>X3311U6</small>
+              <small>{{cart.voucher.code}}</small>
             </div>
-            <span class="text-success">-3.000.000đ</span>
+            <span class="text-success">{{cart.voucher.discount}}đ</span>
           </li>
           <li class="list-group-item d-flex justify-content-between">
             <span>Tổng giá tiền (VNĐ)</span>
@@ -81,8 +81,10 @@
           </li>
         </ul>
   
-        <form class="card p-2" method ='POST'>
+        <form  class="needs-validation card p-2"  novalidate method ='post'>
+          {% csrf_token %} 
           <div class="input-group">
+            {% csrf_token %} 
             <input name="voucher" type="text" class="form-control" placeholder="Mã giảm giá">
             <div class="input-group-append">
               <button type="submit" class="btn btn-secondary">gửi</button>
