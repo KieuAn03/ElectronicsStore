@@ -4,7 +4,7 @@ from django.template import loader
 from .models import *
 from django.http import HttpResponseRedirect,HttpResponse
 
-def index(request):
+def cart(request):
     cart = Cart.objects.get(complete = False, user = request.user)
     print(cart)
     cart_item_phone = cart.cart_item_phone_set.all()

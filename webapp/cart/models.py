@@ -17,7 +17,7 @@ class Cart(models.Model):
     complete = models.BooleanField(default=False)
     transaction = models.CharField(max_length=100, null=True)
     def total(self):
-        total = 0
+        total = 0.0
         cart_items_phone = self.cart_item_phone_set.all()
         cart_items_tablet = self.cart_item_tablet_set.all()
         cart_items_laptop = self.cart_item_laptop_set.all()

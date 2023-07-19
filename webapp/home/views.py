@@ -7,6 +7,7 @@ from django.template import loader
 from .models import *
 from django.http import HttpResponseRedirect,HttpResponse
 from accounts.models import *
+from manager.models import CountItems, TotalRevenue
 # Create your views here.
 def index(request):
     if 'que' in request.GET:
@@ -42,24 +43,35 @@ def checkouts(request, **kwargs):
         cart.save()
 
         phone = cart.cart_item_phone_set.all()
+        category = CountItems.objects.first()
+        total = TotalRevenue.objects.first()
         for item in phone:
-            CountItems.phone += item.quantity
+            category.phone += item.quantity
+            category.save()
 
         laptop = cart.cart_item_laptop_set.all()
         for item in laptop:
-            CountItems.laptop += item.quantity
+            category.laptop += item.quantity
+            category.save()
 
         tablet = cart.cart_item_tablet_set.all()
         for item in tablet:
-            CountItems.tablet = item.quantity
+            category.tablet += item.quantity
+            category.save()
 
         watch = cart.cart_item_watch_set.all()
         for item in watch:
-            CountItems.watch = item.quantity
+            category.watch += item.quantity
+            category.save()
 
-        TotalRevenue.total += cart.total
-        TotalRevenue.order_number += 1
-         
+        total.total += cart.total()
+        
+        print(total.order_number)
+        total.add()
+        total.save()
+        print("TONG DON HANGGGGGGGGGGGGG")
+        print(total.order_number)
+        
         history_item = historycart.objects.create(cart = cart ,user = user, cart_info = cart_i)
         history_item.save()
         phone = cart.cart_item_phone_set.all()
