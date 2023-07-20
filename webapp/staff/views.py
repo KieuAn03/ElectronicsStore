@@ -4,3 +4,7 @@ from django.shortcuts import render
 def staff_page(request):
     
     return render(request, 'staff/staff_page.html')
+
+def staff_profile(request):
+    
+    return render(request, 'staff/staff_profile.html')

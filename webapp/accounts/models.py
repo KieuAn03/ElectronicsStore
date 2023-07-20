@@ -7,5 +7,8 @@ class Profile(models.Model):
     address = models.CharField(max_length=200, null=True)
     name = models.CharField(max_length=100,null=True)
     phone = models.CharField(max_length=100,null=True)
+    is_admin = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+    is_customer = models.BooleanField(default=True)
     def __str__(self):
         return self.user.username
