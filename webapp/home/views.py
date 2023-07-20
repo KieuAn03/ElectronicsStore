@@ -9,72 +9,88 @@ from django.http import HttpResponseRedirect,HttpResponse
 from accounts.models import *
 # Create your views here.
 def index(request):
+    try:
+        cart = Cart.objects.get(complete = False, user = request.user)
+    except:
+        pass
+
     if 'que' in request.GET:
         que = request.GET['que']
         products = Product.objects.filter(Name__icontains=que)
     else:
         products = Product.objects.all()
-    context = {'products' : products}
+    if (request.user.is_authenticated):
+        
+        context = {'products' : products,
+                'cart': cart,
+                }
+    else:
+        context = {'products' : products,
+               
+                }
 
     return render(request , 'home/index.html',context)
 
 def checkouts(request, **kwargs):
-
-    user = request.user
-    userinfo = Profile.objects.get(user = user)
-    cart= Cart.objects.get(user = user , complete = False)
-    cart_i ,  _= cart_info.objects.get_or_create(cart  = cart)
-    cart_i.Name = userinfo.name
-    cart_i.Phone_num= userinfo.phone
-    cart_item_phone = cart.cart_item_phone_set.all()
-    cart_item_tablet = cart.cart_item_tablet_set.all()
-    cart_item_laptop = cart.cart_item_laptop_set.all()
-    cart_item_watch = cart.cart_item_watch_set.all()
-    print(request.method)
-    if request.method=='POST':
-        if(request.POST.get('customername')):
-            cart_i.Name = request.POST.get('customername')
-            cart_i.Phone_num= request.POST.get('customerphone')
-            cart_i.save()
-        unique_id = get_random_string(length=8)
+    if(request.user.is_authenticated):
         user = request.user
-        unique_id = str(user)+ unique_id
-        print(cart.id) 
-        cart.complete= True
-        cart.transaction= unique_id
-        cart.save()
-        history_item = historycart.objects.create(cart = cart ,user = user, cart_info = cart_i)
-        history_item.save()
-        phone = cart.cart_item_phone_set.all()
-        for item in phone :
-            product = item.product.product_id
-            product.stock = product.stock - item.quantity
-            product.save()
-        tablet = cart.cart_item_tablet_set.all()
-        for item in tablet :
-            product = item.product.product_id
-            product.stock = product.stock - item.quantity
-            product.save()
-        laptop = cart.cart_item_laptop_set.all()
-        for item in laptop :
-            product = item.product.product_id
-            product.stock = product.stock - item.quantity
-            product.save()
-        watch = cart.cart_item_watch_set.all()
-        for item in watch :
-            product = item.product.product_id
-            product.stock = product.stock - item.quantity
-            product.save()
-    cart_i.save()
-    context = {
-                'cart':cart,
-                'info':cart_i,
-                'cart_items_phone': cart_item_phone,
-                'cart_items_tablet': cart_item_tablet,
-                'cart_items_laptop': cart_item_laptop,
-                'cart_items_watch': cart_item_watch,
-            }
-    return render(request,'checkout.html', context)
+        userinfo = Profile.objects.get(user = user)
+        cart= Cart.objects.get(user = user , complete = False)
+        cart_i ,  _= cart_info.objects.get_or_create(cart  = cart)
+        cart_i.Name = userinfo.name
+        cart_i.Phone_num= userinfo.phone
+        cart_item_phone = cart.cart_item_phone_set.all()
+        cart_item_tablet = cart.cart_item_tablet_set.all()
+        cart_item_laptop = cart.cart_item_laptop_set.all()
+        cart_item_watch = cart.cart_item_watch_set.all()
+        print(request.method)
+        
+        if request.method=='POST':
+            if(request.POST.get('customername')):
+                cart_i.Name = request.POST.get('customername')
+                cart_i.Phone_num= request.POST.get('customerphone')
+                cart_i.save()
+            unique_id = get_random_string(length=8)
+            user = request.user
+            unique_id = str(user)+ unique_id
+            print(cart.id) 
+            cart.complete= True
+            cart.transaction= unique_id
+            cart.save()
+            history_item = historycart.objects.create(cart = cart ,user = user, cart_info = cart_i)
+            history_item.save()
+            phone = cart.cart_item_phone_set.all()
+            for item in phone :
+                product = item.product.product_id
+                product.stock = product.stock - item.quantity
+                product.save()
+            tablet = cart.cart_item_tablet_set.all()
+            for item in tablet :
+                product = item.product.product_id
+                product.stock = product.stock - item.quantity
+                product.save()
+            laptop = cart.cart_item_laptop_set.all()
+            for item in laptop :
+                product = item.product.product_id
+                product.stock = product.stock - item.quantity
+                product.save()
+            watch = cart.cart_item_watch_set.all()
+            for item in watch :
+                product = item.product.product_id
+                product.stock = product.stock - item.quantity
+                product.save()
+        cart_i.save()
+        context = {
+                    'cart':cart,
+                    'info':cart_i,
+                    'cart_items_phone': cart_item_phone,
+                    'cart_items_tablet': cart_item_tablet,
+                    'cart_items_laptop': cart_item_laptop,
+                    'cart_items_watch': cart_item_watch,
+                }
+        return render(request,'checkout.html', context)
+    else:
+        return render(request,'checkout.html')
 
 
 
@@ -140,6 +156,7 @@ def details(request, id, **kwargs):
                     'ssl': select_storage,
                     'option': choose,
                 }  
+                
         elif kwargs.get('color'):
             colorselect = str(kwargs.get('color'))
             context = {
@@ -217,4 +234,7 @@ def details(request, id, **kwargs):
                         'colorr':colorselect,
                         
                     }
+    if(request.user.is_authenticated):
+        cart = Cart.objects.get(complete = False, user = request.user)
+        context['cart'] = cart
     return render(request, 'detail.html',context)

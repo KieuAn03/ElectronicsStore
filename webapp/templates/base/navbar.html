@@ -27,15 +27,15 @@
 
           <!--Cart-->
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <form class="d-flex">
+            
                 <a href="{% url 'cart' %}">
                   <button class="btn btn-outline-dark" type="submit">
                     <i class="bi-cart-fill me-1"></i>
                     Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{cart.sumorder}}</span>
                 </button>
                 </a>
-            </form>
+            
             <!--End Cart-->
             <!--Account-->
             <li class="nav-item dropdown">
