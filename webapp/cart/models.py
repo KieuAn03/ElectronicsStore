@@ -36,12 +36,29 @@ class Cart(models.Model):
         if self.is_discounted == True:
             return total - self.voucher.discount
         return total
-    
+    def sumorder(self):
+        total    = 0
+        cart_items_phone = self.cart_item_phone_set.all()
+        cart_items_tablet = self.cart_item_tablet_set.all()
+        cart_items_laptop = self.cart_item_laptop_set.all()
+        cart_items_watch = self.cart_item_watch_set.all()
+        for item in cart_items_phone:
+            total += 1
+        for item in cart_items_tablet:
+            total += 1
+        for item in cart_items_laptop:
+            total += 1
+        for item in cart_items_watch:
+            total += 1
+        return total
     
     def __str__(self) :
         return str(self.id)
     def getid(self):
         return str(self.id)
+    def getinfo(self):
+        return self.cart_info_set.first()
+    
     
 class cart_item_phone(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
@@ -102,6 +119,8 @@ class cart_info(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
     Name = models.CharField(max_length=100, null=True)
     Phone_num = models.CharField(max_length=100, null = True )
+    def __str__(self) -> str:
+        return str(self.Name)
 
 class historycart(models.Model):
     user = models.ForeignKey(User, on_delete= models.CASCADE, null=True)
