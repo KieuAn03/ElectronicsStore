@@ -5,22 +5,22 @@ from .models import *
 from django.http import HttpResponseRedirect,HttpResponse
 
 def index(request):
-    
-    if(request.user.is_authenticated):
+    try:
         cart = Cart.objects.get(complete = False, user = request.user)
-        cart_item_phone = cart.cart_item_phone_set.all()
-        cart_item_tablet = cart.cart_item_tablet_set.all()
-        cart_item_laptop = cart.cart_item_laptop_set.all()
-        cart_item_watch = cart.cart_item_watch_set.all()
-        context = {
-            'cart':cart,
-            'cart_items_phone': cart_item_phone,
-            'cart_items_tablet': cart_item_tablet,
-            'cart_items_laptop': cart_item_laptop,
-            'cart_items_watch': cart_item_watch,
-        }
-        return render(request, 'cart.html',context)
-    return render(request, 'cart.html')
+    except:
+        return render(request, 'cart.html')
+    cart_item_phone = cart.cart_item_phone_set.all()
+    cart_item_tablet = cart.cart_item_tablet_set.all()
+    cart_item_laptop = cart.cart_item_laptop_set.all()
+    cart_item_watch = cart.cart_item_watch_set.all()
+    context = {
+        'cart':cart,
+        'cart_items_phone': cart_item_phone,
+        'cart_items_tablet': cart_item_tablet,
+        'cart_items_laptop': cart_item_laptop,
+        'cart_items_watch': cart_item_watch,
+    }
+    return render(request, 'cart.html',context)
 
 def add_to_cart(request , **kwargs):
     product = Product.objects.get(id = kwargs.get('id'))

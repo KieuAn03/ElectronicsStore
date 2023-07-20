@@ -36,7 +36,10 @@ def checkouts(request, **kwargs):
     if(request.user.is_authenticated):
         user = request.user
         userinfo = Profile.objects.get(user = user)
-        cart= Cart.objects.get(user = user , complete = False)
+        try:
+            cart= Cart.objects.get(user = user , complete = False)
+        except:
+            return render(request,'checkout.html')
         cart_i ,  _= cart_info.objects.get_or_create(cart  = cart)
         cart_i.Name = userinfo.name
         cart_i.Phone_num= userinfo.phone
@@ -44,9 +47,6 @@ def checkouts(request, **kwargs):
         cart_item_tablet = cart.cart_item_tablet_set.all()
         cart_item_laptop = cart.cart_item_laptop_set.all()
         cart_item_watch = cart.cart_item_watch_set.all()
-        print(request.method)
-        print("KWARG VALUE")
-        print(kwargs)
         if request.method=='POST':
             if 'voucher' in request.POST:
                 if(cart.is_discounted!= True):
@@ -121,15 +121,15 @@ def checkouts(request, **kwargs):
                     product = item.product.product_id
                     product.stock = product.stock - item.quantity
                     product.save()
-            cart_i.save()
-            context = {
-                        'cart':cart,
-                        'info':cart_i,
-                        'cart_items_phone': cart_item_phone,
-                        'cart_items_tablet': cart_item_tablet,
-                        'cart_items_laptop': cart_item_laptop,
-                        'cart_items_watch': cart_item_watch,
-                    }
+                cart_i.save()
+        context = {
+                    'cart':cart,
+                    'info':cart_i,
+                    'cart_items_phone': cart_item_phone,
+                    'cart_items_tablet': cart_item_tablet,
+                    'cart_items_laptop': cart_item_laptop,
+                    'cart_items_watch': cart_item_watch,
+                }
         return render(request,'checkout.html', context)
     else:
         return render(request,'checkout.html')
