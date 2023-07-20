@@ -13,3 +13,7 @@ def revenue_static(request):
             }
     
     return render(request, 'manager/revenue-static.html', context)
+
+
+def add_phone_product(request):
+    return render(request, 'manager/add_change_phone.html')
