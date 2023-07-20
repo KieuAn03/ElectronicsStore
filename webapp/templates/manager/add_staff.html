@@ -1,5 +1,5 @@
 {% load static %}
-{% include 'base/navbar2.html' %}
+{% include 'base/navbar-manager.html' %}
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,177 +69,42 @@
 			</div>
 		  </div>
 		  <hr>
-		  <form >
+		  <form method="POST" action="">
+            {% csrf_token %}
 			
-				<legend><h1>Add or change a product</h1></legend>
+				<legend><h1>Thêm Nhân Viên</h1></legend>
 				<br>
 				<table style="font-size: 17px;">
 					<tr>
-						<td>Product type : <hr></td>
-						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
-							 </select>
-							 <i class="fa fa-plus"></i>
-							 <hr>
-						</td>
+						<td>Username: <hr></td>
+						<td style="padding-left: 30px;"><input type="text" name="userName" placeholder="Username"><hr></td>				
+					</tr>
+					<tr>
+						<td>Password: <hr></td>
+						<td style="padding-left: 30px;"><input type="text" name="password" placeholder="Password"><hr></td>				
+					</tr>
+					<tr>
+						<td>Họ Tên: <hr></td>
+						<td style="padding-left: 30px;"><input type="text" name="name" placeholder="Họ Tên"><hr></td>
 						
 					</tr>
 					<tr>
-						<td>Name: <hr></td>
-						<td style="padding-left: 30px;"><input type="text" placeholder="Name"><hr></td>
-						
+						<td>Email: <hr></td>
+						<td style="padding-left: 30px;"><input type="text" name="email" placeholder="Email"><hr></td>
 					</tr>
 					<tr>
-						<td>Price: <hr></td>
-						<td style="padding-left: 30px;"><input type="text" placeholder="Price"><hr></td>
+						<td>SĐT: <hr></td>
+						<td style="padding-left: 30px;"><input type="text" name="phone" placeholder="SĐT"><hr></td>
 					</tr>
 				
 					<tr>
-						<td>Stock: <hr></td>
-						<td style="padding-left: 30px;"><input type="text" placeholder="Stock"><hr></td>
-					</tr>
-					<tr>
-						<td>Image1: <hr></td>
-						<td style="padding-left: 30px;"><button>Choose File</button> No file chosen<hr></td>
-					</tr>
-					<tr>
-						<td>Image2: <hr></td>
-						<td style="padding-left: 30px;"><button>Choose File</button> No file chosen<hr></td>
-					</tr>
-					<tr>
-						<td>Image3: <hr></td>
-						<td style="padding-left: 30px;"><button>Choose File</button> No file chosen<hr></td>
-					</tr>
-					<tr>
-						<td>Brand : <hr></td>
-						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
-							 </select>
-							 <i class="fa fa-plus"></i>
-							 <hr>
-						</td>						
-					</tr>
-					<tr>
-						<td>Color : <hr></td>
-						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
-							 </select>
-							 <i class="fa fa-plus"></i>
-							 <hr>
-						</td>						
-					</tr>
-					<tr>
-						<td>CPU : <hr></td>
-						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
-							 </select>
-							 <i class="fa fa-plus"></i>
-							 <hr>
-						</td>						
-					</tr>
-					<tr>
-						<td>RAM : <hr></td>
-						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
-							 </select>
-							 <i class="fa fa-plus"></i>
-							 <hr>
-						</td>						
-					</tr>
-					<tr>
-						<td>Storage : <hr></td>
-						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
-							 </select>
-							 <i class="fa fa-plus"></i>
-							 <hr>
-						</td>						
-					</tr>
-					<tr>
-						<td>VGA : <hr></td>
-						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
-							 </select>
-							 <i class="fa fa-plus"></i>
-							 <hr>
-						</td>						
-					</tr>
-					<tr>
-						<td>USB : <hr></td>
-						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
-							 </select>
-							 <i class="fa fa-plus"></i>
-							 <hr>
-						</td>						
-					</tr>
-					<tr>
-						<td>Special : <hr></td>
-						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
-							 </select>
-							 <i class="fa fa-plus"></i>
-							 <hr>
-						</td>						
-					</tr>
-					<tr>
-						<td>OS : <hr></td>
-						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
-							 </select>
-							 <i class="fa fa-plus"></i>
-							 <hr>
-						</td>						
-					</tr>
-                    <tr>
-						<td>Design : <hr></td>
-						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
-							 </select>
-							 <i class="fa fa-plus"></i>
-							 <hr>
-						</td>						
-					</tr>
-                    <tr>
-						<td>Size : <hr></td>
-						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
-							 </select>
-							 <i class="fa fa-plus"></i>
-							 <hr>
-						</td>						
-					</tr>
-                    <tr>
-						<td>Release date : <hr></td>
-						<td style="padding-left: 30px;">
-                            <input type="date">
-							 <hr>
-						</td>						
-					</tr>
-					<tr>
-						<td>Info : <hr></td>
-						<td style="padding-left: 30px;">
-							 
-							<textarea rows="7" cols="80"></textarea>
-							<hr>
-						</td>						
+						<td>Chức Vụ: <hr></td>
+						<td style="padding-left: 30px;"><input type="text" name="user_type" placeholder="Chức Vụ"><hr></td>
 					</tr>
 					<tr>
 						<td>&nbsp;<hr></td>
 						<td style="padding-left: 30px;">
-							<input type="submit" value="Add"><hr>
+							<input type="submit" value="Thêm"><hr>
 						</td>						
 					</tr>
 				</table>
