@@ -60,6 +60,7 @@ class Cart(models.Model):
         return self.cart_info_set.first()
     
     
+    
 class cart_item_phone(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
     product = models.ForeignKey(Phone, on_delete=models.CASCADE)

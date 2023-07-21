@@ -67,107 +67,29 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>STT</th>
                     <th>Tên người mua</th>
                     <th>Mã đơn</th>
-                    <th>Tên sản phẩm</th>
                     <th>Số tiền</th>
                     <th>Ngày đặt</th>
                     <th>Trạng thái</th>
                 </tr>
             </thead>
             <tbody>
+                {%for o in orders%}
                 <tr>
-                    <td>1</td>
-                    <td>Tô Duy Nguyên Hoàng</td>
-                    <td>MD001</td>
-                    <td>Laptop Lenovo ThinkPad X1</td>
-                    <td>6500000 VND</td>
-                    <td>17/06/2023</td>
+                   
+                    <td>{{o.getinfo}}</td>
+                    <td>{{o.transaction}}</td>
+                    <td>{{o.total}} VND</td>
+                    <td>{{o.date_order}}</td>
                     <td>
-                        <button style="background-color: aquamarine;">Xác nhận đã mua</button>
+                        <a href= "confirm/{{o.id}}/"><button style="background-color: aquamarine;">Xác nhận đã mua</button></a>
                         <hr>
-                        <button style="background-color: red; color: aliceblue;">Xóa đơn</button>
+                        <a href= "cancel/{{o.id}}/"><button style="background-color: red; color: aliceblue;">Xóa đơn</button></a>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Mạc An Kiều</td>
-                    <td>MD002</td>
-                    <td>Apple Watch SE 2022 40mm</td>
-                    <td>6090000 VND</td>
-                    <td>30/06/2023</td>
-                    <td>
-                        <button style="background-color: aquamarine;">Xác nhận đã mua</button>
-                        <hr>
-                        <button style="background-color: red; color: aliceblue;">Xóa đơn</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Phạm Nhật Quang</td>
-                    <td>MD003</td>
-                    <td>Apple Iphone 14 128GB</td>
-                    <td>17250000 VND</td>
-                    <td>07/07/2023</td>
-                    <td>
-                        <button style="background-color: aquamarine;">Xác nhận đã mua</button>
-                        <hr>
-                        <button style="background-color: red; color: aliceblue;">Xóa đơn</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Trần Duy Hưng</td>
-                    <td>MD004</td>
-                    <td>Ipad Pro M1 11 inch WiFi 2TB</td>
-                    <td>45000000 VND</td>
-                    <td>04/12/2022</td>
-                    <td>
-                        <button style="background-color: aquamarine;">Xác nhận đã mua</button>
-                        <hr>
-                        <button style="background-color: red; color: aliceblue;">Xóa đơn</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>QLee Review</td>
-                    <td>MD005</td>
-                    <td>Samsung Galaxy S22</td>
-                    <td>18000000 VND</td>
-                    <td>30/12/2022</td>
-                    <td>
-                        <button style="background-color: aquamarine;">Xác nhận đã mua</button>
-                        <hr>
-                        <button style="background-color: red; color: aliceblue;">Xóa đơn</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Triệu Quân Sự</td>
-                    <td>MD006</td>
-                    <td>MSI Gaming</td>
-                    <td>21500000 VND</td>
-                    <td>08/07/2023</td>
-                    <td>
-                        <button style="background-color: aquamarine;">Xác nhận đã mua</button>
-                        <hr>
-                        <button style="background-color: red; color: aliceblue;">Xóa đơn</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Kim SeokJin</td>
-                    <td>MD007</td>
-                    <td>Ipad Pro M1 11 inch WiFi 2TB</td>
-                    <td>45000000 VND</td>
-                    <td>04/12/2022</td>
-                    <td>
-                        <button style="background-color: aquamarine;">Xác nhận đã mua</button>
-                        <hr>
-                        <button style="background-color: red; color: aliceblue;">Xóa đơn</button>
-                    </td>
-                </tr>
+                {%endfor%}
+
             </tbody>
             
         </table>
