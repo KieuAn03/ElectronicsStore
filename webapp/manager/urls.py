@@ -1,5 +1,5 @@
 from django.urls import path
-from manager.views import revenue_static,add_staff,staff_list, remove_staff
+from manager.views import revenue_static,add_staff,staff_list, remove_staff,edit_staff_profile
 from manager.views import *
 
 urlpatterns = [
@@ -7,9 +7,11 @@ urlpatterns = [
    path('add_staff/', add_staff , name="add_staff"),
    path('staff_list/', staff_list, name="staff_list"),
    path('remove_staff/<id_profile>', remove_staff, name='remove_staff'),
+   path('staff_profile/<id_profile>/', staff_profile, name='staff_profile'),
+   path('edit_staff_profile/<id_profile>/', edit_staff_profile, name='edit_staff_profile'),
    path('product_control/add_phone/', add_phone_product , name="add_productphone"),
    path('product_control/add_laptop/', add_laptop_product , name="add_productlaptop"),
    path('product_control/add_watch/', add_watch_product , name="add_productwatch"),
    path('product_control/add_tablet/', add_tablet_product , name="add_producttablet"),
 
-]
+]  

@@ -7,23 +7,6 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserUpdateForm, ProfileUpdateForm, UserRegisterForm, ProfileForm
 from cart.models import *
 # Create your views here.
-@login_required(login_url='login')
-def profile(request):
-    
-    cart = Cart.objects.get(complete = False, user = request.user)
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
-        if form.is_valid():
-            form.save()
-            username = request.user.username
-            messages.success(request, f'{username}, Your profile is updated.')
-            return redirect('/')
-    else:
-        form = ProfileForm(instance=request.user.profile)
-    context = {'form':form,
-               'cart': cart,}
-    return render(request, 'profileapp/profile.html', context)
-
 
 def login_page(request):
 
@@ -64,18 +47,19 @@ def logout_user(request):
 
 def profile_page(request):
     if(request.user.is_authenticated):
-        cart = Cart.objects.get(complete = False, user = request.user)
-
-        form = ProfileUpdateForm()
-        context = {'form':form,
+        try:
+            cart = Cart.objects.get(complete = False, user = request.user)
+        except:
+            pass
+        try:
+            context = {
                 'cart':cart,}
-        if request.method=='POST':
-            name = request.POST.get('name')
-            email = request.POST.get('email')
-            phone = request.POST.get('phone')
-            address = request.POST.get('address')
+            return render(request, 'accounts/profile.html',context)
+        except:
+            pass
 
-        return render(request, 'accounts/profile.html',context)
+
+        return render(request, 'accounts/profile.html')
     else:
         return redirect('login')
 
@@ -83,8 +67,10 @@ def profile_page(request):
 @login_required(login_url='login.html')
 def update_profile_page(request):
     if(request.user.is_authenticated):
-        cart = Cart.objects.get(complete = False, user = request.user)
-
+        try:
+            cart = Cart.objects.get(complete = False, user = request.user)
+        except:
+            pass
         if request.method == 'POST':
             u_form = UserUpdateForm(request.POST , instance=request.user)
             p_form = ProfileUpdateForm(request.POST , request.FILES ,instance=request.user.profile)
@@ -97,17 +83,25 @@ def update_profile_page(request):
         else:
             u_form = UserUpdateForm(instance=request.user)
             p_form = ProfileUpdateForm(instance=request.user.profile)
-        context = {
-            'u_form': u_form,
-            'p_form': p_form,
-            'cart': cart,
-        }
+        try:
+            context = {
+                'u_form': u_form,
+                'p_form': p_form,
+                'cart': cart,
+            }
+        except:
+            context = {
+                'u_form': u_form,
+                'p_form': p_form,
+                
+            }
         return render(request, 'accounts/update_profile.html', context)
     else:
         return redirect('login')
 def logout_page(request):
     logout(request)
-    return render(request, 'accounts/login.html')
+    return redirect('login')
+
 def remove_coupon(request, cart_id):
     cart = Cart.objects.get(uid = cart_id)
     cart.coupon = None

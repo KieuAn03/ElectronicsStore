@@ -75,6 +75,46 @@ def remove_staff(request, id_profile):
     except Exception as e: 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+def staff_profile(request,id_profile):
+    u = User.objects.get(username = id_profile)
+    p = Profile.objects.get(user=u )
+    s_p = StaffProfile.objects.get(id_profile = p)
+    context = {
+        'staff_profile':s_p
+    }
+
+    return render(request, 'staff/staff_profile.html',context)
+
+def edit_staff_profile(request, id_profile):
+    if request.method == 'POST':
+            u = User.objects.get(username = id_profile)
+            p = Profile.objects.get(user=u )
+            s_p = StaffProfile.objects.get(id_profile = p)
+
+            u_form = UserUpdateForm(request.POST , instance=u)
+            p_form = ProfileUpdateForm(request.POST , request.FILES ,instance=p)
+            s_form = StaffUpdateForm(request.POST, instance=s_p)
+            if u_form.is_valid() and p_form.is_valid():
+                u_form.save()
+                p_form.save()
+                s_form.save()
+                messages.success(request, f'Thông tin đã được cập nhật thành công!')
+                return redirect('staff_list')
+    else:
+        u = User.objects.get(username = id_profile)
+        p = Profile.objects.get(user=u )
+        s_p = StaffProfile.objects.get(id_profile = p)
+        u_form = UserUpdateForm( instance=u)
+        p_form = ProfileUpdateForm(instance=p)
+        s_form = StaffUpdateForm( instance=s_p)
+        context = {
+            'u_form': u_form,
+            'p_form': p_form,
+            's_form': s_form,
+        }
+        return render(request, 'manager/edit_staff_profile.html', context)
+    return render(request, 'staff/staff_profile.html', context)
+
 def add_phone_product(request):
     if request.method == 'POST':
         type = ProductType.objects.get(name='Phone')
