@@ -15,4 +15,4 @@ class Profile(models.Model):
         try:
             return self.user.username
         except:
-            return "kh co ten"
+            return "None"

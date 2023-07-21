@@ -20,11 +20,15 @@ def index(request):
         products = Product.objects.filter(Name__icontains=que)
     else:
         products = Product.objects.all()
-    if (request.user.is_authenticated):
-        
-        context = {'products' : products,
-                'cart': cart,
-                }
+    if (request.user.is_authenticated ):
+        try: 
+            context = {'products' : products,
+                    'cart': cart,
+                    }
+        except:
+            context = {'products' : products,
+                    
+                    }
     else:
         context = {'products' : products,
                
