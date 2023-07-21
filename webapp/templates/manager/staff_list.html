@@ -56,12 +56,11 @@
         </div>
     </div>
 </nav>
-
-<form style="margin: 25px 50px 50px 25px;" class="d-flex" role="search">
-    <input style="width: 500px;" class="form-control" type="text" placeholder="Tìm kiếm hoặc thêm nhân viên" aria-label="Search">
-    <button style="margin-left: 20px;" class="btn btn-outline-success" type="submit">Thêm</button>
-    <button style="margin-left: 20px;" class="btn btn-outline-success" type="submit">Tìm kiếm</button>
-</form>
+    <form style="margin: 25px 50px 50px 25px;padding-left: 10cm;" class="d-flex" role="search">
+        <input style="width: 500px;" class="form-control" type="text" placeholder="Tìm kiếm hoặc thêm nhân viên" aria-label="Search">
+        <button style="margin-left: 20px;" class="btn btn-outline-success" type="submit">Tìm kiếm</button>
+    </form>
+    <a href="{% url 'add_staff' %}"><button style="margin-left: 4.5cm;" class="btn btn-outline-success">Thêm</button></a>
     
 
 <div class="row">
@@ -102,7 +101,7 @@
                     </td>
                     <td>
                         
-                        <button style="background-color:red; color: aliceblue;">Sửa</button>
+                        <button style="background-color:red; color: aliceblue;">Xóa</button>
                     </td>
                 </tr>
                 {% endfor %}
