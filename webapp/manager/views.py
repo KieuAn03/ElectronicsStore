@@ -1,6 +1,11 @@
-from django.shortcuts import render
-from home.models import Product
+from django.shortcuts import render,redirect
+from django.contrib import messages      
+
+from home.models import *
 from .models import CountItems,TotalRevenue
+from base.models import *
+from django.core.files.storage import FileSystemStorage
+from .form import add_Product,add_Phone
 # Create your views here.
 def revenue_static(request):
     count_i = CountItems.objects.all()
@@ -16,4 +21,26 @@ def revenue_static(request):
 
 
 def add_phone_product(request):
-    return render(request, 'manager/add_change_phone.html')
+
+    if request.method == 'POST' :
+        type = ProductType.objects.get(name='Phone')
+        pro = Product.objects.create(product_type=type)
+        pro.save()
+        phone = Phone.objects.create(product_id=pro)
+        phone.save()
+        u_form = add_Product(request.POST , request.FILES, instance= pro)
+        p_form = add_Phone(request.POST, request.FILES, instance= phone)
+        if u_form.is_valid():
+            pro.save()  
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Thông tin đã được cập nhật thành công!')
+            return redirect('add_product') 
+    else:
+        u_form = add_Product(request.FILES)
+        p_form = add_Phone(request.FILES)
+        context = {
+            'u_form': u_form,
+            'p_form': p_form,
+        }
+        return render(request, 'manager/add_change_phone.html',context) 

@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 {% include 'base/navbar-manager.html' %}
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,6 +70,42 @@
 			</div>
 		  </div>
 		  <hr>
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Thông tin cá nhân</legend>
+				{{ u_form|crispy }}
+				{{ p_form|crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button type="submit" class="btn btn-outline-primary" style = "margin: auto;">Cập nhật</button>
+			</div>
+		</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		  <form >
 			
 				<legend><h1>Thêm điện thoại</h1></legend>
@@ -76,35 +113,39 @@
 				<table style="font-size: 17px;">
 					<tr>
 						<td>Name: <hr></td>
-						<td style="padding-left: 30px;"><input type="text" placeholder="Tên sản phẩm" style="width: 10cm;"><hr></td>
+						<td style="padding-left: 30px;"><input type="text" placeholder="Tên sản phẩm" style="width: 10cm;" name ="name"><hr></td>
 						
 					</tr>
 					<tr>
 						<td>Price: <hr></td>
-						<td style="padding-left: 30px;"><input type="text" placeholder="Giá tiền (VND)"><hr></td>
+						<td style="padding-left: 30px;"><input type="text" placeholder="Giá tiền (VND)"  name ="price"><hr></td>
 					</tr>
 				
 					<tr>
 						<td>Stock: <hr></td>
-						<td style="padding-left: 30px;"><input type="text" placeholder="Tồn kho"><hr></td>
+						<td style="padding-left: 30px;"><input type="text" placeholder="Tồn kho"  name ="stock"><hr></td>
 					</tr>
 					<tr>
 						<td>Image1: <hr></td>
-						<td style="padding-left: 30px;"><button>Choose File</button> No file chosen<hr></td>
+						<td style="padding-left: 30px;">
+							<input type="file" name="img1" accept="image/*"><hr>
+						</td>
 					</tr>
 					<tr>
 						<td>Image2: <hr></td>
-						<td style="padding-left: 30px;"><button>Choose File</button> No file chosen<hr></td>
+						<td style="padding-left: 30px;"><input type="file" name="img2" accept="image/*"><hr></td>
 					</tr>
 					<tr>
 						<td>Image3: <hr></td>
-						<td style="padding-left: 30px;"><button>Choose File</button> No file chosen<hr></td>
+						<td style="padding-left: 30px;"><input type="file" name="img3" accept="image/*"><hr></td>
 					</tr>
 					<tr>
 						<td>Brand : <hr></td>
 						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
+							 <select name= 'phonebrand'>
+								{% for os in phonebrand %}
+									<option value="1">{{os.name}}</option>
+								{%endfor%}
 							 </select>
 							 <i class="fa fa-plus"></i>
 							 <hr>
@@ -113,18 +154,23 @@
 					<tr>
 						<td>Color : <hr></td>
 						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
+							 <select name='phonecolor'>
+								{% for os in phonecolor %}
+									<option value="1">{{os.name}}</option>
+								{%endfor%}
 							 </select>
 							 <i class="fa fa-plus"></i>
+
 							 <hr>
 						</td>						
 					</tr>
 					<tr>
 						<td>Screen : <hr></td>
 						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
+							 <select name='phonescreen'>
+								{%for screen in phonescreen%}
+								<option value="1">{{screen.name}}</option>
+								{%endfor%}
 							 </select>
 							 <i class="fa fa-plus"></i>
 							 <hr>
@@ -133,8 +179,10 @@
 					<tr>
 						<td>OS : <hr></td>
 						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
+							 <select name = 'phoneos'>
+								{% for os in phoneos %}
+									<option value="1">{{os.name}}</option>
+								{%endfor%}
 							 </select>
 							 <i class="fa fa-plus"></i>
 							 <hr>
@@ -143,8 +191,10 @@
 					<tr>
 						<td>BackCamera : <hr></td>
 						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
+							 <select name= 'phonebackcam'>
+								{% for os in phonebackcamera %}
+									<option value="1">{{os.name}}</option>
+								{%endfor%}
 							 </select>
 							 <i class="fa fa-plus"></i>
 							 <hr>
@@ -153,8 +203,10 @@
 					<tr>
 						<td>FrontCamera : <hr></td>
 						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
+							 <select name='phonefrontcam'>
+								{% for os in phonefrontcamera %}
+									<option value="1">{{os.name}}</option>
+								{%endfor%}
 							 </select>
 							 <i class="fa fa-plus"></i>
 							 <hr>
@@ -163,8 +215,10 @@
 					<tr>
 						<td>Chips : <hr></td>
 						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
+							 <select name='phonechip'>
+								{% for os in phonechips %}
+									<option value="1">{{os.name}}</option>
+								{%endfor%}
 							 </select>
 							 <i class="fa fa-plus"></i>
 							 <hr>
@@ -173,8 +227,10 @@
 					<tr>
 						<td>Sim : <hr></td>
 						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
+							 <select name='phonesim'>
+								{% for os in phonesim %}
+									<option value="1">{{os.name}}</option>
+								{%endfor%}
 							 </select>
 							 <i class="fa fa-plus"></i>
 							 <hr>
@@ -183,8 +239,10 @@
 					<tr>
 						<td>Battery : <hr></td>
 						<td style="padding-left: 30px;">
-							 <select>
-								<option value="1">-----------</option>
+							 <select name='phonebattery'>
+								{% for os in phonebattery %}
+									<option value="1">{{os.name}}</option>
+								{%endfor%}
 							 </select>
 							 <i class="fa fa-plus"></i>
 							 <hr>
@@ -194,14 +252,16 @@
 						<td>Info : <hr></td>
 						<td style="padding-left: 30px;">
 							 
-							<textarea rows="7" cols="80"></textarea>
+							<textarea name = 'phoneinfo' rows="7" cols="80"></textarea>
 							<hr>
 						</td>						
 					</tr>
 					<tr>
 						<td>&nbsp;<hr></td>
 						<td style="padding-left: 30px;">
-							<input type="submit" value="Add"><hr>
+							<input type="submit" value="Thêm sản phẩm">
+							<input type="submit" value="Thêm + thêm màu">
+							<input type="submit" value="Thêm + thêm phần cứng">
 						</td>						
 					</tr>
 					<tr>
