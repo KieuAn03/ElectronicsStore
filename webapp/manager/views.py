@@ -44,3 +44,12 @@ def add_staff(request):
             print(profile)
 
     return render(request, 'manager/add_staff.html')
+
+def staff_list(request):
+    user_profile = Profile.objects.filter(is_staff = True)
+    staff_profile = StaffProfile.objects.all()
+    context = {
+        'profile':user_profile,
+        'staff_profile':staff_profile
+    }
+    return render(request, 'manager/staff_list.html',context)

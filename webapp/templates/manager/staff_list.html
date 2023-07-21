@@ -1,3 +1,4 @@
+{% load static %}
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,13 +88,14 @@
                 </tr>
             </thead>
             <tbody>
+                {% for s in staff_profile %}
                 <tr>
                     <td>1</td>
                     
-                    <td>Tô Duy Nguyên Hoàng</td>
-                    <td>Nhân viên văn phòng</td>
-                    <td>0969308539</td>
-                    <td>Sáng-chiều</td>
+                    <td>{{s.id_profile.name}}</td>
+                    <td>{{s.typeStaff}}</td>
+                    <td>{{s.id_profile.phone}}</td>
+                    <td>{{s.shift}}</td>
                     <td>
                         
                         <button style="background-color:rgba(13, 255, 0, 0.716); color: aliceblue;">Sửa</button>
@@ -103,102 +105,8 @@
                         <button style="background-color:red; color: aliceblue;">Sửa</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    
-                    <td>Phạm Nhật Quang</td>
-                    <td>Trưởng phòng</td>
-                    <td>0988514798</td>
-                    <td>Sáng-chiều</td>
-                    <td>
-                        
-                        <button style="background-color:rgba(13, 255, 0, 0.716); color: aliceblue;">Sửa</button>
-                    </td>
-                    <td>
-                        
-                        <button style="background-color:red; color: aliceblue;">Sửa</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    
-                    <td>Mạc An Kiều</td>
-                    <td>Giám đốc</td>
-                    <td>0364452904</td>
-                    <td>Sáng</td>
-                    <td>
-                        
-                        <button style="background-color:rgba(13, 255, 0, 0.716); color: aliceblue;">Sửa</button>
-                    </td>
-                    <td>
-                        
-                        <button style="background-color:red; color: aliceblue;">Sửa</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    
-                    <td>Trần Duy Hưng</td>
-                    <td>Kế toán</td>
-                    <td>0913148137</td>
-                    <td>Sáng-chiều</td>
-                    <td>
-                        
-                        <button style="background-color:rgba(13, 255, 0, 0.716); color: aliceblue;">Sửa</button>
-                    </td>
-                    <td>
-                        
-                        <button style="background-color:red; color: aliceblue;">Sửa</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    
-                    <td>Kim Tae Hyung</td>
-                    <td>Kế toán trưởng</td>
-                    <td>02389993814</td>
-                    <td>Sáng-chiều</td>
-                    <td>
-                        
-                        <button style="background-color:rgba(13, 255, 0, 0.716); color: aliceblue;">Sửa</button>
-                    </td>
-                    <td>
-                        
-                        <button style="background-color:red; color: aliceblue;">Sửa</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    
-                    <td>Min Yoongi</td>
-                    <td>Phó trưởng phòng</td>
-                    <td>0395569035</td>
-                    <td>Sáng-chiều</td>
-                    <td>
-                        
-                        <button style="background-color:rgba(13, 255, 0, 0.716); color: aliceblue;">Sửa</button>
-                    </td>
-                    <td>
-                        
-                        <button style="background-color:red; color: aliceblue;">Sửa</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    
-                    <td>Kim Seokjin</td>
-                    <td>Phó giám đốc</td>
-                    <td>0979418408</td>
-                    <td>Chiều</td>
-                    <td>
-                        
-                        <button style="background-color:rgba(13, 255, 0, 0.716); color: aliceblue;">Sửa</button>
-                    </td>
-                    <td>
-                        
-                        <button style="background-color:red; color: aliceblue;">Sửa</button>
-                    </td>
-                </tr>
+                {% endfor %}
+                
             </tbody>
             
         </table>
