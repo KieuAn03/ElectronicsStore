@@ -1,7 +1,11 @@
-from django.http import HttpResponseRedirect
 from home.models import Product
 from django.contrib import messages    
 from django.contrib.auth.models import User
+from django.shortcuts import render,redirect
+from django.contrib import messages      
+from django.http import HttpResponseRedirect,HttpResponse
+
+from home.models import *
 from .models import CountItems,TotalRevenue
 from accounts.models import *
 from staff.models import *
@@ -74,7 +78,17 @@ def remove_staff(request, id_profile):
 
     except Exception as e: 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+def product_control(request):
+    product = Product.objects.all()
+    context = {
+                'products': product,
+    }
+    return render(request, 'manager/ProductRemnant.html',context)
 
+def delete_product(request, id):
+    product = Product.objects.get(id = id)
+    product.delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 def add_phone_product(request):
     if request.method == 'POST':
         type = ProductType.objects.get(name='Phone')
@@ -177,6 +191,7 @@ def add_watch_product(request):
             'p_form': p_form,
         }
         return render(request, 'manager/add_change_phone.html',context)
+    return render(request, 'manager/add_change_phone.html',context)
 
 def add_tablet_product(request):
     if request.method == 'POST':
@@ -231,3 +246,101 @@ def add_tablet_product(request):
             'p_form': p_form,
         }
         return render(request, 'manager/add_change_phone.html',context) 
+
+
+
+def edit_phone_product(request,id):
+    if request.method == 'POST':
+        pro = Product.objects.get(id = id)
+        phone = Phone.objects.get(product_id=pro)
+        u_form = add_Product(request.POST , request.FILES, instance= pro)
+        p_form = edit_Phone(request.POST, request.FILES, instance= phone)
+        if u_form.is_valid():
+            pro.save()  
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Thông tin đã được cập nhật thành công!')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        profrom = Product.objects.get(id=id)
+        detail = Phone.objects.get(product_id=profrom)
+        u_form = add_Product(instance=profrom)
+        p_form = edit_Phone(instance = detail)
+        context = {
+            'u_form': u_form,
+            'p_form': p_form,
+        }
+        return render(request, 'manager/add_change_phone.html',context) 
+
+def edit_laptop_product(request,id):
+    if request.method == 'POST':
+        pro = Product.objects.get(id = id)
+        phone = Laptop.objects.get(product_id=pro)
+        u_form = add_Product(request.POST , request.FILES, instance= pro)
+        p_form = edit_Laptop(request.POST, request.FILES, instance= phone)
+        if u_form.is_valid():
+            pro.save()  
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Thông tin đã được cập nhật thành công!')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        profrom = Product.objects.get(id=id)
+        detail = Laptop.objects.get(product_id=profrom)
+        u_form = add_Product(instance=profrom)
+        p_form = edit_Laptop(instance = detail)
+        context = {
+            'u_form': u_form,
+            'p_form': p_form,
+        }
+        return render(request, 'manager/add_change_phone.html',context) 
+
+def edit_tablet_product(request,id):
+    if request.method == 'POST':
+        pro = Product.objects.get(id = id)
+        phone = Tablet.objects.get(product_id=pro)
+        u_form = add_Product(request.POST , request.FILES, instance= pro)
+        p_form = edit_Tablet(request.POST, request.FILES, instance= phone)
+        if u_form.is_valid():
+            pro.save()  
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Thông tin đã được cập nhật thành công!')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        profrom = Product.objects.get(id=id)
+        detail = Tablet.objects.get(product_id=profrom)
+        u_form = add_Product(instance=profrom)
+        p_form = edit_Tablet(instance = detail)
+        context = {
+            'u_form': u_form,
+            'p_form': p_form,
+        }
+        return render(request, 'manager/add_change_phone.html',context) 
+
+def edit_watch_product(request,id):
+    if request.method == 'POST':
+        pro = Product.objects.get(id = id)
+        phone = watch.objects.get(product_id=pro)
+        u_form = add_Product(request.POST , request.FILES, instance= pro)
+        p_form = edit_Watch(request.POST, request.FILES, instance= phone)
+        if u_form.is_valid():
+            pro.save()  
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Thông tin đã được cập nhật thành công!')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        profrom = Product.objects.get(id=id)
+        detail = watch.objects.get(product_id = profrom)
+        u_form = add_Product(instance=profrom)
+        p_form = edit_Watch(instance = detail)
+        context = {
+            'u_form': u_form,
+            'p_form': p_form,
+        }
+        return render(request, 'manager/add_change_phone.html',context) 
+
+
+
+    
