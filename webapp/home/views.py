@@ -77,36 +77,9 @@ def checkouts(request, **kwargs):
                 cart.transaction= unique_id
                 cart.save()
 
-                phone = cart.cart_item_phone_set.all()
-                category = CountItems.objects.first()
-                total = TotalRevenue.objects.first()
-                for item in phone:
-                    category.phone += item.quantity
-                    category.save()
-
-                laptop = cart.cart_item_laptop_set.all()
-                for item in laptop:
-                    category.laptop += item.quantity
-                    category.save()
-
-                tablet = cart.cart_item_tablet_set.all()
-                for item in tablet:
-                    category.tablet += item.quantity
-                    category.save()
-
-                watch = cart.cart_item_watch_set.all()
-                for item in watch:
-                    category.watch += item.quantity
-                    category.save()
-
-                total.total += cart.total()
                 
-                print(total.order_number)
-                total.add()
-                total.save()
-                print("TONG DON HANGGGGGGGGGGGGG")
-                print(total.order_number)
-                
+
+               
                 history_item = historycart.objects.create(cart = cart ,user = user, cart_info = cart_i)
                 history_item.save()
                 phone = cart.cart_item_phone_set.all()
