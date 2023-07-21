@@ -1,13 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+from accounts.models import Profile
 # Create your models here.
 class StaffProfile(models.Model):
-    user = models.OneToOneField(User , on_delete=models.CASCADE)
-    profile_image = models.ImageField(default='default.jpg',upload_to='profile_images')
-    address = models.CharField(max_length=200, null=True)
-    name = models.CharField(max_length=100,null=True)
-    phone = models.CharField(max_length=100,null=True)
-    joinDate = models.DateField(null = True)
+    id_profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    joinDate = models.DateTimeField(auto_now_add=True,null=True)
     typeStaff = models.CharField(max_length=100,null=True)
     def __str__(self):
-        return self.user.username
+        return self.id_profile.name
