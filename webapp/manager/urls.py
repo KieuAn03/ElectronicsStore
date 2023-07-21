@@ -3,6 +3,9 @@ from manager.views import revenue_static,add_staff,staff_list, remove_staff,edit
 from manager.views import *
 
 urlpatterns = [
+   path('ordermanagement/', ordermanagement , name="ordermanagement"),
+   path('ordermanagement/confirm/<id>/', confirmordermanagement , name="ordermanagement"),
+   path('ordermanagement/cancel/<id>/', cancelordermanagement , name="ordermanagement"),
    path('revenue_chart/', revenue_static , name="revenue"),
    path('add_staff/', add_staff , name="add_staff"),
    path('staff_list/', staff_list, name="staff_list"),

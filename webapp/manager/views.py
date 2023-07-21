@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render,redirect
 from django.contrib import messages      
 from django.http import HttpResponseRedirect,HttpResponse
-
+from cart.models import *
 from home.models import *
 from .models import CountItems,TotalRevenue
 from accounts.models import *
@@ -383,4 +383,54 @@ def edit_watch_product(request,id):
 
 
 
+def ordermanagement(request):
+    cart = Cart.objects.filter(complete = True, paid = False)
+    context = {
+        'orders':cart,
+        
+        
+    }
+    return render(request, 'manager/ordermanagement.html',context)
+def confirmordermanagement(request, id):
+    cart = Cart.objects.get(id = id)
+    cart.paid = True
+   
+    phone = cart.cart_item_phone_set.all()
+    category = CountItems.objects.first()
+    total = TotalRevenue.objects.first()
+    for item in phone:
+        category.phone += item.quantity
+        category.save()
+
+    laptop = cart.cart_item_laptop_set.all()
+    for item in laptop:
+        category.laptop += item.quantity
+        category.save()
+
+    tablet = cart.cart_item_tablet_set.all()
+    for item in tablet:
+        category.tablet += item.quantity
+        category.save()
+
+    watch = cart.cart_item_watch_set.all()
+    for item in watch:
+        category.watch += item.quantity
+        category.save()
+
+    for item in phone:
+        category.phone += item.quantity
+        category.save()
+    total.total += cart.total()
+                
+                
+    total.add()
+    total.save()
+    cart.save()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+def cancelordermanagement(request, id):
+    cart = Cart.objects.get(id = id)
+    
+    cart.delete()
+    
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     
