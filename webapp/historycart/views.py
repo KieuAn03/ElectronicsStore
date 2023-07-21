@@ -10,14 +10,24 @@ from accounts.models import *
 def historycart_page(request):
     if(request.user.is_authenticated):
         user = request.user
-        cart = Cart.objects.get(complete = False, user = user)
+        try:
+            cart = Cart.objects.get(complete = False, user = user)
+        except:
+            pass
         userprofile = Profile.objects.get(user = user)
         history = Cart.objects.filter(complete = True, user = user)
-        context ={
-            'history':history,
-            'user': userprofile,
-            'cart':cart,
-        }
+        try:
+            context ={
+                'history':history,
+                'user': userprofile,
+                'cart':cart,
+            }
+        except:
+            context ={
+                'history':history,
+                'user': userprofile,
+                
+            }
         return render(request, 'historycart.html',context)
     else:
         return render(request, 'historycart.html')

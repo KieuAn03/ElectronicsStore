@@ -54,10 +54,14 @@ def checkouts(request, **kwargs):
         if request.method=='POST':
             if 'voucher' in request.POST:
                 if(cart.is_discounted!= True):
-                    
-                    if(request.POST.get('voucher') == str(cart.voucher.code)):
-                        cart.is_discounted= True
-                        cart.save()
+                    vchr = voucher.objects.all()
+                    for v in vchr:
+                        
+                        if(request.POST.get('voucher') == str(v.code)):
+                            cart.is_discounted= True
+                            cart.voucher = v
+                            cart.save()
+                
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         if request.method=='POST':
             if 'voucher' not in request.POST:
@@ -281,6 +285,9 @@ def details(request, id, **kwargs):
                         
                     }
     if(request.user.is_authenticated):
-        cart = Cart.objects.get(complete = False, user = request.user)
-        context['cart'] = cart
+        try:
+            cart = Cart.objects.get(complete = False, user = request.user)
+            context['cart'] = cart
+        except:
+            pass
     return render(request, 'detail.html',context)

@@ -107,8 +107,24 @@ def add_to_cart(request , **kwargs):
 def remove_cart(request , cart_item_uid):
     try:
         cart = Cart.objects.get(complete = False, user = request.user)
-        cart_item = cart.cart_item_phone_set.get(id = cart_item_uid)
-        cart_item.delete()
+        try:
+            cart_item = cart.cart_item_phone_set.get(id = cart_item_uid)
+            cart_item.delete()
+        except:
+            try:
+                cart_item = cart.cart_item_laptop_set.get(id = cart_item_uid)
+                cart_item.delete()
+            except:
+                try:
+                    cart_item = cart.cart_item_tablet_set.get(id = cart_item_uid)
+                    cart_item.delete()
+                except:
+                    try:
+                        cart_item = cart.cart_item_watch_set.get(id = cart_item_uid)
+                        cart_item.delete()
+                    except:
+                        pass
+
     except Exception as e:
         print(e)
 
