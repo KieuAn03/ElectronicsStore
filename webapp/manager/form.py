@@ -5,6 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.forms.models import ModelForm
 from home.models import *
 from base.models import *
+from accounts.models import *
+from staff.models import *
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.forms import widgets
@@ -446,3 +448,24 @@ class edit_Tablet(forms.ModelForm):
         model = Tablet
         exclude = ['id','product_id']
         fields="__all__"
+
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ['username','email']
+
+class ProfileUpdateForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['name','phone','address','profile_image']
+        exclude = ['user']
+        widgets = {
+            'profile_image': FileInput(),
+        }    
+class StaffUpdateForm(forms.ModelForm):
+    class Meta:
+        model = StaffProfile
+        fields = ['typeStaff','shift']
+        exclude = ['id_profile']

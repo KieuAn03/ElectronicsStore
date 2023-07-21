@@ -16,7 +16,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="https://kit.fontawesome.com/e6ef55250b.js" crossorigin="anonymous"></script>
-
+{% include 'base/navbar-manager.html' %}
 <section style="background-color: #eee;">
     <div class="container py-5">
       <div class="row">
@@ -35,16 +35,15 @@
         <div class="col-lg-4">
           <div class="card mb-4">
             <div class="card-body text-center">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              <img src="{{staff_profile.id_profile.profile_image.url}}" alt="avatar"
                 class="rounded-circle img-fluid" style="width: 150px;">
-              <h5 class="my-3">{{user.profile.name}}</h5>
-              <p class="text-muted mb-1">Full Stack Developer</p>
-              <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+              <h5 class="my-3">{{staff_profile.id_profile.name}}</h5>
               
             </div>
           </div>
           
         </div>
+        <form action="" method="POST">
         <div class="col-lg-8">
           <div class="card mb-4">
             <div class="card-body">
@@ -53,7 +52,7 @@
                   <p class="mb-0">Họ và tên</p>
                 </div>
                 <div class="col-sm-9">
-                  <input type="search" class="form-control rounded" placeholder="Họ và tên" name="name" aria-label="Johnatan Smith" aria-describedby="search-addon" />
+                  <input type="search" class="form-control rounded" placeholder="{{staff_profile.id_profile.name}}" name="name" aria-label="Johnatan Smith" aria-describedby="search-addon" />
                   
                 </div>
               </div>
@@ -63,7 +62,7 @@
                   <p class="mb-0">Email</p>
                 </div>
                 <div class="col-sm-9">
-                  <input type="search" class="form-control rounded" placeholder="Email" name="name" aria-label="Johnatan Smith" aria-describedby="search-addon" />
+                  <input type="search" class="form-control rounded" placeholder="{{user.email}}" name="name" aria-label="Johnatan Smith" aria-describedby="search-addon" />
                   
                 </div>
               </div>
@@ -73,7 +72,7 @@
                   <p class="mb-0">Số điện thoại</p>
                 </div>
                 <div class="col-sm-9">
-                  <input type="search" class="form-control rounded" placeholder="Số điện thoại" name="name" aria-label="Johnatan Smith" aria-describedby="search-addon" />
+                  <input type="search" class="form-control rounded" placeholder="{{user.profile.phone}}" name="name" aria-label="Johnatan Smith" aria-describedby="search-addon" />
                   
                 </div>
               </div>
@@ -83,7 +82,7 @@
                   <p class="mb-0">Địa chỉ</p>
                 </div>
                 <div class="col-sm-9">
-                  <input type="search" class="form-control rounded" placeholder="Địa chỉ" name="name" aria-label="Johnatan Smith" aria-describedby="search-addon" />
+                  <input type="search" class="form-control rounded" placeholder="{{user.profile.address}}" name="name" aria-label="Johnatan Smith" aria-describedby="search-addon" />
                   
                 </div>
               </div>
@@ -92,8 +91,7 @@
                 <div class="col-sm-3">
                   <p class="mb-0">Ngày bắt đầu làm</p>
                 </div>
-                <div class="col-sm-9">
-                  <input type="search" class="form-control rounded" placeholder="Ngày tháng năm" name="name" aria-label="Johnatan Smith" aria-describedby="search-addon" />
+                <div class="col-sm-9">{{staff_profile.joinDate}}
                   
                 </div>
               </div>
@@ -103,27 +101,19 @@
                   <p class="mb-0">Chức vụ</p>
                 </div>
                 <div class="col-sm-9">
-                  <input type="search" class="form-control rounded" placeholder="Chức vụ" name="name" aria-label="Johnatan Smith" aria-describedby="search-addon" />
+                  <input type="search" class="form-control rounded" placeholder="{{staff_profile.typeStaff}}" name="name" aria-label="Johnatan Smith" aria-describedby="search-addon" />
                   
                 </div>
               </div>
               <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Lương</p>
-                </div>
-                <div class="col-sm-9">
-                  <input type="search" class="form-control rounded" placeholder="Lương" name="name" aria-label="Johnatan Smith" aria-describedby="search-addon" />
-                  
-                </div>
-              </div>
             </div>
           </div>
           
       </div>
+    </form>
     </div>
   <div>
-  <a href="{% url 'update_profile' %}"><button type="button" class="btn btn-outline-primary" style = "margin: auto;">Cập nhật</button></a>
+  <a href="{% url 'edit_staff_profile' staff_profile.id_profile %}"><button type="button" class="btn btn-outline-primary" style = "margin: auto;">Cập nhật</button></a>
   </div>
   </div>
   </section>
