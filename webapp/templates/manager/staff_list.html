@@ -101,7 +101,7 @@
                     </td>
                     <td>
                         
-                        <button style="background-color:red; color: aliceblue;">Xóa</button>
+                        <a href="{% url 'remove_staff' s.id_profile %}"><button style="background-color:red; color: aliceblue;">Xóa</button></a>
                     </td>
                 </tr>
                 {% endfor %}

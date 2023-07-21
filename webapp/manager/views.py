@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from home.models import Product
+from django.contrib import messages    
 from django.contrib.auth.models import User
 from .models import CountItems,TotalRevenue
 from accounts.models import *
@@ -53,3 +55,18 @@ def staff_list(request):
         'staff_profile':staff_profile
     }
     return render(request, 'manager/staff_list.html',context)
+
+def remove_staff(request, id_profile):
+    try:
+        u = User.objects.get(username = id_profile)
+        u.delete()
+        
+        messages.success(request, "The user is deleted")  
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))       
+
+    except User.DoesNotExist:
+        messages.error(request, "User does not exist")    
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+    except Exception as e: 
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
