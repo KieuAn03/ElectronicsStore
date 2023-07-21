@@ -1,11 +1,12 @@
 from django.urls import path
-from manager.views import revenue_static,add_staff,staff_list, remove_staff,edit_staff_profile
+from manager.views import revenue_static,add_staff,staff_list, remove_staff,edit_staff_profile,mainpage
 from manager.views import *
 
 urlpatterns = [
    path('ordermanagement/', ordermanagement , name="ordermanagement"),
    path('ordermanagement/confirm/<id>/', confirmordermanagement , name="ordermanagement"),
    path('ordermanagement/cancel/<id>/', cancelordermanagement , name="ordermanagement"),
+   path('', mainpage , name="main"),
    path('revenue_chart/', revenue_static , name="revenue"),
    path('add_staff/', add_staff , name="add_staff"),
    path('staff_list/', staff_list, name="staff_list"),

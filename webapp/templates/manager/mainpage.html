@@ -1,3 +1,4 @@
+{% load static %}
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,25 +84,23 @@
 <div class="col-md-12 mb-3">
     <div class="row" style="display: flex; align-items: center; justify-content: center;">
     <div class="col-md-3">
-    <button type="button" class="btn mb-2 mb-md-0 btn-primary btn-block btn-round" style="height: 150px; display: block;"><span>Like</span>
-    <div class="icon icon-round d-flex align-items-center justify-content-center">
-    <i class="ion-ios-heart"></i>
-    </div>
+    <a href="{% url 'revenue' %}">
+    <button type="button" class="btn mb-2 mb-md-0 btn-primary btn-block btn-round" style="height: 150px; display: block;"><span>Doanh Thu</span>
     </button>
+    </a>
     </div>
     <div class="col-md-3">
-    <button type="button" class="btn mb-2 mb-md-0 btn-primary btn-block btn-round" style="height: 150px; display: block;"><span>Like</span>
-    <div class="icon icon-round d-flex align-items-center justify-content-center">
-    <i class="ion-ios-heart"></i>
-    </div>
+    <a href="{% url 'add_staff' %}">
+    <button type="button" class="btn mb-2 mb-md-0 btn-primary btn-block btn-round" style="height: 150px; display: block;"><span>Thêm Nhân Viên</span>
     </button>
+    </a>
     </div>
     <div class="col-md-3">
-        <button type="button" class="btn mb-2 mb-md-0 btn-primary btn-block btn-round" style="height: 150px; display: block;"><span>Like</span>
-        <div class="icon icon-round d-flex align-items-center justify-content-center">
-        <i class="ion-ios-heart"></i>
-        </div>
+        <a href="{% url 'staff_list' %}">
+        <button type="button" class="btn mb-2 mb-md-0 btn-primary btn-block btn-round" style="height: 150px; display: block;"><span>Danh Sách Nhân Viên</span>
         </button>
+        </a>
+        </div>
         </div> 
         
     </div>
@@ -111,27 +110,23 @@
     <div class="col-md-12 mb-3">
         <div class="row" style="display: flex; align-items: center; justify-content: center;">
         <div class="col-md-3">
-        <button type="button" class="btn mb-2 mb-md-0 btn-primary btn-block btn-round" style="height: 150px; display: block;"><span>Like</span>
-        <div class="icon icon-round d-flex align-items-center justify-content-center">
-        <i class="ion-ios-heart"></i>
-        </div>
+        <a href="{% url 'product_control' %}">
+        <button type="button" class="btn mb-2 mb-md-0 btn-primary btn-block btn-round" style="height: 150px; display: block;"><span>Quản Lý Sản Phẩm</span>
         </button>
+        </a>
         </div>
         <div class="col-md-3">
-        <button type="button" class="btn mb-2 mb-md-0 btn-primary btn-block btn-round" style="height: 150px; display: block;"><span>Like</span>
-        <div class="icon icon-round d-flex align-items-center justify-content-center">
-        <i class="ion-ios-heart"></i>
-        </div>
+        <a href="{% url 'ordermanagement' %}">
+        <button type="button" class="btn mb-2 mb-md-0 btn-primary btn-block btn-round" style="height: 150px; display: block;"><span>Quản Lý Đơn Hàng</span>
         </button>
+        </a>
         </div>
         <div class="col-md-3">
-            <button type="button" class="btn mb-2 mb-md-0 btn-primary btn-block btn-round" style="height: 150px; display: block;"><span>Like</span>
-            <div class="icon icon-round d-flex align-items-center justify-content-center">
-            <i class="ion-ios-heart"></i>
-            </div>
+            <a href="{% url 'index' %}">
+            <button type="button" class="btn mb-2 mb-md-0 btn-primary btn-block btn-round" style="height: 150px; display: block;"><span>Trang Chủ Cửa Hàng</span>
             </button>
-            </div> 
-            
+            </a>
+            </div>    
         </div>
         </div>
 
