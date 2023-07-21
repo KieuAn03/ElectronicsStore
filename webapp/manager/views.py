@@ -14,6 +14,10 @@ from home.models import *
 from base.models import *
 from django.core.files.storage import FileSystemStorage
 from .form import *
+
+def mainpage(request):
+
+    return render(request, 'manager/mainpage.html')
 # Create your views here.
 def revenue_static(request):
     count_i = CountItems.objects.all()
