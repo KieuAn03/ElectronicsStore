@@ -96,7 +96,7 @@ class Tablet(models.Model):
         return self.product_id.Name
 
 class PhoneOptionHard(models.Model):
-    Phone_id = models.ForeignKey(Phone,on_delete=models.CASCADE, null= True,blank=True, editable=False,)
+    Phone_id = models.ForeignKey(Phone,on_delete=models.CASCADE, null= True,blank=True)
     ram= models.ForeignKey(PhoneRam, on_delete=models.CASCADE, null= True)
     Storage = models.ForeignKey(PhoneStorage, on_delete=models.CASCADE, null= True)
     price_add = models.IntegerField(blank=True, null= True)
@@ -108,7 +108,7 @@ class PhoneOptionColor(models.Model):
    
    
 class TabletOptionHard(models.Model):
-    Tablet_id = models.ForeignKey(Tablet,on_delete=models.CASCADE,null= True,blank=True, editable=False,)
+    Tablet_id = models.ForeignKey(Tablet,on_delete=models.CASCADE,null= True,blank=True)
     ram = models.ForeignKey(TabletRam, on_delete=models.CASCADE, null= True, blank=True)
     Storage = models.ForeignKey(TabletStorage, on_delete=models.CASCADE)
     price_add = models.IntegerField(blank=True, null= True)

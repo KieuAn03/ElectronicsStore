@@ -65,22 +65,11 @@
                             </ol>
                         </nav>
                         <div class="product_name">{{product.Name}}</div>
-                        <div class="product-rating"><span class="badge badge-success"><i class="fa fa-star"></i> 4.5 sao</span> <span class="rating-review">35 đánh giá & 45 phản hồi</span></div>
-                        <div> <span class="product_price">{{product.price}}đ</span> <strike class="product_discount"> <span style='color:black'>8.900.000đ<span> </strike> </div>
-                        <div> <span class="product_saved">Tiết kiệm:</span> <span style='color:black'>1.000.000đ<span> </div>
+                        <div> <span class="product_price">{{product.price}}đ</span> 
                         <hr class="singleline">
                         <div>
                             <div class="row">
-                                <div class="col-md-5">
-                                    <div class="br-dashed">
-                                        <div class="row">
-                                            <div class="col-md-3 col-xs-3"> <img src="https://img.icons8.com/color/48/000000/price-tag.png"> </div>
-                                            <div class="col-md-9 col-xs-9">
-                                                <div class="pr-info"> <span class="break-all">Giảm thêm 100.000đ khi nhập XEUZZZ</span> </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                                 <div class="col-md-7"> </div>
                             </div>
                             <div class="row" style="margin-top: 15px;">
@@ -93,14 +82,7 @@
                             <form action="#">
                         </div>
                         <div class="row">
-                            <div class="col-xs-6" style="margin-left: 13px;">
-                                <div class="product_quantity"> <span>Số lượng: </span> <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-                                    <div class="quantity_buttons">
-                                        <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas chevron-up"></i></div>
-                                        <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas chevron-down"></i></div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <a class="col-xs-6" href="{% url 'add_to_cart' product.id%}"> <button type="button" class="btn btn-primary shop-button">Cho vào giỏ hàng</button> <button type="button" class="btn btn-success shop-button">Đặt hàng ngay</button>
                             
                             </div> 
@@ -255,25 +237,17 @@
                             </ol>
                         </nav>
                         <div class="product_name">{{product.Name}}</div>
-                        <div class="product-rating"><span class="badge badge-success"><i class="fa fa-star"></i> 4.5 sao</span> <span class="rating-review">35 đánh giá & 45 phản hồi</span></div>
+                       
                         {%if ssl%}
-                        <div> <span class="product_price">{{product.price |add:option.price_add}}đ</span> <strike class="product_discount"> <span style='color:black'>8.900.000đ<span> </strike> </div>
+                        <div> <span class="product_price">{{product.price |add:option.price_add}}đ</span>  </div>
                         {%else%}
-                        <div> <span class="product_price">{{product.price}}đ</span> <strike class="product_discount"> <span style='color:black'>8.900.000đ<span> </strike> </div>
+                        <div> <span class="product_price">{{product.price}}đ</span>  </div>
                         {%endif%}
-                            <div> <span class="product_saved">Tiết kiệm:</span> <span style='color:black'>1.000.000đ<span> </div>
                         <hr class="singleline">
                         <div>
                             <div class="row">
                                 <div class="col-md-5">
-                                    <div class="br-dashed">
-                                        <div class="row">
-                                            <div class="col-md-3 col-xs-3"> <img src="https://img.icons8.com/color/48/000000/price-tag.png"> </div>
-                                            <div class="col-md-9 col-xs-9">
-                                                <div class="pr-info"> <span class="break-all">Giảm thêm 100.000đ khi nhập XEUZZZ</span> </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <div class="col-md-7"> </div>
                             </div>
@@ -497,25 +471,16 @@
                             </ol>
                         </nav>
                         <div class="product_name">{{product.Name}}</div>
-                        <div class="product-rating"><span class="badge badge-success"><i class="fa fa-star"></i> 4.5 sao</span> <span class="rating-review">35 đánh giá & 45 phản hồi</span></div>
                         {%if ssl%}
-                        <div> <span class="product_price">{{product.price |add:option.price_add}}đ</span> <strike class="product_discount"> <span style='color:black'>8.900.000đ<span> </strike> </div>
+                        <div> <span class="product_price">{{product.price |add:option.price_add}}đ</span></div>
                         {%else%}
-                        <div> <span class="product_price">{{product.price}}đ</span> <strike class="product_discount"> <span style='color:black'>8.900.000đ<span> </strike> </div>
+              
                         {%endif%}
-                            <div> <span class="product_saved">Tiết kiệm:</span> <span style='color:black'>1.000.000đ<span> </div>
                         <hr class="singleline">
                         <div>
                             <div class="row">
                                 <div class="col-md-5">
-                                    <div class="br-dashed">
-                                        <div class="row">
-                                            <div class="col-md-3 col-xs-3"> <img src="https://img.icons8.com/color/48/000000/price-tag.png"> </div>
-                                            <div class="col-md-9 col-xs-9">
-                                                <div class="pr-info"> <span class="break-all">Giảm thêm 100.000đ khi nhập XEUZZZ</span> </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                                 <div class="col-md-7"> </div>
                             </div>
@@ -563,14 +528,7 @@
                             <form action="#">
                         </div>
                         <div class="row">
-                            <div class="col-xs-6" style="margin-left: 13px;">
-                                <div class="product_quantity"> <span>Số lượng: </span> <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-                                    <div class="quantity_buttons">
-                                        <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas chevron-up"></i></div>
-                                        <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas chevron-down"></i></div>
-                                    </div>
-                                </div>
-                            </div>
+                            
 
                             {%if rsl %}
                             {%if colorr%}
@@ -740,7 +698,7 @@
                     <div class="image_selected"><img src={{laptop.image0.url}}  id= "imgcenter" alt=""></div>
                 </div>
                 <div class="col-lg-6 order-3">
-                    <div class="product_description">
+                    < class="product_description">
                         <nav>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -749,22 +707,12 @@
                             </ol>
                         </nav>
                         <div class="product_name">{{product.Name}}</div>
-                        <div class="product-rating"><span class="badge badge-success"><i class="fa fa-star"></i> 4.5 sao</span> <span class="rating-review">35 đánh giá & 45 phản hồi</span></div>
-                        <div> <span class="product_price">{{product.price}}đ</span> <strike class="product_discount"> <span style='color:black'>8.900.000đ<span> </strike> </div>
-                        <div> <span class="product_saved">Tiết kiệm:</span> <span style='color:black'>1.000.000đ<span> </div>
+                       
+                        <div> <span class="product_price">{{product.price}}đ</span> </div>
                         <hr class="singleline">
                         <div>
                             <div class="row">
-                                <div class="col-md-5">
-                                    <div class="br-dashed">
-                                        <div class="row">
-                                            <div class="col-md-3 col-xs-3"> <img src="https://img.icons8.com/color/48/000000/price-tag.png"> </div>
-                                            <div class="col-md-9 col-xs-9">
-                                                <div class="pr-info"> <span class="break-all">Giảm thêm 100.000đ khi nhập XEUZZZ</span> </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                                 <div class="col-md-7"> </div>
                             </div>
                            
@@ -774,14 +722,7 @@
                             <form action="#">
                         </div>
                         <div class="row">
-                            <div class="col-xs-6" style="margin-left: 13px;">
-                                <div class="product_quantity"> <span>Số lượng: </span> <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-                                    <div class="quantity_buttons">
-                                        <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas chevron-up"></i></div>
-                                        <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas chevron-down"></i></div>
-                                    </div>
-                                </div>
-                            </div>
+                           
                             <a class="col-xs-6" href="{% url 'add_to_cart' product.id%}"> <button type="button" class="btn btn-primary shop-button">Cho vào giỏ hàng</button> <button type="button" class="btn btn-success shop-button">Đặt hàng ngay</button>                            
                             </div>
                         </div>
